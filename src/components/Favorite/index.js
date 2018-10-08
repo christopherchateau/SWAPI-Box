@@ -4,8 +4,8 @@ import './Favorite.css';
 class Favorite extends Component {
   render() {
     return (
-      <div className="Favorite">
-        <button>Favorite</button>
+      <div className="favorites">
+        <button className="favorites-button">View Favorites</button>
       </div>
     );
   }

@@ -1,0 +1,12 @@
+button {
+  background-color: blue;
+  color: white;
+  font-size: 18px;
+  height: 30px;
+  width: 100px;
+}
+
+.button-section {
+  display: flex;
+  justify-content: space-evenly;
+}

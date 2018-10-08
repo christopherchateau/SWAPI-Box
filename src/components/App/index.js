@@ -32,8 +32,8 @@ class App extends Component {
     const {episodeData} = this.state;
     return (
       <div className="App">
-        <MainPage/>
         <SideScroll episodeData={episodeData}/>
+        <MainPage/>
       </div>
     );
   }

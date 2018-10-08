@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import App from './App';
+import Card from './Card';
 
-describe('App', () => {
+describe('Card', () => {
   it('Renders like snapshot', () => {
-    const wrapper = shallow(<App/>);
+    const wrapper = shallow(<Card/>);
     expect(wrapper).toMatchSnapshot()
   });
 });

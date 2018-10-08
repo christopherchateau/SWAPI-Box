@@ -1,0 +1,10 @@
+@font-face {
+  font-family: starWars;
+  src: url(https://fonts2u.com/download/starwars.fonthttps://fonts2u.com/download/starwars.TTF) format("opentype");
+}
+
+h1 {
+  font-family: starWars;
+}
+
+

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MainPage from '../MainPage'
 import SideScroll from '../SideScroll';
 import './App.css';
 
@@ -31,6 +32,7 @@ class App extends Component {
     const {episodeData} = this.state;
     return (
       <div className="App">
+        <MainPage/>
         <SideScroll episodeData={episodeData}/>
       </div>
     );

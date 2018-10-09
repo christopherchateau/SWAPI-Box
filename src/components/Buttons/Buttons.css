@@ -1,12 +1,20 @@
-button {
-  background-color: blue;
-  color: white;
-  font-size: 18px;
-  height: 30px;
-  width: 100px;
-}
-
 .button-section {
   display: flex;
   justify-content: space-evenly;
+}
+
+button {
+  background-color: #fdde09;
+  border-radius: 30px;
+  color: black;
+  font-family: starWars;
+  font-size: 28px;
+  opacity: .8;
+  outline: 0;
+  height: 60px;
+  width: 180px;
+}
+
+button:hover {
+  opacity: 1;
 }

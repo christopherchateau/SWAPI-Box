@@ -1,5 +1,6 @@
 .card-container {
-  border: 2px solid black;
+  border: 2px solid red;
   height: 60%;
+  margin: 20px auto;
   width: 60%;
 }

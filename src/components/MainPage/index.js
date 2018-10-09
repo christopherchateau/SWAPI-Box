@@ -13,7 +13,6 @@ const MainPage = () => {
         <Favorite />
       </header>
       <Buttons />
-      <hr />
       <CardContainer />
     </div>
   );

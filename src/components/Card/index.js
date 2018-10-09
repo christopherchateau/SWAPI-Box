@@ -7,9 +7,9 @@ class Card extends Component {
     super();
     this.state = {};
   }
-  
+
   render() {
-    this.props.handleCardClick('asdf')
+    const { handleCardClick } = this.props;
     const mockCard = {
       name: "Luke Skywalker",
       homeworld: "Tatooine",
@@ -22,7 +22,12 @@ class Card extends Component {
       <div className="Card">
         <h2 className="name">
           {mockCard.name}
-          <span className="favoriteIcon">$</span>
+          <span
+            className="favoriteIcon"
+            onClick={() => handleCardClick("clicked")}
+          >
+            $
+          </span>
         </h2>
         <ul>
           <li>Homeworld: {mockCard.homeworld}</li>

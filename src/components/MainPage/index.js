@@ -7,9 +7,11 @@ import "./MainPage.css";
 
 const MainPage = () => {
   return (
-    <div>
-      <h1>SWAPI-Box$</h1>
-      <Favorite />
+    <div className="main-page">
+      <header className="title-favorites">
+        <h1 className="title-text ">SWAPi-Box $</h1>
+        <Favorite />
+      </header>
       <Buttons />
       <hr />
       <CardContainer />

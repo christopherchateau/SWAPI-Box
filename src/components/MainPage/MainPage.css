@@ -1,11 +1,21 @@
 @font-face {
   font-family: starWars;
-  src: url('../../fonts/Starjedi.ttf') format("woff2");
+  src: url("../../fonts/Starjedi.ttf") format("woff2");
 }
 
-h1 {
+.main-page {
+  background-image: url("../../images/stars-bg.jpg");
+}
+
+.title-text {
+  color: #fdde09;
   font-family: starWars;
-  font-size: 48px;
+  font-size: 60px;
+  font-weight: lighter;
+  text-align: center;
 }
 
-
+.title-favorites {
+  display: flex;
+  justify-content: space-around;
+}

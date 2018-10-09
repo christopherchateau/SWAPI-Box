@@ -1,5 +1,6 @@
 .favorites-button {
-  width: 180px;
-  display: flex;
-  justify-content: end;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 200px;
 }

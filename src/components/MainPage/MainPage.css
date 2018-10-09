@@ -11,11 +11,12 @@
   color: #fdde09;
   font-family: starWars;
   font-size: 60px;
-  font-weight: lighter;
+  margin: 0 10px 30px 10px;
   text-align: center;
 }
 
 .title-favorites {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }

@@ -9,8 +9,8 @@ const MainPage = () => {
   return (
     <div className="main-page">
       <header className="title-favorites">
-        <h1 className="title-text ">SWAPi-Box $</h1>
         <Favorite />
+        <h1 className="title-text ">SWAPi-Box $</h1>
       </header>
       <Buttons />
       <CardContainer />

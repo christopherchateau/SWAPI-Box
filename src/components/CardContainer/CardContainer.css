@@ -3,10 +3,11 @@
   border-radius: 40px;
   display: flex;
   flex-wrap: wrap;
-  height: 65%;
+  height: 60vh;
   justify-content: space-evenly;
   margin: 30px auto;
   opacity: 0.8;
+  overflow: auto;
   padding: 10px;
   width: 90%
 }

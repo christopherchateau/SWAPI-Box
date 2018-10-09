@@ -5,7 +5,7 @@
   margin: 10px;
   padding: 10px;
   text-align: center;
-  width: 220px;
+  width: 270px;
 }
 
 ul {
@@ -16,7 +16,26 @@ ul {
 }
 
 .name {
+  font-size: 24px;
   margin: 5px;
   padding-bottom: 5px;
   border-bottom: 4px solid black;
+}
+
+.favoriteIcon {
+  border: 4px solid black;
+  border-radius: 20px;
+  color: black;
+  font-family: starWars;
+  float: right;
+  padding: 0 18px;
+  position: relative;
+  bottom: 14px;
+}
+
+.favoriteIcon:hover {
+  background-color: black;
+  border: 4px solid #fdde09;
+  color: #fdde09;
+  transition: all 0.4s ease-in-out;
 }

@@ -13,7 +13,10 @@ class Card extends Component {
 
     return (
       <div className="Card">
-        <h2 className="name">{mockCard.name}</h2>
+        <h2 className="name">
+          {mockCard.name}
+          <span className="favoriteIcon">$</span>
+        </h2>
         <ul>
           <li>Homeworld: {mockCard.homeworld}</li>
           <li>Species: {mockCard.species}</li>

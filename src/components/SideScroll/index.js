@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./SideScroll.css";
 
 const SideScroll = (props) => {
@@ -13,5 +14,9 @@ const SideScroll = (props) => {
     </div>
   );
 };
+
+SideScroll.propTypes = {
+  episodeData: PropTypes.objectOf(PropTypes.string),
+}
 
 export default SideScroll;

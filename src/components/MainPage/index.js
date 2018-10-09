@@ -8,7 +8,7 @@ import "./MainPage.css";
 const MainPage = () => {
   return (
     <div>
-      <h1>SWAPI-Box</h1>
+      <h1>SWAPI-Box$</h1>
       <Favorite />
       <Buttons />
       <hr />

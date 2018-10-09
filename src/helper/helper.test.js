@@ -21,4 +21,8 @@ describe('SWAPI', () => {
       .then((episode) => expect(episode).toBeDefined())
       .catch((err) => console.log('Test 2 error!'));
   });
+
+  it('Should fetch species and people', () => {
+    api.getPeople();
+  });
 });

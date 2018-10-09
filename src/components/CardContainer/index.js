@@ -1,12 +1,15 @@
-import React from 'react';
-import './CardContainer.css';
+import React from "react";
+import Card from "../Card";
+import "./CardContainer.css";
 
-const CardContainer = (props) => {
+const CardContainer = props => {
   return (
-    <div className='card-container'>
-      <h2></h2>
+    <div className="card-container">
+      <h2>
+        <Card />
+      </h2>
     </div>
   );
-}
+};
 
 export default CardContainer;

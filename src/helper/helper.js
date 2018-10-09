@@ -10,9 +10,7 @@ class SWapi {
         }});
   }
   async getPeople() {
-    if (!this.species) {
-      await this.getSpecies();
-    }
+    const species = await this.getSpecies();
     const response = await this.getData('people')
     const people = response.results.map(person => {
       const speciesData = person.species[0]
@@ -20,7 +18,7 @@ class SWapi {
       return {
         name: person.name,
         homeworld: person.homeworld,
-        species: this.species[speciesID].name,
+        species: species[speciesID].name,
       }
       })
     console.log(people);

@@ -6,6 +6,7 @@
 .main-page {
   background-attachment: fixed;
   background-image: url("../../images/stars-bg.jpg");
+  height: 100vh;
 }
 
 .title-text {

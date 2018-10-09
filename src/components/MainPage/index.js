@@ -5,7 +5,7 @@ import CardContainer from "../CardContainer";
 import Buttons from "../Buttons";
 import "./MainPage.css";
 
-const MainPage = () => {
+const MainPage = ({ handleCardClick }) => {
   return (
     <div className="main-page">
       <header className="title-favorites">
@@ -13,11 +13,13 @@ const MainPage = () => {
         <h1 className="title-text ">$ SWAPi-Box $</h1>
       </header>
       <Buttons />
-      <CardContainer />
+      <CardContainer handleCardClick={handleCardClick} />
     </div>
   );
 };
 
-MainPage.propTypes = {};
+MainPage.propTypes = {
+  handleCardClick: PropTypes.func.isRequired
+};
 
 export default MainPage;

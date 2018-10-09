@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./Card.css";
 
 class Card extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  
   render() {
+    this.props.handleCardClick('asdf')
     const mockCard = {
       name: "Luke Skywalker",
       homeworld: "Tatooine",
@@ -27,5 +34,9 @@ class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+  handleCardClick: PropTypes.func.isRequired
+};
 
 export default Card;

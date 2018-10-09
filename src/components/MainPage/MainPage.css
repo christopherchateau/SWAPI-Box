@@ -1,10 +1,24 @@
 @font-face {
   font-family: starWars;
-  src: url(https://fonts2u.com/download/starwars.fonthttps://fonts2u.com/download/starwars.TTF) format("opentype");
+  src: url("../../fonts/Starjedi.ttf") format("woff2");
 }
 
-h1 {
+.main-page {
+  background-attachment: fixed;
+  background-image: url("../../images/stars-bg.jpg");
+  height: 100vh;
+}
+
+.title-text {
+  color: #fdde09;
   font-family: starWars;
+  font-size: 60px;
+  margin: 0 10px 30px 10px;
+  text-align: center;
 }
 
-
+.title-favorites {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

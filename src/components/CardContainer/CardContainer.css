@@ -1,5 +1,13 @@
 .card-container {
-  border: 2px solid black;
+  background-color: #fdde09;
+  border-radius: 40px;
+  display: flex;
+  flex-wrap: wrap;
   height: 60%;
-  width: 60%;
+  justify-content: space-evenly;
+  margin: 30px auto;
+  opacity: 0.8;
+  overflow: scroll;
+  padding: 10px;
+  width: 90%
 }

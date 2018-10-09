@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import SWapi from '../../helper/helper';
-import MainPage from '../MainPage'
-import SideScroll from '../SideScroll';
-import './App.css';
+import React, { Component } from "react";
+import SWapi from "../../helper/helper";
+import MainPage from "../MainPage";
+import SideScroll from "../SideScroll";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -20,15 +20,20 @@ class App extends Component {
   getEpisodeData() {
     const { api } = this.state;
     Promise.resolve(api.getRandomEpisode())
-      .then((episodeData) => this.setState({episodeData}))
-      .catch(() => console.log('Error fetching episode'));
+      .then(episodeData => this.setState({ episodeData }))
+      .catch(() => console.log("Error fetching episode"));
   }
+
+  handleCardClick = (event) => {
+    console.log(event)
+  };
+
   render() {
-    const {episodeData} = this.state;
+    const { episodeData } = this.state;
     return (
       <div className="App">
-        <SideScroll episodeData={episodeData}/>
-        <MainPage/>
+        <SideScroll episodeData={episodeData} />
+        <MainPage handleCardClick={this.handleCardClick}/>
       </div>
     );
   }

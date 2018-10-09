@@ -7,8 +7,10 @@
 }
 
 .scrollText {
-  color: yellow;
+  color: #fdde09;
   font-size: 32px;
+  line-height: 1.5;
+  margin: 5px;
   text-align: center;
 }
 

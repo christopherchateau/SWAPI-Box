@@ -1,14 +1,47 @@
-import React, { Component } from 'react';
-import './Card.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "./Card.css";
 
 class Card extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   render() {
+    const { handleCardClick } = this.props;
+    const mockCard = {
+      name: "Luke Skywalker",
+      homeworld: "Tatooine",
+      species: "Human",
+      language: "Galactic Basics",
+      popultion: 200000
+    };
+
     return (
       <div className="Card">
-        <h2>This is a Card</h2>
+        <h2 className="name">
+          {mockCard.name}
+          <span
+            className="favoriteIcon"
+            onClick={() => handleCardClick("clicked")}
+          >
+            $
+          </span>
+        </h2>
+        <ul>
+          <li>Homeworld: {mockCard.homeworld}</li>
+          <li>Species: {mockCard.species}</li>
+          <li>Language: {mockCard.language}</li>
+          <li>Popultion: {mockCard.popultion}</li>
+        </ul>
       </div>
     );
   }
 }
+
+Card.propTypes = {
+  handleCardClick: PropTypes.func.isRequired
+};
 
 export default Card;

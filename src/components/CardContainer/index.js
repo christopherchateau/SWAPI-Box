@@ -5,9 +5,19 @@ import "./CardContainer.css";
 const CardContainer = props => {
   return (
     <div className="card-container">
-      <h2>
-        <Card />
-      </h2>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </div>
   );
 };

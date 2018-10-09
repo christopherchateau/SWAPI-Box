@@ -4,6 +4,7 @@
 }
 
 .main-page {
+  background-attachment: fixed;
   background-image: url("../../images/stars-bg.jpg");
 }
 

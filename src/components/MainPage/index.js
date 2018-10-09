@@ -10,7 +10,7 @@ const MainPage = () => {
     <div className="main-page">
       <header className="title-favorites">
         <Favorite />
-        <h1 className="title-text ">SWAPi-Box $</h1>
+        <h1 className="title-text ">$ SWAPi-Box $</h1>
       </header>
       <Buttons />
       <CardContainer />

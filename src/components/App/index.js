@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SWapi from '../../helper/helper';
 import MainPage from '../MainPage'
 import SideScroll from '../SideScroll';
 import './App.css';
@@ -7,6 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      api: new SWapi(),
       episodeData: {}
     };
   }
@@ -16,17 +18,10 @@ class App extends Component {
   }
 
   getEpisodeData() {
-    const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
-    fetch(`https://swapi.co/api/films/${randomEpisodeNumber}`)
-      .then(response => response.json())
-      .then(json => {
-        return {
-          opening_crawl: json.opening_crawl,
-          title: json.title,
-          release_date: json.release_date
-        }})
-      .then(episodeData => this.setState({episodeData}))
-      .catch(err => console.log('Error fetching episode data'));
+    const { api } = this.state;
+    Promise.resolve(api.getRandomEpisode())
+      .then((episodeData) => this.setState({episodeData}))
+      .catch(() => console.log('Error fetching episode'));
   }
   render() {
     const {episodeData} = this.state;

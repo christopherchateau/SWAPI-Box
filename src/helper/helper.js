@@ -27,6 +27,12 @@ export const getPersonInfo = (peopleArray) => {
   }));
 }
 
+export const getPlanets = async () => {
+}
+
+export const getVehicles = async () => {
+}
+
 export const getData = async (url) => {
   try {
     const response = await fetch(url)

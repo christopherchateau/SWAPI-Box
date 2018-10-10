@@ -2,29 +2,29 @@ import * as API from './helper'
 
 describe('SWAPI', () => {
   describe('getData', () => {
-    let extension;
+    let url;
     beforeEach(() => {
-      extension = 'films/1';
+      url = 'https://swapi.co/api/films/1'
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         json: () => ({data: 'here\'s some stuff'})
       }));
     });
 
     it('Should call fetch with the argument as a path', () => {
-      const expected = 'https://swapi.co/api/' + extension;
-      API.getData(extension);
+      const expected = url;
+      API.getData(url);
       expect(window.fetch).toHaveBeenCalledWith(expected);
     });
 
     it('Should return an object from the fetch call', () => {
       const expected = {data: 'here\'s some stuff'};
-      expect(API.getData(extension)).resolves.toEqual(expected);
+      expect(API.getData(url)).resolves.toEqual(expected);
     });
 
     it('Should return an error when fetch does not work', () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(
         Error('failed')))
-      expect(API.getData(extension)).resolves.toBe('failed');
+      expect(API.getData(url)).resolves.toBe('failed');
     });
   });
 

@@ -35,10 +35,28 @@ export const getPersonInfo = (peopleArray) => {
 }
 
 export const getPlanets = async () => {
-
+  try {
+    const response = await getData(url + 'planets');
+    console.log(response);
+  } catch(error) {
+    return error.message;
+  }
 }
 
 export const getVehicles = async () => {
+  try {
+    const response = await getData(url + 'vehicles');
+    return response.results.map(vehicle => {
+      return {
+        name: vehicle.name,
+        model: vehicle.model,
+        class: vehicle.vehicle_class,
+        passengers: vehicle.passengers
+      }
+    });
+  } catch(error) {
+    return error.message;
+  }
 }
 
 export const getData = async (url) => {

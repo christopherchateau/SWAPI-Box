@@ -1,37 +1,38 @@
-class SWapi {
-  getRandomEpisode() {
-    const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
-    return this.getData(`films/${randomEpisodeNumber}`)
-      .then(episode => {
-        return {
-          opening_crawl: episode.opening_crawl,
-          title: episode.title,
-          release_date: episode.release_date
-        }});
-  }
-  async getPeople() {
-    const species = await this.getSpecies();
-    const response = await this.getData('people')
-    const people = response.results.map(person => {
-      const speciesData = person.species[0]
-      const speciesID = speciesData.charAt(speciesData.length - 2);
-      return {
-        name: person.name,
-        homeworld: person.homeworld,
-        species: species[speciesID].name,
-      }
-      })
-    console.log(people);
-  }
-  getSpecies() {
-    this.getData('species')
-      .then(response => this.species = response.results);
-  }
-  getData(type) {
-    return fetch(`https://swapi.co/api/${type}`)
-      .then(response => response.json())
-      .catch(err => console.log(`Error fetching ${type} data`));
+export const url = 'https://swapi.co/api/'
+
+export const getRandomEpisode = async () => {
+  const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
+  const episode = await getData(url + `films/${randomEpisodeNumber}`)
+  return {
+    opening_crawl: episode.opening_crawl,
+    title: episode.title,
+    release_date: episode.release_date
   }
 }
+export const getPeople = async () => {
+  const response = await getData(url + 'people')
+  const people =  await getPersonInfo(response.results);
+  console.log(people);
+}
 
-export default SWapi;
+export const getPersonInfo = (peopleArray) => {
+  return Promise.all(peopleArray.map( async(person) => {
+    const species = await getData(person.species);
+    const homeworld = await getData(person.homeworld);
+    return {
+      name: person.name,
+      species: species.name,
+      homeworld: homeworld.name
+    }
+  }));
+}
+
+export const getData = async (url) => {
+  try {
+    const response = await fetch(url)
+    const data = await response.json();
+    return data;
+  } catch(error) {
+    return error.message;
+  }
+}

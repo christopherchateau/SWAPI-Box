@@ -10,24 +10,32 @@ export const getRandomEpisode = async () => {
   }
 }
 export const getPeople = async () => {
-  const response = await getData(url + 'people')
-  const people =  await getPersonInfo(response.results);
-  console.log(people);
+  try {
+    const response = await getData(url + 'people')
+    return getPersonInfo(response.results);
+  } catch(error) {
+    return error.message;
+  }
 }
 
 export const getPersonInfo = (peopleArray) => {
-  return Promise.all(peopleArray.map( async(person) => {
-    const species = await getData(person.species);
-    const homeworld = await getData(person.homeworld);
-    return {
-      name: person.name,
-      species: species.name,
-      homeworld: homeworld.name
-    }
-  }));
+  try {
+    return Promise.all(peopleArray.map( async(person) => {
+      const species = await getData(person.species);
+      const homeworld = await getData(person.homeworld);
+      return {
+        name: person.name,
+        species: species.name,
+        homeworld: homeworld.name
+      }
+    }));
+  } catch(error) {
+    return error.message;
+  }
 }
 
 export const getPlanets = async () => {
+
 }
 
 export const getVehicles = async () => {

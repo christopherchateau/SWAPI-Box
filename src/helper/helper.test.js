@@ -29,7 +29,6 @@ describe('SWAPI', () => {
   });
 
   describe('getRandomEpisode', () => {
-
     it('Should fetch a random movie\'s data', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         json: () => ({

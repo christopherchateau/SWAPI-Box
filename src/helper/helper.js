@@ -1,37 +1,70 @@
-class SWapi {
-  getRandomEpisode() {
-    const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
-    return this.getData(`films/${randomEpisodeNumber}`)
-      .then(episode => {
-        return {
-          opening_crawl: episode.opening_crawl,
-          title: episode.title,
-          release_date: episode.release_date
-        }});
+export const url = 'https://swapi.co/api/'
+
+export const getRandomEpisode = async () => {
+  const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
+  const episode = await getData(url + `films/${randomEpisodeNumber}`)
+  return {
+    opening_crawl: episode.opening_crawl,
+    title: episode.title,
+    release_date: episode.release_date
   }
-  async getPeople() {
-    const species = await this.getSpecies();
-    const response = await this.getData('people')
-    const people = response.results.map(person => {
-      const speciesData = person.species[0]
-      const speciesID = speciesData.charAt(speciesData.length - 2);
-      return {
-        name: person.name,
-        homeworld: person.homeworld,
-        species: species[speciesID].name,
-      }
-      })
-    console.log(people);
-  }
-  getSpecies() {
-    this.getData('species')
-      .then(response => this.species = response.results);
-  }
-  getData(type) {
-    return fetch(`https://swapi.co/api/${type}`)
-      .then(response => response.json())
-      .catch(err => console.log(`Error fetching ${type} data`));
+}
+export const getPeople = async () => {
+  try {
+    const response = await getData(url + 'people')
+    return getPersonInfo(response.results);
+  } catch(error) {
+    return error.message;
   }
 }
 
-export default SWapi;
+export const getPersonInfo = (peopleArray) => {
+  try {
+    return Promise.all(peopleArray.map( async(person) => {
+      const species = await getData(person.species);
+      const homeworld = await getData(person.homeworld);
+      return {
+        name: person.name,
+        species: species.name,
+        homeworld: homeworld.name
+      }
+    }));
+  } catch(error) {
+    return error.message;
+  }
+}
+
+export const getPlanets = async () => {
+  try {
+    const response = await getData(url + 'planets');
+    console.log(response);
+  } catch(error) {
+    return error.message;
+  }
+}
+
+export const getVehicles = async () => {
+  try {
+    const response = await getData(url + 'vehicles');
+    return response.results.map(vehicle => {
+      return {
+        name: vehicle.name,
+        model: vehicle.model,
+        class: vehicle.vehicle_class,
+        passengers: vehicle.passengers
+      }
+    });
+  } catch(error) {
+    return error.message;
+  }
+}
+
+export const getData = async (url) => {
+  try {
+    const response = await fetch(url)
+    const data = await response.json();
+    return data;
+  } catch(error) {
+    return error.message;
+  }
+}

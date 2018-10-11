@@ -10,7 +10,9 @@ const Buttons = ({ updateData }) => {
         onClick={() => API.getPeople()
           .then(people => updateData('people',people))}
         >people</button>
-      <button>planets</button>
+      <button onClick={() => API.getPlanets()
+        .then(planets => updateData('planets',planets))
+      }>planets</button>
       <button onClick={() => API.getVehicles()
         .then(vehicles => updateData('vehicles',vehicles))
       }>vehicles</button>

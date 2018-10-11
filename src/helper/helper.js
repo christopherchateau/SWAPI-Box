@@ -40,8 +40,8 @@ export const getPlanets = async () => {
   try {
     const response = await getData(url + "planets");
     return Promise.all(
-      response.results.map(planet => {
-        const residents = Promise.all(
+      response.results.map(async planet => {
+        const residents = await Promise.all(
           planet.residents.map(async resident => {
             const residentData = await getData(resident);
             return residentData.name;

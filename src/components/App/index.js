@@ -17,6 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getEpisodeData();
+    console.log(API.getPlanets())
   }
 
   getEpisodeData() {

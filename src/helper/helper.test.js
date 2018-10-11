@@ -47,9 +47,52 @@ describe('SWAPI', () => {
     });
   });
 
-  describe('getPeople', () => {
-    it('Should fetch species and people', () => {
-      API.getPeople();
+  describe("getPeople", () => {
+    let expected;
+
+    beforeEach(() => {
+      expected = [
+        {
+          name: "Luke Skywalker",
+          species: ["https://swapi.co/api/species/1/"],
+          homeworld: "https://swapi.co/api/planets/1/"
+        },
+        {
+          name: "C-3P0",
+          species: ["https://swapi.co/api/species/2/"],
+          homeworld: "https://swapi.co/api/planets/1/"
+        }
+      ];
+    });
+
+    it.skip("Should fetch species and people", async () => {
+      const getPersonInfo = jest.fn().mockImplementation(() => expected);
+      const characterInfo = await API.getPeople();
+      expect(characterInfo).toEqual(expected);
+    });
+
+    it.skip("should call getPersonInfo with the correct params", () => {
+      API.getPersonInfo(expected);
+      expect(API.getPersonInfo).toHaveBeenCalledWith(expected);
+    });
+
+    it("Should fetch a character's info", async () => {
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => ({ name: "species/homeworld" })
+        })
+      );
+      expected = [
+        {
+          name: "Luke Skywalker",
+          species: "species/homeworld",
+          homeworld: "species/homeworld"
+        }
+      ];
+      const characterInfo = await API.getPersonInfo(expected);
+      expect(characterInfo).toEqual(expected);
     });
   });
+
+
 });

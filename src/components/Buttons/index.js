@@ -8,13 +8,13 @@ const Buttons = ({ updateData }) => {
     <div className="button-section">
       <button
         onClick={() => API.getPeople()
-          .then(people => updateData('people',people))}
+          .then(people => updateData(people))}
         >people</button>
       <button onClick={() => API.getPlanets()
-        .then(planets => updateData('planets',planets))
+        .then(planets => updateData(planets))
       }>planets</button>
       <button onClick={() => API.getVehicles()
-        .then(vehicles => updateData('vehicles',vehicles))
+        .then(vehicles => updateData(vehicles))
       }>vehicles</button>
     </div>
   );

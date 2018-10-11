@@ -24,8 +24,8 @@ class App extends Component {
       .then(episodeData => this.setState({ episodeData }))
   }
 
-  updateData = (key, value) => {
-    this.setState({ [key]: value, selected: key });
+  updateData = (key) => {
+    this.setState({ [key]: key, selected: key });
   }
 
   handleCardClick = (event) => {

@@ -13,10 +13,10 @@ class Card extends Component {
     const { name } = cardData;
     delete cardData.name;
     const listItems = Object.keys(cardData).map((value, index) => {
-      return (<li key={name + index}>
-        {`${value}: ${cardData[value]}`}
-        </li>)
-    })
+      if (cardData[value].length) {
+        return <li key={name + index}>{`${value}: ${cardData[value]}`}</li>;
+      }
+    });
     return (
       <div className="Card">
         <h2 className="name">
@@ -28,9 +28,7 @@ class Card extends Component {
             $
           </span>
         </h2>
-        <ul>
-          {listItems}
-        </ul>
+        <ul>{listItems}</ul>
       </div>
     );
   }

@@ -1,7 +1,5 @@
 .SideScroll {
-  background-color: #141213;
   color: #FFF;
-  height: 100vh;
   overflow: hidden;
   text-align: justify;
 }

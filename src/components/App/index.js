@@ -11,7 +11,8 @@ class App extends Component {
       selected: '',
       episodeData: {},
       vehicles: [],
-      people: []
+      people: [],
+      planets: []
     };
   }
 
@@ -38,7 +39,7 @@ class App extends Component {
       <div className="App">
         <SideScroll episodeData={episodeData} />
         <MainPage
-          cardData ={this.state[this.state.selected] || []}
+          cardData={this.state[this.state.selected] || []}
           updateData={this.updateData}
           handleCardClick={this.handleCardClick}/>
       </div>

@@ -29,7 +29,8 @@ export const getPersonInfo = peopleArray => {
           species: species.name,
           homeworld: homeworld.name,
           language: species.language,
-          population: homeworld.population
+          population: homeworld.population,
+          favorited: false
         };
       })
     );
@@ -54,7 +55,8 @@ export const getPlanets = async () => {
           terrain: planet.terrain,
           population: planet.population,
           climate: planet.climate,
-          residents: residents
+          residents: residents,
+          favorited: false
         };
       })
     );
@@ -71,7 +73,8 @@ export const getVehicles = async () => {
         name: vehicle.name,
         model: vehicle.model,
         class: vehicle.vehicle_class,
-        passengers: vehicle.passengers
+        passengers: vehicle.passengers,
+        favorited: false
       };
     });
   } catch (error) {

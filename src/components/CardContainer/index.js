@@ -3,18 +3,16 @@ import Card from "../Card";
 import PropTypes from "prop-types";
 import "./CardContainer.css";
 
-const CardContainer = ({ handleCardClick }) => {
+const CardContainer = ({ cardData, handleCardClick }) => {
+  const cards = cardData.map((card, index) => {
+    return <Card
+      key={Math.random() + index}
+      handleCardClick={handleCardClick}
+      cardData={card}/>
+  });
   return (
     <div className="card-container">
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
-      <Card handleCardClick={handleCardClick} />
+    {cards}
     </div>
   );
 };

@@ -10,8 +10,10 @@ class Card extends Component {
 
   handleClick = () => {
     const { favorited } = this.state;
-    this.props.handleCardClick(this.props.cardData);
-    this.setState({ favorited: !favorited });
+    this.setState(
+      { favorited: !favorited },
+      this.props.handleCardClick(this.props.cardData, this.state.favorited)
+    );
   };
 
   render() {
@@ -19,7 +21,7 @@ class Card extends Component {
     const { handleCardClick, cardData } = this.props;
     const { name } = cardData;
     const listItems = Object.keys(cardData).map((value, index) => {
-      if (value === 'name') return;
+      if (value === "name") return;
       if (cardData[value].length) {
         return <li key={name + index}>{`${value}: ${cardData[value]}`}</li>;
       }

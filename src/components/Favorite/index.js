@@ -6,7 +6,7 @@ class Favorite extends Component {
   render() {
     return (
       <div className="Favorites">
-        <button className="favoritesBtn">Favorites</button>
+        <button className="favoritesBtn">Favorites: {this.props.favoriteCount}</button>
       </div>
     );
   }

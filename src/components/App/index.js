@@ -13,7 +13,8 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] }
+      favorites: { people: [], planets: [], vehicles: [] },
+      favoritesCounter: 0
     };
   }
 
@@ -29,12 +30,18 @@ class App extends Component {
     this.setState({ [key]: value, selected: key });
   };
 
-  handleCardClick = card => {
-    const { selected, favorites } = this.state;
-    const updateArray = [card, ...favorites[selected]];
+  handleCardClick = (card, favorited) => {
+    let { selected, favorites, favoritesCounter } = this.state;
     const updatedFavorites = favorites;
+
+    if (!favorited) {
+    const updateArray = [card, ...favorites[selected]];
     updatedFavorites[selected] = updateArray;
-    this.setState({ favorites: updatedFavorites });
+    favoritesCounter++;
+    } else {
+      favoritesCounter--;
+    }
+    this.setState({ favorites: updatedFavorites, favoritesCounter });
   };
 
   render() {

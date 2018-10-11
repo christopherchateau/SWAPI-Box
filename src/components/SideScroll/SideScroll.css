@@ -14,7 +14,7 @@
 }
 
 .scroll {
-  animation: scroll 60s linear;
+  animation: scroll 60s infinite;
   position: relative;
 }
 

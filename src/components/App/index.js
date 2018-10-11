@@ -24,6 +24,9 @@ class App extends Component {
 
   getEpisodeData() {
     API.getRandomEpisode().then(episodeData => this.setState({ episodeData }));
+    setTimeout(() => {
+      this.getEpisodeData();
+    }, 60000);
   }
 
   updateData = (key, value) => {

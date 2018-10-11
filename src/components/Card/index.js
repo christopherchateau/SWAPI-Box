@@ -19,7 +19,7 @@ class Card extends Component {
 
   render() {
     const { favorited } = this.state;
-    const { handleCardClick, cardData } = this.props;
+    const { cardData } = this.props;
     const { name } = cardData;
     const listItems = Object.keys(cardData).map((value, index) => {
       if (value === "name" || value === "favorited") return;

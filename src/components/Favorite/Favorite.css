@@ -4,3 +4,9 @@
   margin-top: 10px;
   width: 300px;
 }
+
+.favoritesToggle {
+  background-color: #fdde09;
+  border: 4px solid black;
+  color: black;
+}

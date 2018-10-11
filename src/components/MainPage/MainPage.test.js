@@ -11,9 +11,13 @@ describe("MainPage", () => {
         cardData={[]}
         updateData={jest.fn()}
         handleCardClick={jest.fn()}
+        toggleFavorites={jest.fn()}
+        favoritesCount={0}
       />
     );
   });
 
-  it("", () => {});
+  it("Renders like snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });

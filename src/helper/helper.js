@@ -47,7 +47,7 @@ export const getPlanets = async () => {
         let residents = await Promise.all(
           planet.residents.map(async resident => {
             const residentData = await getData(resident);
-            return ' ' + residentData.name;
+            return " " + residentData.name;
           })
         );
         return {
@@ -81,9 +81,13 @@ export const getVehicles = async () => {
 };
 
 export const getData = async url => {
+  if (localStorage.getItem(url)) {
+    return JSON.parse(localStorage.getItem(url));
+  }
   try {
     const response = await fetch(url);
     const data = await response.json();
+    localStorage.setItem(url, JSON.stringify(data));
     return data;
   } catch (error) {
     return error.message;

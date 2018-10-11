@@ -13,14 +13,22 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] },
-      favoritesCount: 0
+      favorites: { people: [], planets: [], vehicles: [] }
     };
   }
 
   componentDidMount() {
     this.getEpisodeData();
+    if (localStorage.getItem("favorites")) {
+      const favorites = JSON.parse(localStorage.getItem("favorites"));
+      this.setState({ favorites });
+    }
   }
+
+  toggleFavorites = () => {
+    const { selected, favorites } = this.state;
+    this.updateData(selected, favorites[selected]);
+  };
 
   getEpisodeData() {
     API.getRandomEpisode().then(episodeData => this.setState({ episodeData }));
@@ -34,27 +42,32 @@ class App extends Component {
   };
 
   handleCardClick = (card, favorited) => {
-    let { selected, favorites, favoritesCount } = this.state;
+    let { selected, favorites } = this.state;
     const updatedFavorites = favorites;
+    let updateArray;
 
     if (!favorited) {
-      const updateArray = [card, ...favorites[selected]];
-      updatedFavorites[selected] = updateArray;
-      favoritesCount++;
+      updateArray = [card, ...favorites[selected]];
     } else {
-      favoritesCount--;
+      updateArray = favorites[selected].filter(favorite => {
+        return favorite.name !== card.name;
+      });
     }
-    this.setState({ favorites: updatedFavorites, favoritesCount });
+    updatedFavorites[selected] = updateArray;
+    this.setState({ favorites: updatedFavorites });
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
   render() {
-    const { episodeData } = this.state;
+    const { episodeData, selected, favorites } = this.state;
+    const counter = favorites[selected] ? favorites[selected].length : 0;
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
         <MainPage
-          favoritesCount={this.state.favoritesCount}
-          cardData={this.state[this.state.selected] || []}
+          toggleFavorites={this.toggleFavorites}
+          favoritesCount={counter}
+          cardData={this.state[selected] || []}
           updateData={this.updateData}
           handleCardClick={this.handleCardClick}
         />

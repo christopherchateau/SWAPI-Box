@@ -5,26 +5,30 @@ import "./Card.css";
 class Card extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { favorited: false };
   }
 
+  handleClick = () => {
+    const { favorited } = this.state;
+    this.props.handleCardClick(this.props.cardData);
+    this.setState({ favorited: !favorited });
+  };
+
   render() {
+    const { favorited } = this.state;
     const { handleCardClick, cardData } = this.props;
     const { name } = cardData;
-    delete cardData.name;
     const listItems = Object.keys(cardData).map((value, index) => {
+      if (value === 'name') return;
       if (cardData[value].length) {
         return <li key={name + index}>{`${value}: ${cardData[value]}`}</li>;
       }
     });
     return (
-      <div className="Card">
+      <div className={"Card" + (favorited ? " favorited" : "")}>
         <h2 className="name">
           {name}
-          <span
-            className="favoriteIcon"
-            onClick={() => handleCardClick("clicked")}
-          >
+          <span className="favoriteIcon" onClick={this.handleClick}>
             $
           </span>
         </h2>

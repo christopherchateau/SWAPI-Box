@@ -8,29 +8,33 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: '',
+      selected: "",
       episodeData: {},
       vehicles: [],
       people: [],
-      planets: []
+      planets: [],
+      favorites: { people: [], planets: [], vehicles: [] }
     };
   }
 
   componentDidMount() {
     this.getEpisodeData();
   }
-  
+
   getEpisodeData() {
-    API.getRandomEpisode()
-    .then(episodeData => this.setState({ episodeData }))
+    API.getRandomEpisode().then(episodeData => this.setState({ episodeData }));
   }
 
   updateData = (key, value) => {
     this.setState({ [key]: value, selected: key });
-  }
+  };
 
-  handleCardClick = (event) => {
-    console.log(event)
+  handleCardClick = card => {
+    const { selected, favorites } = this.state;
+    const updateArray = [card, ...favorites[selected]];
+    const updatedFavorites = favorites;
+    updatedFavorites[selected] = updateArray;
+    this.setState({ favorites: updatedFavorites });
   };
 
   render() {
@@ -41,7 +45,8 @@ class App extends Component {
         <MainPage
           cardData={this.state[this.state.selected] || []}
           updateData={this.updateData}
-          handleCardClick={this.handleCardClick}/>
+          handleCardClick={this.handleCardClick}
+        />
       </div>
     );
   }

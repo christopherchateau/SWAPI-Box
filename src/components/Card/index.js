@@ -3,16 +3,26 @@ import PropTypes from "prop-types";
 import "./Card.css";
 
 class Card extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = { favorited: this.props.cardData.favorited };
   }
 
+  handleClick = () => {
+    const { favorited } = this.state;
+    this.props.cardData.favorited = !favorited;
+    this.setState(
+      { favorited: !favorited },
+      this.props.handleCardClick(this.props.cardData, this.state.favorited)
+    );
+  };
+
   render() {
-    const { handleCardClick, cardData } = this.props;
+    const { favorited } = this.state;
+    const { cardData } = this.props;
     const { name } = cardData;
-    delete cardData.name;
     const listItems = Object.keys(cardData).map((value, index) => {
+      if (value === "name" || value === "favorited") return;
       if (cardData[value].length) {
         return <li key={name + index}>{`${value}: ${cardData[value]}`}</li>;
       }
@@ -22,10 +32,10 @@ class Card extends Component {
         <h2 className="name">
           {name}
           <span
-            className="favoriteIcon"
-            onClick={() => handleCardClick("clicked")}
+            className={"favoriteIcon" + (favorited ? " favorited" : "")}
+            onClick={this.handleClick}
           >
-            $
+            {favorited ? "#" : "$"}
           </span>
         </h2>
         <ul>{listItems}</ul>

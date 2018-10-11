@@ -22,7 +22,6 @@ export const getPersonInfo = peopleArray => {
   try {
     return Promise.all(
       peopleArray.map(async person => {
-        console.log(person);
         const species = await getData(person.species);
         const homeworld = await getData(person.homeworld);
         return {
@@ -30,7 +29,8 @@ export const getPersonInfo = peopleArray => {
           species: species.name,
           homeworld: homeworld.name,
           language: species.language,
-          population: homeworld.population
+          population: homeworld.population,
+          favorited: false
         };
       })
     );
@@ -47,7 +47,7 @@ export const getPlanets = async () => {
         let residents = await Promise.all(
           planet.residents.map(async resident => {
             const residentData = await getData(resident);
-            return ' ' + residentData.name;
+            return " " + residentData.name;
           })
         );
         return {
@@ -55,7 +55,8 @@ export const getPlanets = async () => {
           terrain: planet.terrain,
           population: planet.population,
           climate: planet.climate,
-          residents: residents
+          residents: residents,
+          favorited: false
         };
       })
     );
@@ -72,7 +73,8 @@ export const getVehicles = async () => {
         name: vehicle.name,
         model: vehicle.model,
         class: vehicle.vehicle_class,
-        passengers: vehicle.passengers
+        passengers: vehicle.passengers,
+        favorited: false
       };
     });
   } catch (error) {
@@ -81,9 +83,13 @@ export const getVehicles = async () => {
 };
 
 export const getData = async url => {
+  if (localStorage.getItem(url)) {
+    return JSON.parse(localStorage.getItem(url));
+  }
   try {
     const response = await fetch(url);
     const data = await response.json();
+    localStorage.setItem(url, JSON.stringify(data));
     return data;
   } catch (error) {
     return error.message;

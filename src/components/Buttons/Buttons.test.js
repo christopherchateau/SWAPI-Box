@@ -6,7 +6,7 @@ describe("Buttons", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Buttons />);
+    wrapper = shallow(<Buttons updateData={jest.fn()}/>);
   });
 
   it("", () => {

@@ -14,7 +14,7 @@
 }
 
 .scroll {
-  animation: scroll 60s linear;
+  animation: scroll 60s infinite;
   position: relative;
 }
 
@@ -23,7 +23,7 @@
     top: 1000px;
   }
   100% {
-    top: -1000px;
+    top: -1500px;
     display: none;
   }
 }

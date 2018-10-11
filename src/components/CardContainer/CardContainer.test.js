@@ -1,11 +1,12 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import CardContainer from './CardContainer';
+import React from "react";
+import { shallow, mount } from "enzyme";
+import CardContainer from "./index";
 
-describe('CardContainer', () => {
-  it('Renders like snapshot', () => {
-    const wrapper = shallow(<CardContainer/>);
-    expect(wrapper).toMatchSnapshot()
+describe("CardContainer", () => {
+  it("Renders like snapshot", () => {
+    const wrapper = shallow(
+      <CardContainer cardData={[]} handleCardClick={jest.fn()} />
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 });
-

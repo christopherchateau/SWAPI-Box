@@ -20,11 +20,46 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [],
+      "children": Array [
+        <h1
+          className="emptyContainerMessage"
+        >
+          These are not the cards you are looking for!
+        </h1>,
+        <img
+          className="obiWanPic"
+          src="obi-wan.jpg"
+        />,
+      ],
       "className": "CardContainer",
     },
     "ref": null,
-    "rendered": Array [],
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "These are not the cards you are looking for!",
+          "className": "emptyContainerMessage",
+        },
+        "ref": null,
+        "rendered": "These are not the cards you are looking for!",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "obiWanPic",
+          "src": "obi-wan.jpg",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "img",
+      },
+    ],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -33,11 +68,46 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": Array [],
+        "children": Array [
+          <h1
+            className="emptyContainerMessage"
+          >
+            These are not the cards you are looking for!
+          </h1>,
+          <img
+            className="obiWanPic"
+            src="obi-wan.jpg"
+          />,
+        ],
         "className": "CardContainer",
       },
       "ref": null,
-      "rendered": Array [],
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "These are not the cards you are looking for!",
+            "className": "emptyContainerMessage",
+          },
+          "ref": null,
+          "rendered": "These are not the cards you are looking for!",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "obiWanPic",
+            "src": "obi-wan.jpg",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+      ],
       "type": "div",
     },
   ],

@@ -20,7 +20,7 @@ ShallowWrapper {
       "children": <button
         className="favoritesBtn"
       >
-        Favorites
+        # Favorites: 
       </button>,
       "className": "Favorites",
     },
@@ -30,11 +30,18 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "Favorites",
+        "children": Array [
+          "# Favorites: ",
+          undefined,
+        ],
         "className": "favoritesBtn",
+        "onClick": undefined,
       },
       "ref": null,
-      "rendered": "Favorites",
+      "rendered": Array [
+        "# Favorites: ",
+        undefined,
+      ],
       "type": "button",
     },
     "type": "div",
@@ -48,7 +55,7 @@ ShallowWrapper {
         "children": <button
           className="favoritesBtn"
         >
-          Favorites
+          # Favorites: 
         </button>,
         "className": "Favorites",
       },
@@ -58,11 +65,18 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "Favorites",
+          "children": Array [
+            "# Favorites: ",
+            undefined,
+          ],
           "className": "favoritesBtn",
+          "onClick": undefined,
         },
         "ref": null,
-        "rendered": "Favorites",
+        "rendered": Array [
+          "# Favorites: ",
+          undefined,
+        ],
         "type": "button",
       },
       "type": "div",

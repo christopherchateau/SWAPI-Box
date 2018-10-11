@@ -19,10 +19,10 @@ class App extends Component {
   componentDidMount() {
     this.getEpisodeData();
   }
-
+  
   getEpisodeData() {
     API.getRandomEpisode()
-      .then(episodeData => this.setState({ episodeData }))
+    .then(episodeData => this.setState({ episodeData }))
   }
 
   updateData = (key, value) => {
@@ -37,7 +37,7 @@ class App extends Component {
     const { episodeData } = this.state;
     return (
       <div className="App">
-        <SideScroll episodeData={episodeData} />
+        <SideScroll className="hide" episodeData={episodeData} />
         <MainPage
           cardData={this.state[this.state.selected] || []}
           updateData={this.updateData}

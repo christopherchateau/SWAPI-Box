@@ -6,11 +6,14 @@ describe("MainPage", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<MainPage />);
+    wrapper = shallow(
+      <MainPage
+        cardData={[]}
+        updateData={jest.fn()}
+        handleCardClick={jest.fn()}
+      />
+    );
   });
 
-  it("", () => {
-
-  });
-  
+  it("", () => {});
 });

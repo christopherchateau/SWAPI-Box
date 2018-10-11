@@ -42,5 +42,7 @@ ul {
 }
 
 .favorited {
-  background-color: red;
+  background-color: black;
+  border: 4px solid #fdde09;
+  color:#fdde09;
 }

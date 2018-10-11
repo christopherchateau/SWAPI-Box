@@ -4,12 +4,17 @@ import './Favorite.css';
 
 class Favorite extends Component {
   render() {
+    console.log(this.props.favoritesCount)
     return (
       <div className="Favorites">
-        <button className="favoritesBtn">Favorites: {this.props.favoriteCount}</button>
+        <button className="favoritesBtn"># Favorites: {this.props.favoritesCount}</button>
       </div>
     );
   }
 }
+
+Favorite.propTypes = {
+  favoritesCount: PropTypes.number.isRequired
+};
 
 export default Favorite;

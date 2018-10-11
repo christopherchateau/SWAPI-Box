@@ -27,11 +27,11 @@ class Card extends Component {
       }
     });
     return (
-      <div className={"Card" + (favorited ? " favorited" : "")}>
+      <div className="Card">
         <h2 className="name">
           {name}
-          <span className="favoriteIcon" onClick={this.handleClick}>
-            $
+          <span className={"favoriteIcon" + (favorited ? " favorited" : "")} onClick={this.handleClick}>
+            {favorited ? "#" : "$"}
           </span>
         </h2>
         <ul>{listItems}</ul>

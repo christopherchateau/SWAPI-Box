@@ -14,7 +14,7 @@ class App extends Component {
       people: [],
       planets: [],
       favorites: { people: [], planets: [], vehicles: [] },
-      favoritesCounter: 0
+      favoritesCount: 0
     };
   }
 
@@ -31,17 +31,17 @@ class App extends Component {
   };
 
   handleCardClick = (card, favorited) => {
-    let { selected, favorites, favoritesCounter } = this.state;
+    let { selected, favorites, favoritesCount } = this.state;
     const updatedFavorites = favorites;
 
     if (!favorited) {
-    const updateArray = [card, ...favorites[selected]];
-    updatedFavorites[selected] = updateArray;
-    favoritesCounter++;
+      const updateArray = [card, ...favorites[selected]];
+      updatedFavorites[selected] = updateArray;
+      favoritesCount++;
     } else {
-      favoritesCounter--;
+      favoritesCount--;
     }
-    this.setState({ favorites: updatedFavorites, favoritesCounter });
+    this.setState({ favorites: updatedFavorites, favoritesCount });
   };
 
   render() {
@@ -50,6 +50,7 @@ class App extends Component {
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
         <MainPage
+          favoritesCount={this.state.favoritesCount}
           cardData={this.state[this.state.selected] || []}
           updateData={this.updateData}
           handleCardClick={this.handleCardClick}

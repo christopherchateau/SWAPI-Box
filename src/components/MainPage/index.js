@@ -7,10 +7,10 @@ import "./MainPage.css";
 
 const MainPage = ({ cardData, updateData, handleCardClick }) => {
   return (
-    <div className="main-page">
-      <header className="title-favorites">
+    <div className="MainPage">
+      <header className="mainHeader">
         <Favorite />
-        <h1 className="title-text ">$ SWAPi-Box $</h1>
+        <h1 className="mainTitle">$ SWAPi-Box $</h1>
       </header>
       <Buttons updateData={updateData}/>
       <CardContainer

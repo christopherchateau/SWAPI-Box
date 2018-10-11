@@ -3,7 +3,7 @@
   src: url("../../fonts/Starjedi.ttf") format("woff2");
 }
 
-.title-text {
+.mainTitle {
   color: #fdde09;
   font-family: starWars;
   font-size: 60px;
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-.title-favorites {
+.mainHeader {
   display: flex;
   flex-direction: column;
   justify-content: space-around;

@@ -5,7 +5,7 @@ import * as API from "../../helper/helper";
 
 const Buttons = ({ updateData }) => {
   return (
-    <div className="button-section">
+    <div className="Buttons">
       <button
         onClick={() => API.getPeople()
           .then(people => updateData('people',people))}

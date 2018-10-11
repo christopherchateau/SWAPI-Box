@@ -1,9 +1,9 @@
-.card-container {
+.CardContainer {
   background-color: #fdde09;
   border-radius: 40px;
   display: flex;
   flex-wrap: wrap;
-  height: 60%;
+  height: 50vh;
   justify-content: space-evenly;
   margin: 30px auto;
   opacity: 0.8;

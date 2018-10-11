@@ -11,7 +11,7 @@ const CardContainer = ({ cardData, handleCardClick }) => {
       cardData={card}/>
   });
   return (
-    <div className="card-container">
+    <div className="CardContainer">
     {cards}
     </div>
   );

@@ -22,7 +22,7 @@ export const getPersonInfo = peopleArray => {
   try {
     return Promise.all(
       peopleArray.map(async person => {
-        console.log(person)
+        console.log(person);
         const species = await getData(person.species);
         const homeworld = await getData(person.homeworld);
         return {
@@ -44,10 +44,10 @@ export const getPlanets = async () => {
     const response = await getData(url + "planets");
     return Promise.all(
       response.results.map(async planet => {
-        const residents = await Promise.all(
+        let residents = await Promise.all(
           planet.residents.map(async resident => {
             const residentData = await getData(resident);
-            return residentData.name;
+            return ' ' + residentData.name;
           })
         );
         return {

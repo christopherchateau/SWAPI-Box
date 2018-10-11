@@ -22,12 +22,15 @@ export const getPersonInfo = peopleArray => {
   try {
     return Promise.all(
       peopleArray.map(async person => {
+        console.log(person)
         const species = await getData(person.species);
         const homeworld = await getData(person.homeworld);
         return {
           name: person.name,
           species: species.name,
-          homeworld: homeworld.name
+          homeworld: homeworld.name,
+          language: species.language,
+          population: homeworld.population
         };
       })
     );

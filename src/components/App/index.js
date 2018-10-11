@@ -8,7 +8,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      episodeData: {}
+      selected: '',
+      episodeData: {},
+      vehicles: [],
+      people: []
     };
   }
 
@@ -17,9 +20,12 @@ class App extends Component {
   }
 
   getEpisodeData() {
-    Promise.resolve(API.getRandomEpisode())
+    API.getRandomEpisode()
       .then(episodeData => this.setState({ episodeData }))
-      .catch(() => console.log("Error fetching episode"));
+  }
+
+  updateData = (key, value) => {
+    this.setState({ [key]: value, selected: key });
   }
 
   handleCardClick = (event) => {
@@ -31,7 +37,10 @@ class App extends Component {
     return (
       <div className="App">
         <SideScroll episodeData={episodeData} />
-        <MainPage handleCardClick={this.handleCardClick}/>
+        <MainPage
+          cardData ={this.state[this.state.selected] || []}
+          updateData={this.updateData}
+          handleCardClick={this.handleCardClick}/>
       </div>
     );
   }

@@ -9,19 +9,18 @@ class Card extends Component {
   }
 
   render() {
-    const { handleCardClick } = this.props;
-    const mockCard = {
-      name: "Luke Skywalker",
-      homeworld: "Tatooine",
-      species: "Human",
-      language: "Galactic Basics",
-      popultion: 200000
-    };
-
+    const { handleCardClick, cardData } = this.props;
+    const { name } = cardData;
+    delete cardData.name;
+    const listItems = Object.keys(cardData).map((value, index) => {
+      return (<li key={name + index}>
+        {`${value}: ${cardData[value]}`}
+        </li>)
+    })
     return (
       <div className="Card">
         <h2 className="name">
-          {mockCard.name}
+          {name}
           <span
             className="favoriteIcon"
             onClick={() => handleCardClick("clicked")}
@@ -30,10 +29,7 @@ class Card extends Component {
           </span>
         </h2>
         <ul>
-          <li>Homeworld: {mockCard.homeworld}</li>
-          <li>Species: {mockCard.species}</li>
-          <li>Language: {mockCard.language}</li>
-          <li>Popultion: {mockCard.popultion}</li>
+          {listItems}
         </ul>
       </div>
     );

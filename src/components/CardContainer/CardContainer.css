@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   height: 50vh;
   justify-content: space-evenly;
-  margin: 30px auto;
+  margin: 0 auto;
   opacity: 0.8;
   overflow: scroll;
   padding: 10px;
@@ -24,7 +24,7 @@
 }
 
 .characterPic {
-  height: 300px;
+  height: 30vh;
   mix-blend-mode: multiply;
 }
 

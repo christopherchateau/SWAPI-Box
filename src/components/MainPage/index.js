@@ -14,13 +14,11 @@ const MainPage = ({
 }) => {
   return (
     <div className="MainPage">
-      <header className="mainHeader">
-        <Favorite
-          toggleFavorites={toggleFavorites}
-          favoritesCount={favoritesCount}
-        />
-        <h1 className="mainTitle">$ SWAPi-Box $</h1>
-      </header>
+      <h1 className="mainTitle">$ SWAPi-Box $</h1>
+      <Favorite
+        toggleFavorites={toggleFavorites}
+        favoritesCount={favoritesCount}
+      />
       <Buttons updateData={updateData} />
       <CardContainer cardData={cardData} handleCardClick={handleCardClick} />
     </div>

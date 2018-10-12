@@ -14,7 +14,6 @@ class App extends Component {
       people: [],
       planets: [],
       favorites: { people: [], planets: [], vehicles: [] },
-      displayFavorites: false
     };
   }
 

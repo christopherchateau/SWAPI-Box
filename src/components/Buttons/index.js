@@ -4,7 +4,6 @@ import "./Buttons.css";
 import * as API from "../../helper/helper";
 
 const Buttons = ({ updateData, selectedCategory }) => {
-  console.log(selectedCategory);
   return (
     <div className="Buttons">
       <button

@@ -12,7 +12,8 @@ class Favorite extends Component {
           className="favoritesBtn"
           disabled={!selectedCategory.length}
         >
-          # Favorite {selectedCategory}: {favoritesCount}
+          <span className="favoritesIcon">#</span> Favorite {selectedCategory}:{" "}
+          {favoritesCount}
         </button>
       </div>
     );

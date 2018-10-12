@@ -13,7 +13,8 @@
 }
 
 .emptyContainerMessage {
-  margin-top: 40px;
+  font-family: starWars;
+  margin: 20px;
   text-align: center;
 }
 

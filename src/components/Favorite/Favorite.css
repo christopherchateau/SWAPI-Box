@@ -8,3 +8,8 @@
   border: 4px solid black;
   color: black;
 }
+
+.favoritesIcon {
+  position: relative;
+  top: 4px;
+}

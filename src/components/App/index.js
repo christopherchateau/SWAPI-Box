@@ -13,22 +13,21 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] },
+      favorites: { people: [], planets: [], vehicles: [] }
     };
   }
 
   componentDidMount() {
     this.getEpisodeData();
     if (localStorage.getItem("favorites")) {
-      const favorites = JSON.parse(localStorage.getItem("favorites"));
+      const favorites = this.retrieveStorage();
       this.setState({ favorites });
     }
   }
 
   toggleFavorites = () => {
-    let { selected, favorites, displayFavorites } = this.state;
-    displayFavorites = !displayFavorites;
-    this.updateData(selected, favorites[selected], displayFavorites);
+    let { selected, favorites } = this.state;
+    this.updateData(selected, favorites[selected]);
   };
 
   getEpisodeData() {
@@ -38,14 +37,14 @@ class App extends Component {
     }, 60000);
   }
 
-  updateData = (key, value, displayFavorites) => {
+  updateData = (key, value) => {
     const { favorites } = this.state;
     const names = favorites[key].map(card => card.name);
     const filteredCards = value.filter(card => {
       return !names.includes(card.name);
     });
     value = [...favorites[key], ...filteredCards];
-    this.setState({ [key]: value, selected: key, displayFavorites });
+    this.setState({ [key]: value, selected: key });
   };
 
   handleCardClick = (card, favorited) => {
@@ -56,13 +55,26 @@ class App extends Component {
     if (!favorited) {
       updateArray = [card, ...favorites[selected]];
     } else {
-      updateArray = favorites[selected].filter(favorite => {
-        return favorite.name !== card.name;
-      });
+      updateArray = this.removeDuplicateCard(card);
     }
     updatedFavorites[selected] = updateArray;
     this.setState({ favorites: updatedFavorites });
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    this.setStorage(updatedFavorites);
+  };
+
+  removeDuplicateCard = card => {
+    let { selected, favorites } = this.state;
+    favorites[selected].filter(favorite => {
+      return favorite.name !== card.name;
+    });
+  };
+
+  setStorage = data => {
+    localStorage.setItem("favorites", JSON.stringify(data));
+  };
+
+  retrieveStorage = () => {
+    return JSON.parse(localStorage.getItem("favorites"));
   };
 
   render() {

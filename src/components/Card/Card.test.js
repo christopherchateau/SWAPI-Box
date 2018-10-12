@@ -9,7 +9,7 @@ describe("Card", () => {
     wrapper = shallow(
       <Card
         handleCardClick={jest.fn()}
-        cardData={''}
+        cardData={{name: 'Yoda'}}
       />
     );
   });

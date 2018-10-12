@@ -20,10 +20,16 @@
 
 @keyframes scroll {
   0% {
-    top: 100vh;
+    top: 85vh;
   }
   100% {
     top: -100vh;
     display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .SideScroll {
+    height: 86vh;
   }
 }

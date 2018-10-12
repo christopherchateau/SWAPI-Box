@@ -21,8 +21,6 @@ class CardContainer extends PureComponent {
       displayText = "These are not the cards you are looking for!";
       characterPic = obiWan;
     }
-
-    console.log(selectedCategory);
     const cards = cardData.map((card, index) => {
       return (
         <Card

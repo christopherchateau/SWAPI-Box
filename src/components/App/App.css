@@ -9,3 +9,11 @@
 .hide {
   display: none;
 }
+
+@media screen and (max-width: 1000px) {
+  .App {
+    grid-template-columns: 1fr;
+    grid-template-rows: 86vh 1fr;
+    height: 100%;
+  }
+}

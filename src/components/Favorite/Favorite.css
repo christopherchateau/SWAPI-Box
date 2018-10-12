@@ -13,3 +13,10 @@
   position: relative;
   top: 4px;
 }
+
+@media screen and (max-width: 750px) {
+  .favoritesBtn {
+    margin: 0 10% 40px 10%;
+    width: 80%;
+  }
+}

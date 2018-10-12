@@ -37,7 +37,7 @@ class CardContainer extends PureComponent {
       return (
         <div className="CardContainer center">
           <h1 className="emptyContainerMessage">{displayText}</h1>
-          <img className="obiWanPic" src={characterPic} />
+          <img className="characterPic" src={characterPic} />
         </div>
       );
     }

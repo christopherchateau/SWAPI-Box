@@ -23,7 +23,14 @@
   text-align: center;
 }
 
-.obiWanPic {
+.characterPic {
   height: 300px;
   mix-blend-mode: multiply;
+}
+
+
+@media screen and (max-width: 500px) {
+  .characterPic {
+    height: 200px;
+  }
 }

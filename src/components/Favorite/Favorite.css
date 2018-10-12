@@ -16,7 +16,13 @@
 
 @media screen and (max-width: 750px) {
   .favoritesBtn {
-    margin: 0 10% 40px 10%;
+    margin: 0 10% 10px 10%;
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .favoritesBtn {
+    height:110px;
   }
 }

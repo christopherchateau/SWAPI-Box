@@ -12,6 +12,12 @@
   width: 90%;
 }
 
+.center {
+ flex-direction: column;
+ align-items: center;
+}
+
+
 .emptyContainerMessage {
   font-family: starWars;
   margin: 20px;
@@ -21,4 +27,5 @@
 .obiWanPic {
   height: 300px;
   mix-blend-mode: multiply;
+  width: 300px;
 }

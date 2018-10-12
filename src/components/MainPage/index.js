@@ -22,7 +22,11 @@ const MainPage = ({
         favoritesCount={favoritesCount}
       />
       <Buttons selectedCategory={selectedCategory} updateData={updateData} />
-      <CardContainer cardData={cardData} handleCardClick={handleCardClick} />
+      <CardContainer
+        selectedCategory={selectedCategory}
+        cardData={cardData}
+        handleCardClick={handleCardClick}
+      />
     </div>
   );
 };

@@ -11,7 +11,12 @@ class CardContainer extends PureComponent {
   }
 
   render() {
-    const { cardData, handleCardClick } = this.props;
+    const { cardData, handleCardClick, selectedCategory } = this.props;
+    let displayText;
+    selectedCategory === "initial"
+      ? (displayText = "$ select a category $")
+      : (displayText = "These are not the cards you are looking for!");
+      
     const cards = cardData.map((card, index) => {
       return (
         <Card
@@ -21,14 +26,13 @@ class CardContainer extends PureComponent {
         />
       );
     });
+
     if (cards.length) {
       return <div className="CardContainer">{cards}</div>;
     } else {
       return (
-        <div className="CardContainer">
-          <h1 className="emptyContainerMessage">
-            These are not the cards you are looking for!
-          </h1>
+        <div className="CardContainer center">
+          <h1 className="emptyContainerMessage">{displayText}</h1>
           <img className="obiWanPic" src={obiWan} />
         </div>
       );
@@ -38,7 +42,8 @@ class CardContainer extends PureComponent {
 
 CardContainer.propTypes = {
   handleCardClick: PropTypes.func.isRequired,
-  cardData: PropTypes.array.isRequired
+  cardData: PropTypes.array.isRequired,
+  selectedCategory: PropTypes.string.isRequired
 };
 
 export default CardContainer;

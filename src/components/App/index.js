@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: "",
+      selected: "initial",
       episodeData: {},
       vehicles: [],
       people: [],

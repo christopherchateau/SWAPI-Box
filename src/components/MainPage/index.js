@@ -21,7 +21,7 @@ const MainPage = ({
         toggleFavorites={toggleFavorites}
         favoritesCount={favoritesCount}
       />
-      <Buttons updateData={updateData} />
+      <Buttons selectedCategory={selectedCategory} updateData={updateData} />
       <CardContainer cardData={cardData} handleCardClick={handleCardClick} />
     </div>
   );

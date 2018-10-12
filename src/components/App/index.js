@@ -48,8 +48,8 @@ class App extends Component {
   };
 
   handleCardClick = (card, favorited) => {
-    let { selected, favorites } = this.state;
     const updatedFavorites = favorites;
+    let { selected, favorites } = this.state;
     let updateArray;
 
     if (!favorited) {

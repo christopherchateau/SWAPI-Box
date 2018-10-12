@@ -3,6 +3,10 @@
   src: url("../../fonts/Starjedi.ttf") format("woff2");
 }
 
+.MainPage {
+  display: grid;
+}
+
 .mainTitle {
   color: #fdde09;
   font-family: starWars;

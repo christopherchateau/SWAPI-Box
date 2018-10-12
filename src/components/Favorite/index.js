@@ -10,7 +10,7 @@ class Favorite extends Component {
         <button
           onClick={toggleFavorites}
           className="favoritesBtn"
-          disabled={!selectedCategory.length}
+          disabled={selectedCategory === "" || selectedCategory === "initial"}
         >
           <span className="favoritesIcon">#</span> Favorite {selectedCategory}:{" "}
           {favoritesCount}

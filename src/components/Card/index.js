@@ -20,7 +20,11 @@ class Card extends Component {
   render() {
     const { favorited } = this.state;
     const { cardData } = this.props;
-    const { name } = cardData;
+    let { name } = cardData;
+    if (name.length > 20) {
+      name = name.slice(0, 20) + "...";
+    }
+
     const listItems = Object.keys(cardData).map((value, index) => {
       if (value === "name" || value === "favorited") return;
       if (cardData[value].length) {

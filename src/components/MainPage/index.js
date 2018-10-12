@@ -13,7 +13,6 @@ const MainPage = ({
   toggleFavorites,
   selectedCategory
 }) => {
-  console.log(cardData);
   return (
     <div className="MainPage">
       <h1 className="mainTitle">$ SWAPi-Box $</h1>

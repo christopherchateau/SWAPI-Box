@@ -4,11 +4,12 @@ import "./Favorite.css";
 
 class Favorite extends Component {
   render() {
-    const { toggleFavorites, favoritesCount } = this.props;
+    const { toggleFavorites, favoritesCount, selectedCategory } = this.props;
+    console.log(favoritesCount)
     return (
       <div className="Favorites">
         <button onClick={toggleFavorites} className="favoritesBtn">
-          # Favorites: {favoritesCount}
+          # Favorite {selectedCategory}: {favoritesCount}
         </button>
       </div>
     );
@@ -16,7 +17,9 @@ class Favorite extends Component {
 }
 
 Favorite.propTypes = {
-  favoritesCount: PropTypes.number.isRequired
+  toggleFavorites: PropTypes.func.isRequired,
+  favoritesCount: PropTypes.number.isRequired,
+  selectedCategory: PropTypes.string.isRequired
 };
 
 export default Favorite;

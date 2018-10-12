@@ -10,12 +10,15 @@ const MainPage = ({
   updateData,
   handleCardClick,
   favoritesCount,
-  toggleFavorites
+  toggleFavorites,
+  selectedCategory
 }) => {
+  console.log(cardData);
   return (
     <div className="MainPage">
       <h1 className="mainTitle">$ SWAPi-Box $</h1>
       <Favorite
+        selectedCategory={selectedCategory}
         toggleFavorites={toggleFavorites}
         favoritesCount={favoritesCount}
       />
@@ -30,7 +33,8 @@ MainPage.propTypes = {
   updateData: PropTypes.func.isRequired,
   cardData: PropTypes.array.isRequired,
   favoritesCount: PropTypes.number.isRequired,
-  toggleFavorites: PropTypes.func.isRequired
+  toggleFavorites: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.string.isRequired
 };
 
 export default MainPage;

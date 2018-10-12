@@ -27,6 +27,7 @@ ul {
   border: 4px solid black;
   border-radius: 20px;
   color: black;
+  cursor: pointer;
   font-family: starWars;
   float: right;
   padding: 0 18px;

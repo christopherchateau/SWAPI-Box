@@ -5,7 +5,7 @@ import obiWan from "../../images/obi-wan.jpg";
 import "./CardContainer.css";
 
 class CardContainer extends PureComponent {
-  constructor(cardData, handleCardClick) {
+  constructor() {
     super();
     this.state = {};
   }
@@ -37,7 +37,8 @@ class CardContainer extends PureComponent {
 }
 
 CardContainer.propTypes = {
-  handleCardClick: PropTypes.func.isRequired
+  handleCardClick: PropTypes.func.isRequired,
+  cardData: PropTypes.array.isRequired
 };
 
 export default CardContainer;

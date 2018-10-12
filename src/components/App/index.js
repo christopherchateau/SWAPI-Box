@@ -71,6 +71,7 @@ class App extends Component {
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
         <MainPage
+          selectedCategory={selected}
           toggleFavorites={this.toggleFavorites}
           favoritesCount={counter}
           cardData={this.state[selected] || []}

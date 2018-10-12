@@ -3,7 +3,11 @@
 exports[`Favorite Renders like snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Favorite />,
+  Symbol(enzyme.__unrendered__): <Favorite
+    favoritesCount={0}
+    selectedCategory="planets"
+    toggleFavorites={[MockFunction]}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -19,8 +23,19 @@ ShallowWrapper {
     "props": Object {
       "children": <button
         className="favoritesBtn"
+        disabled={false}
+        onClick={[MockFunction]}
       >
-        # Favorites: 
+        <span
+          className="favoritesIcon"
+        >
+          #
+        </span>
+         Favorite 
+        planets
+        :
+         
+        0
       </button>,
       "className": "Favorites",
     },
@@ -31,16 +46,40 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          "# Favorites: ",
-          undefined,
+          <span
+            className="favoritesIcon"
+          >
+            #
+          </span>,
+          " Favorite ",
+          "planets",
+          ":",
+          " ",
+          0,
         ],
         "className": "favoritesBtn",
-        "onClick": undefined,
+        "disabled": false,
+        "onClick": [MockFunction],
       },
       "ref": null,
       "rendered": Array [
-        "# Favorites: ",
-        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "#",
+            "className": "favoritesIcon",
+          },
+          "ref": null,
+          "rendered": "#",
+          "type": "span",
+        },
+        " Favorite ",
+        "planets",
+        ":",
+        " ",
+        0,
       ],
       "type": "button",
     },
@@ -54,8 +93,19 @@ ShallowWrapper {
       "props": Object {
         "children": <button
           className="favoritesBtn"
+          disabled={false}
+          onClick={[MockFunction]}
         >
-          # Favorites: 
+          <span
+            className="favoritesIcon"
+          >
+            #
+          </span>
+           Favorite 
+          planets
+          :
+           
+          0
         </button>,
         "className": "Favorites",
       },
@@ -66,16 +116,40 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            "# Favorites: ",
-            undefined,
+            <span
+              className="favoritesIcon"
+            >
+              #
+            </span>,
+            " Favorite ",
+            "planets",
+            ":",
+            " ",
+            0,
           ],
           "className": "favoritesBtn",
-          "onClick": undefined,
+          "disabled": false,
+          "onClick": [MockFunction],
         },
         "ref": null,
         "rendered": Array [
-          "# Favorites: ",
-          undefined,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "#",
+              "className": "favoritesIcon",
+            },
+            "ref": null,
+            "rendered": "#",
+            "type": "span",
+          },
+          " Favorite ",
+          "planets",
+          ":",
+          " ",
+          0,
         ],
         "type": "button",
       },

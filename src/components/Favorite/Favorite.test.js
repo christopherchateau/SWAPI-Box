@@ -1,11 +1,21 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import Favorite from './index';
+import React from "react";
+import { shallow, mount } from "enzyme";
+import Favorite from "./index";
 
-describe('Favorite', () => {
-  it('Renders like snapshot', () => {
-    const wrapper = shallow(<Favorite/>);
-    expect(wrapper).toMatchSnapshot()
+describe("Favorite", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
+      <Favorite
+        toggleFavorites={jest.fn()}
+        favoritesCount={0}
+        selectedCategory={"planets"}
+      />
+    );
+  });
+
+  it("Renders like snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });
-

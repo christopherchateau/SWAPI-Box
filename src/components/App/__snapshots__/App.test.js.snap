@@ -26,6 +26,7 @@ ShallowWrapper {
           cardData={Array []}
           favoritesCount={0}
           handleCardClick={[Function]}
+          selectedCategory="initial"
           toggleFavorites={[Function]}
           updateData={[Function]}
         />,
@@ -54,6 +55,7 @@ ShallowWrapper {
           "cardData": Array [],
           "favoritesCount": 0,
           "handleCardClick": [Function],
+          "selectedCategory": "initial",
           "toggleFavorites": [Function],
           "updateData": [Function],
         },
@@ -79,6 +81,7 @@ ShallowWrapper {
             cardData={Array []}
             favoritesCount={0}
             handleCardClick={[Function]}
+            selectedCategory="initial"
             toggleFavorites={[Function]}
             updateData={[Function]}
           />,
@@ -107,6 +110,7 @@ ShallowWrapper {
             "cardData": Array [],
             "favoritesCount": 0,
             "handleCardClick": [Function],
+            "selectedCategory": "initial",
             "toggleFavorites": [Function],
             "updateData": [Function],
           },

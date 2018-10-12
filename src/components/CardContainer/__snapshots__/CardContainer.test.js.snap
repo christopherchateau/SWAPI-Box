@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <CardContainer
     cardData={Array []}
     handleCardClick={[MockFunction]}
+    selectedCategory="planets"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -31,7 +32,7 @@ ShallowWrapper {
           src="obi-wan.jpg"
         />,
       ],
-      "className": "CardContainer",
+      "className": "CardContainer center",
     },
     "ref": null,
     "rendered": Array [
@@ -79,7 +80,7 @@ ShallowWrapper {
             src="obi-wan.jpg"
           />,
         ],
-        "className": "CardContainer",
+        "className": "CardContainer center",
       },
       "ref": null,
       "rendered": Array [

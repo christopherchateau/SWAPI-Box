@@ -10,19 +10,23 @@ const MainPage = ({
   updateData,
   handleCardClick,
   favoritesCount,
-  toggleFavorites
+  toggleFavorites,
+  selectedCategory
 }) => {
   return (
     <div className="MainPage">
-      <header className="mainHeader">
-        <Favorite
-          toggleFavorites={toggleFavorites}
-          favoritesCount={favoritesCount}
-        />
-        <h1 className="mainTitle">$ SWAPi-Box $</h1>
-      </header>
-      <Buttons updateData={updateData} />
-      <CardContainer cardData={cardData} handleCardClick={handleCardClick} />
+      <h1 className="mainTitle">$ SWAPi-Box $</h1>
+      <Favorite
+        selectedCategory={selectedCategory}
+        toggleFavorites={toggleFavorites}
+        favoritesCount={favoritesCount}
+      />
+      <Buttons selectedCategory={selectedCategory} updateData={updateData} />
+      <CardContainer
+        selectedCategory={selectedCategory}
+        cardData={cardData}
+        handleCardClick={handleCardClick}
+      />
     </div>
   );
 };
@@ -32,7 +36,8 @@ MainPage.propTypes = {
   updateData: PropTypes.func.isRequired,
   cardData: PropTypes.array.isRequired,
   favoritesCount: PropTypes.number.isRequired,
-  toggleFavorites: PropTypes.func.isRequired
+  toggleFavorites: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.string.isRequired
 };
 
 export default MainPage;

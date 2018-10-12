@@ -8,12 +8,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: "",
+      selected: "initial",
       episodeData: {},
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] }
+      favorites: { people: [], planets: [], vehicles: [] },
     };
   }
 
@@ -26,8 +26,9 @@ class App extends Component {
   }
 
   toggleFavorites = () => {
-    const { selected, favorites } = this.state;
-    this.updateData(selected, favorites[selected]);
+    let { selected, favorites, displayFavorites } = this.state;
+    displayFavorites = !displayFavorites;
+    this.updateData(selected, favorites[selected], displayFavorites);
   };
 
   getEpisodeData() {
@@ -37,14 +38,14 @@ class App extends Component {
     }, 60000);
   }
 
-  updateData = (key, value) => {
+  updateData = (key, value, displayFavorites) => {
     const { favorites } = this.state;
     const names = favorites[key].map(card => card.name);
     const filteredCards = value.filter(card => {
       return !names.includes(card.name);
     });
     value = [...favorites[key], ...filteredCards];
-    this.setState({ [key]: value, selected: key });
+    this.setState({ [key]: value, selected: key, displayFavorites });
   };
 
   handleCardClick = (card, favorited) => {
@@ -71,6 +72,7 @@ class App extends Component {
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
         <MainPage
+          selectedCategory={selected}
           toggleFavorites={this.toggleFavorites}
           favoritesCount={counter}
           cardData={this.state[selected] || []}

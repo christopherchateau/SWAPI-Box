@@ -20,10 +20,10 @@
 
 @keyframes scroll {
   0% {
-    top: 85vh;
+    top: 100vh;
   }
   100% {
-    top: -110vh;
+    top: -100vh;
     display: none;
   }
 }

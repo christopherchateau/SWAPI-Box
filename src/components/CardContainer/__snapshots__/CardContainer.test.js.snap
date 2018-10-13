@@ -28,7 +28,8 @@ ShallowWrapper {
           These are not the cards you are looking for!
         </h1>,
         <img
-          className="obiWanPic"
+          alt="obi-wan/yoda"
+          className="characterPic"
           src="obi-wan.jpg"
         />,
       ],
@@ -53,7 +54,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": "obiWanPic",
+          "alt": "obi-wan/yoda",
+          "className": "characterPic",
           "src": "obi-wan.jpg",
         },
         "ref": null,
@@ -76,7 +78,8 @@ ShallowWrapper {
             These are not the cards you are looking for!
           </h1>,
           <img
-            className="obiWanPic"
+            alt="obi-wan/yoda"
+            className="characterPic"
             src="obi-wan.jpg"
           />,
         ],
@@ -101,7 +104,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "obiWanPic",
+            "alt": "obi-wan/yoda",
+            "className": "characterPic",
             "src": "obi-wan.jpg",
           },
           "ref": null,

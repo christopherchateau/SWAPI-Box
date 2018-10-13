@@ -5,6 +5,7 @@ import App from "./index";
 describe("App", () => {
   let wrapper;
   let mockPeople;
+  let mockPlanets;
 
   beforeEach(() => {
     wrapper = shallow(<App />);
@@ -26,6 +27,24 @@ describe("App", () => {
         favorited: false
       }
     ];
+    mockPlanets = [
+      {
+        name: "Alderaan",
+        climate: "temperate",
+        population: "2000000000",
+        residents: [" Leia Organa", " Bail Prestor Organa", " Raymus Antilles"],
+        terrain: "grasslands, mountains",
+        favorited: false
+      },
+      {
+        name: "Yavin IV",
+        climate: "temperate, tropical",
+        population: "1000",
+        residents: [],
+        terrain: "jungle, rainforests",
+        favorited: true
+      }
+    ];
   });
 
   it("selected property in state should initialize as 'initial' ", () => {
@@ -36,9 +55,13 @@ describe("App", () => {
     wrapper.instance().updateData("people", mockPeople);
     expect(wrapper.state().people).toHaveLength(2);
     expect(wrapper.state().people[1].name).toEqual("Luke Skywalker");
-    
   });
-  it("should show only favorited cards when toggleFavorites is invoked", () => {
 
+  it("toggleFavorites should toggle", () => {
+    wrapper.instance().updateData("planets", mockPlanets);
+    console.log(wrapper.state());
+    wrapper.instance().toggleFavorites();
+    console.log(wrapper.state());
+    
   });
 });

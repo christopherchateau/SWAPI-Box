@@ -4,7 +4,11 @@ exports[`Card Renders like snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Card
-    cardData=""
+    cardData={
+      Object {
+        "name": "Yoda",
+      }
+    }
     handleCardClick={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -24,6 +28,7 @@ ShallowWrapper {
         <h2
           className="name"
         >
+          Yoda
           <span
             className="favoriteIcon"
             onClick={[Function]}
@@ -43,7 +48,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            undefined,
+            "Yoda",
             <span
               className="favoriteIcon"
               onClick={[Function]}
@@ -55,7 +60,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          undefined,
+          "Yoda",
           Object {
             "instance": null,
             "key": undefined,
@@ -77,10 +82,14 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [],
+          "children": Array [
+            undefined,
+          ],
         },
         "ref": null,
-        "rendered": Array [],
+        "rendered": Array [
+          undefined,
+        ],
         "type": "ul",
       },
     ],
@@ -96,6 +105,7 @@ ShallowWrapper {
           <h2
             className="name"
           >
+            Yoda
             <span
               className="favoriteIcon"
               onClick={[Function]}
@@ -115,7 +125,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              undefined,
+              "Yoda",
               <span
                 className="favoriteIcon"
                 onClick={[Function]}
@@ -127,7 +137,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            undefined,
+            "Yoda",
             Object {
               "instance": null,
               "key": undefined,
@@ -149,10 +159,14 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [],
+            "children": Array [
+              undefined,
+            ],
           },
           "ref": null,
-          "rendered": Array [],
+          "rendered": Array [
+            undefined,
+          ],
           "type": "ul",
         },
       ],

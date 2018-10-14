@@ -3,14 +3,18 @@ import { shallow, mount } from "enzyme";
 import Card from "./index";
 
 describe("Card", () => {
-  it("Renders like snapshot", () => {
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
       <Card
-        // key={Math.random() + index}
         handleCardClick={jest.fn()}
-        cardData={''}
+        cardData={{name: 'Yoda'}}
       />
     );
+  });
+
+  it("Renders like snapshot", () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

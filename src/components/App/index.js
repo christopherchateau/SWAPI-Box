@@ -26,9 +26,8 @@ class App extends Component {
   }
 
   toggleFavorites = () => {
-    let { selected, favorites, displayFavorites } = this.state;
-    displayFavorites = !displayFavorites;
-    this.updateData(selected, favorites[selected], displayFavorites);
+    let { selected, favorites } = this.state;
+    this.updateData(selected, favorites[selected]);
   };
 
   getEpisodeData() {
@@ -38,14 +37,14 @@ class App extends Component {
     }, 60000);
   }
 
-  updateData = (key, value, displayFavorites) => {
+  updateData = (key, value) => {
     const { favorites } = this.state;
     const names = favorites[key].map(card => card.name);
     const filteredCards = value.filter(card => {
       return !names.includes(card.name);
     });
     value = [...favorites[key], ...filteredCards];
-    this.setState({ [key]: value, selected: key, displayFavorites });
+    this.setState({ [key]: value, selected: key });
   };
 
   handleCardClick = (card, favorited) => {

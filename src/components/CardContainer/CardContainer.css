@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   height: 50vh;
   justify-content: space-evenly;
-  margin: 30px auto;
+  margin: 0 auto;
   opacity: 0.8;
   overflow: scroll;
   padding: 10px;
@@ -19,11 +19,18 @@
 
 .emptyContainerMessage {
   font-family: starWars;
-  margin: 20px;
+  margin: 0 10px;
   text-align: center;
 }
 
-.obiWanPic {
-  height: 300px;
+.characterPic {
+  height: 30vh;
   mix-blend-mode: multiply;
+}
+
+
+@media screen and (max-width: 500px) {
+  .characterPic {
+    height: 200px;
+  }
 }

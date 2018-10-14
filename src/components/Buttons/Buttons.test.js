@@ -6,11 +6,12 @@ describe("Buttons", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Buttons updateData={jest.fn()}/>);
+    wrapper = shallow(
+      <Buttons updateData={jest.fn()} selectedCategory={"planets"} />
+    );
   });
 
-  it("", () => {
-
+  it("Renders like snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
   });
-  
 });

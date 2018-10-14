@@ -3,11 +3,15 @@
   src: url("../../fonts/Starjedi.ttf") format("woff2");
 }
 
+.MainPage {
+  display: grid;
+}
+
 .mainTitle {
   color: #fdde09;
   font-family: starWars;
-  font-size: 60px;
-  margin: 25px 10px;
+  font-size: 55px;
+  margin: 15px 10px 0 10px;
   text-align: center;
 }
 
@@ -15,4 +19,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+@media screen and (max-width: 580px) {
+  .mainTitle {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .mainTitle {
+    font-size: 40px;
+  }
 }

@@ -14,7 +14,7 @@ button {
   height: 60px;
   outline: 0;
   transition: all 0.4s ease-in-out;
-  width: 180px;
+  width: 220px;
 }
 
 button:hover,
@@ -22,4 +22,24 @@ button:hover,
   background-color: #fdde09;
   border: 4px solid black;
   color: black;
+}
+
+@media screen and (max-width: 1000px) {
+  .Buttons {
+    margin: 20px 10%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .Buttons {
+    flex-direction: column;
+    justify-content: initial;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 80%;
+    margin: 8px 10%;
+  }
 }

@@ -6,14 +6,15 @@ import yoda from "../../images/yoda.png";
 import "./CardContainer.css";
 
 class CardContainer extends PureComponent {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
+  // constructor() {
+  //   super();
+  //   this.state = {};
+  // }
+  
   render() {
     const { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;
+
     if (selectedCategory === "initial") {
       displayText = "$ select a category, you must $";
       characterPic = yoda;
@@ -21,8 +22,6 @@ class CardContainer extends PureComponent {
       displayText = "These are not the cards you are looking for!";
       characterPic = obiWan;
     }
-
-    console.log(selectedCategory);
     const cards = cardData.map((card, index) => {
       return (
         <Card
@@ -39,7 +38,7 @@ class CardContainer extends PureComponent {
       return (
         <div className="CardContainer center">
           <h1 className="emptyContainerMessage">{displayText}</h1>
-          <img className="obiWanPic" src={characterPic} />
+          <img className="characterPic" alt="obi-wan/yoda" src={characterPic} />
         </div>
       );
     }

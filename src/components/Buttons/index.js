@@ -7,7 +7,7 @@ const Buttons = ({ updateData, selectedCategory }) => {
   return (
     <div className="Buttons">
       <button
-        className={selectedCategory === "people" ? "selected" : ""}
+        className={"people " + (selectedCategory === "people" ? "selected" : "")}
         onClick={() =>
           API.getPeople().then(people => updateData("people", people))
         }
@@ -15,7 +15,7 @@ const Buttons = ({ updateData, selectedCategory }) => {
         people
       </button>
       <button
-      className={selectedCategory === "planets" ? "selected" : ""}
+      className={"planets " + (selectedCategory === "planets" ? "selected" : "")}
         onClick={() =>
           API.getPlanets().then(planets => updateData("planets", planets))
         }
@@ -23,7 +23,7 @@ const Buttons = ({ updateData, selectedCategory }) => {
         planets
       </button>
       <button
-      className={selectedCategory === "vehicles" ? "selected" : ""}
+      className={"vehicles " + (selectedCategory === "vehicles" ? "selected" : "")}
         onClick={() =>
           API.getVehicles().then(vehicles => updateData("vehicles", vehicles))
         }

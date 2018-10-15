@@ -22,19 +22,19 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <button
-          className=""
+          className="people "
           onClick={[Function]}
         >
           people
         </button>,
         <button
-          className="selected"
+          className="planets selected"
           onClick={[Function]}
         >
           planets
         </button>,
         <button
-          className=""
+          className="vehicles "
           onClick={[Function]}
         >
           vehicles
@@ -50,7 +50,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "people",
-          "className": "",
+          "className": "people ",
           "onClick": [Function],
         },
         "ref": null,
@@ -63,7 +63,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "planets",
-          "className": "selected",
+          "className": "planets selected",
           "onClick": [Function],
         },
         "ref": null,
@@ -76,7 +76,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "vehicles",
-          "className": "",
+          "className": "vehicles ",
           "onClick": [Function],
         },
         "ref": null,
@@ -94,19 +94,19 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <button
-            className=""
+            className="people "
             onClick={[Function]}
           >
             people
           </button>,
           <button
-            className="selected"
+            className="planets selected"
             onClick={[Function]}
           >
             planets
           </button>,
           <button
-            className=""
+            className="vehicles "
             onClick={[Function]}
           >
             vehicles
@@ -122,7 +122,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "people",
-            "className": "",
+            "className": "people ",
             "onClick": [Function],
           },
           "ref": null,
@@ -135,7 +135,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "planets",
-            "className": "selected",
+            "className": "planets selected",
             "onClick": [Function],
           },
           "ref": null,
@@ -148,7 +148,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "vehicles",
-            "className": "",
+            "className": "vehicles ",
             "onClick": [Function],
           },
           "ref": null,

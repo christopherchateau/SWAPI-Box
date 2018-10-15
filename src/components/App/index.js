@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as API from "../../helper/helper";
 import MainPage from "../MainPage";
 import SideScroll from "../SideScroll";
+import { Route } from "react-router-dom";
 import "./App.css";
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] },
+      favorites: { people: [], planets: [], vehicles: [] }
     };
   }
 
@@ -66,17 +67,73 @@ class App extends Component {
 
   render() {
     const { episodeData, selected, favorites } = this.state;
-    const counter = favorites[selected] ? favorites[selected].length : 0;
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <MainPage
-          selectedCategory={selected}
-          toggleFavorites={this.toggleFavorites}
-          favoritesCount={counter}
-          cardData={this.state[selected] || []}
-          updateData={this.updateData}
-          handleCardClick={this.handleCardClick}
+        <Route
+          exact
+          path="/"
+          render={() => {
+            const counter = 0;
+            return (
+              <MainPage
+                selectedCategory={"initial"}
+                toggleFavorites={this.toggleFavorites}
+                favoritesCount={counter}
+                cardData={[]}
+                updateData={this.updateData}
+                handleCardClick={this.handleCardClick}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/people"
+          render={() => {
+            const counter = favorites.people ? favorites.people.length : 0;
+            return (
+              <MainPage
+                selectedCategory={"people"}
+                toggleFavorites={this.toggleFavorites}
+                favoritesCount={counter}
+                cardData={this.state.people}
+                updateData={this.updateData}
+                handleCardClick={this.handleCardClick}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/planets"
+          render={() => {
+            const counter = favorites.planets ? favorites.planets.length : 0;
+            return (
+              <MainPage
+                selectedCategory={"planets"}
+                toggleFavorites={this.toggleFavorites}
+                favoritesCount={counter}
+                cardData={this.state.planets}
+                updateData={this.updateData}
+                handleCardClick={this.handleCardClick}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/vehicles"
+          render={() => {
+            const counter = favorites.vehicles ? favorites.vehicles.length : 0;
+            return (
+              <MainPage
+                selectedCategory={"vehicles"}
+                toggleFavorites={this.toggleFavorites}
+                favoritesCount={counter}
+                cardData={this.state.vehicles}
+                updateData={this.updateData}
+                handleCardClick={this.handleCardClick}
+              />
+            );
+          }}
         />
       </div>
     );

@@ -10,7 +10,7 @@ class CardContainer extends PureComponent {
   //   super();
   //   this.state = {};
   // }
-  
+
   render() {
     const { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;

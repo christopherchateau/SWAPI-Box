@@ -2,34 +2,38 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Buttons.css";
 import * as API from "../../helper/helper";
+import { NavLink } from "react-router-dom";
 
 const Buttons = ({ updateData, selectedCategory }) => {
   return (
     <div className="Buttons">
-      <button
-        className={"people " + (selectedCategory === "people" ? "selected" : "")}
+      <NavLink
+        to="/people"
+        className="people"
         onClick={() =>
           API.getPeople().then(people => updateData("people", people))
         }
       >
         people
-      </button>
-      <button
-      className={"planets " + (selectedCategory === "planets" ? "selected" : "")}
+      </NavLink>
+      <NavLink
+        to="/planets"
+        className="planets"
         onClick={() =>
           API.getPlanets().then(planets => updateData("planets", planets))
         }
       >
         planets
-      </button>
-      <button
-      className={"vehicles " + (selectedCategory === "vehicles" ? "selected" : "")}
+      </NavLink>
+      <NavLink
+        to="/vehicles"
+        className="vehicles"
         onClick={() =>
           API.getVehicles().then(vehicles => updateData("vehicles", vehicles))
         }
       >
         vehicles
-      </button>
+      </NavLink>
     </div>
   );
 };

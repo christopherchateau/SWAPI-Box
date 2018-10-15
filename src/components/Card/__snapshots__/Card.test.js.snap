@@ -8,6 +8,7 @@ ShallowWrapper {
       Object {
         "favorited": false,
         "name": "Yoda",
+        "species": "Yoda's Species",
       }
     }
     handleCardClick={[MockFunction]}
@@ -37,7 +38,11 @@ ShallowWrapper {
             $
           </span>
         </h2>,
-        <ul />,
+        <ul>
+          <li>
+            species: Yoda's Species
+          </li>
+        </ul>,
       ],
       "className": "Card",
     },
@@ -85,12 +90,26 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             undefined,
+            <li>
+              species: Yoda's Species
+            </li>,
             undefined,
           ],
         },
         "ref": null,
         "rendered": Array [
           undefined,
+          Object {
+            "instance": null,
+            "key": "Yoda1",
+            "nodeType": "host",
+            "props": Object {
+              "children": "species: Yoda's Species",
+            },
+            "ref": null,
+            "rendered": "species: Yoda's Species",
+            "type": "li",
+          },
           undefined,
         ],
         "type": "ul",
@@ -116,7 +135,11 @@ ShallowWrapper {
               $
             </span>
           </h2>,
-          <ul />,
+          <ul>
+            <li>
+              species: Yoda's Species
+            </li>
+          </ul>,
         ],
         "className": "Card",
       },
@@ -164,12 +187,26 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               undefined,
+              <li>
+                species: Yoda's Species
+              </li>,
               undefined,
             ],
           },
           "ref": null,
           "rendered": Array [
             undefined,
+            Object {
+              "instance": null,
+              "key": "Yoda1",
+              "nodeType": "host",
+              "props": Object {
+                "children": "species: Yoda's Species",
+              },
+              "ref": null,
+              "rendered": "species: Yoda's Species",
+              "type": "li",
+            },
             undefined,
           ],
           "type": "ul",

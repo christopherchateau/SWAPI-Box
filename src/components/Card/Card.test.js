@@ -9,7 +9,10 @@ describe("Card", () => {
     wrapper = shallow(
       <Card
         handleCardClick={jest.fn()}
-        cardData={{name: 'Yoda', favorited: false}}
+        cardData={{
+          name: 'Yoda',
+          species: 'Yoda\'s Species',
+          favorited: false}}
       />
     );
   });
@@ -23,12 +26,28 @@ describe("Card", () => {
     expect(wrapper.state().favorited).toBe(true);
   });
 
-  it.skip("Should call handleCardClick from props when handleClick is called", async () => {
+
+  it("Favorited should toggle when handleClick called twice", async () => {
     await wrapper.instance().handleClick();
+    await wrapper.instance().handleClick();
+    expect(wrapper.state().favorited).toBe(false);
   });
 
-  it.skip("Should run handleClick when button is clicked", async () => {
-    const button = wrapper.find(".favoriteIcon");
-    button.simulate("click");
+  it("Should trim long names down", () => {
+    wrapper = shallow(
+      <Card
+        handleCardClick={jest.fn()}
+        cardData={{
+          name: 'Yoda except a little longer',
+          favorited: false}}
+      />
+    );
+    const name = wrapper.find('.name');
+    expect(name.text()).toBe('Yoda except a little...$');
+  });
+
+  it("Should render extra keys in cardData as li elements", () => {
+    const li = wrapper.find("li");
+    expect(li.text()).toBe('species: Yoda\'s Species');
   });
 });

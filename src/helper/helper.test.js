@@ -66,40 +66,27 @@ describe("SWAPI", () => {
   });
 
   describe("getPeople", () => {
-    let expected;
     let url;
+    let expected = [
+      {
+        name: "Luke Skywalker",
+        species: ["https://swapi.co/api/species/1/"],
+        homeworld: "https://swapi.co/api/planets/1/"
+      },
+      {
+        name: "C-3P0",
+        species: ["https://swapi.co/api/species/2/"],
+        homeworld: "https://swapi.co/api/planets/1/"
+      }
+    ];
 
     beforeEach(() => {
       url = "https://swapi.co/api/films/1";
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({
-          json: () => ({ data: "here's some stuff" })
+          json: () => expected
         })
       );
-      expected = [
-        {
-          name: "Luke Skywalker",
-          species: ["https://swapi.co/api/species/1/"],
-          homeworld: "https://swapi.co/api/planets/1/"
-        },
-        {
-          name: "C-3P0",
-          species: ["https://swapi.co/api/species/2/"],
-          homeworld: "https://swapi.co/api/planets/1/"
-        }
-      ];
-    });
-
-    it("Should fetch species and people", async () => {
-      //API.getPersonInfo = jest.fn().mockImplementation(() => expected);
-      // jest.spyOn(API, 'getPersonInfo').mockImplementation(expected);
-      // await API.getPeople()
-      // expect(API.getPersonInfo).toHaveBeenCalled()
-      //const characterInfo = await API.getPeople();
-      //expect(characterInfo).toEqual(expected);
-      // expect(mockPersonInfo).toHaveBeenCalled()
-      //   expect(localStorage).toEqual({
-      //     'https://swapi.co/api/films/1': '{"data":"here\'s some stuff"}' });
     });
 
     it.skip("should call getPersonInfo with the correct params", () => {
@@ -123,5 +110,52 @@ describe("SWAPI", () => {
       const characterInfo = await API.getPersonInfo(expected);
       expect(characterInfo).toEqual(expected);
     });
+  });
+
+  describe("getPlanets", () => {
+    let url;
+    let expected = {
+      results: [
+        {
+          name: "Alderaan",
+          terrain: "grasslands, mountains",
+          population: 2000000000,
+          climate: "temperate",
+          residents: ["Leia Organa", "Bail Prestor Organa", "Raymus Antilles"]
+        },
+        {
+          name: "Yavin IV",
+          terrain: "jungle, rainforests",
+          population: 1000,
+          climate: "temperate, tropical",
+          residents: []
+        }
+      ]
+    };
+
+    beforeEach(() => {
+      url = "https://swapi.co/api/films/1";
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => expected
+        })
+      );
+    });
+
+    it("getPlanets should return expected results", async () => {
+      const returnedPlanets = await API.getPlanets();
+      expect(returnedPlanets).toHaveLength(2)
+      expect(returnedPlanets[0].name).toEqual('Alderaan')
+    });
+
+    it("getPlanets should add 'favorited: false' prop to fetched data", async () => {
+      expect(expected.results[0].favorited).toBeUndefined()
+
+      const returnedPlanets = await API.getPlanets();
+
+      expect(returnedPlanets[0].favorited).toBeFalsy()
+      expect(returnedPlanets[1].favorited).toBeFalsy()
+    });
+
   });
 });

@@ -67,18 +67,24 @@ describe("SWAPI", () => {
 
   describe("getPeople", () => {
     let url;
-    let expected = [
-      {
-        name: "Luke Skywalker",
-        species: ["https://swapi.co/api/species/1/"],
-        homeworld: "https://swapi.co/api/planets/1/"
-      },
-      {
-        name: "C-3P0",
-        species: ["https://swapi.co/api/species/2/"],
-        homeworld: "https://swapi.co/api/planets/1/"
-      }
-    ];
+    let expected = {
+      results: [
+        {
+          name: "Luke Skywalker",
+          species: "Human",
+          homeworld: "Tatooine",
+          language: "Galactic Basic",
+          population: 200000
+        },
+        {
+          name: "C-3P0",
+          species: "Droid",
+          homeworld: "Tatooine",
+          language: "n/a",
+          population: 200000
+        }
+      ]
+    };
 
     beforeEach(() => {
       url = "https://swapi.co/api/films/1";
@@ -94,21 +100,20 @@ describe("SWAPI", () => {
       expect(API.getPersonInfo).toHaveBeenCalledWith(expected);
     });
 
-    it.skip("Should fetch a character's info", async () => {
-      window.fetch = jest.fn().mockImplementation(() =>
-        Promise.resolve({
-          json: () => ({ name: "species/homeworld" })
-        })
-      );
-      expected = [
-        {
-          name: "Luke Skywalker",
-          species: "species/homeworld",
-          homeworld: "species/homeworld"
-        }
-      ];
-      const characterInfo = await API.getPersonInfo(expected);
-      expect(characterInfo).toEqual(expected);
+    it("getPersonInfo should fetch a characters' names", async () => {
+      const characterInfo = await API.getPersonInfo(expected.results);
+
+      expect(characterInfo[0].name).toEqual("Luke Skywalker");
+      expect(characterInfo[1].name).toEqual("C-3P0");
+    });
+
+    it("getPersonInfo should add 'favorited: false' prop to fetched data", async () => {
+      expect(expected.results[0].favorited).toBeUndefined();
+
+      const returnedPeople = await API.getPersonInfo(expected.results);
+
+      expect(returnedPeople[0].favorited).toBeFalsy();
+      expect(returnedPeople[1].favorited).toBeFalsy();
     });
   });
 
@@ -144,18 +149,17 @@ describe("SWAPI", () => {
 
     it("getPlanets should return expected results", async () => {
       const returnedPlanets = await API.getPlanets();
-      expect(returnedPlanets).toHaveLength(2)
-      expect(returnedPlanets[0].name).toEqual('Alderaan')
+      expect(returnedPlanets).toHaveLength(2);
+      expect(returnedPlanets[0].name).toEqual("Alderaan");
     });
 
     it("getPlanets should add 'favorited: false' prop to fetched data", async () => {
-      expect(expected.results[0].favorited).toBeUndefined()
+      expect(expected.results[0].favorited).toBeUndefined();
 
       const returnedPlanets = await API.getPlanets();
 
-      expect(returnedPlanets[0].favorited).toBeFalsy()
-      expect(returnedPlanets[1].favorited).toBeFalsy()
+      expect(returnedPlanets[0].favorited).toBeFalsy();
+      expect(returnedPlanets[1].favorited).toBeFalsy();
     });
-
   });
 });

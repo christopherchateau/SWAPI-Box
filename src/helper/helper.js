@@ -1,7 +1,7 @@
 import * as apiCalls from './apiCalls';
 
 export const randomEpisode = async () => {
-  const episode = apiCalls.getRandomEpisode();
+  const episode = await apiCalls.getRandomEpisode();
   return {
     opening_crawl: episode.opening_crawl,
     title: episode.title,
@@ -29,7 +29,7 @@ export const planets = async () => {
   const planets = await apiCalls.getPlanets();
   return Promise.all(planets.map(async planet => {
     let residents = await Promise.all(planet.residents.map(async resident => {
-      const residentData = await apiCalls.getEndPoint(resident);
+      const residentData = await apiCalls.getEndpoint(resident);
       return " " + residentData.name;
     }));
     return {
@@ -43,7 +43,7 @@ export const planets = async () => {
   }));
 }
 
-export const getVehicles = async () => {
+export const vehicles = async () => {
   const vehicles = await apiCalls.getVehicles();
   return vehicles.map(vehicle => {
     return {

@@ -7,10 +7,8 @@ import "./MainPage.css";
 
 const MainPage = ({
   cardData,
-  updateData,
-  handleCardClick,
   favoritesCount,
-  toggleFavorites,
+  appFunctionBundle,
   selectedCategory
 }) => {
   return (
@@ -18,26 +16,27 @@ const MainPage = ({
       <h1 className="mainTitle">$ SWAPi-Box $</h1>
       <Favorite
         selectedCategory={selectedCategory}
-        toggleFavorites={toggleFavorites}
+        toggleFavorites={appFunctionBundle.toggleFavorites}
         favoritesCount={favoritesCount}
       />
-      <Buttons selectedCategory={selectedCategory} updateData={updateData} />
+      <Buttons
+        selectedCategory={selectedCategory}
+        updateData={appFunctionBundle.updateData}
+      />
       <CardContainer
         selectedCategory={selectedCategory}
         cardData={cardData}
-        handleCardClick={handleCardClick}
+        handleCardClick={appFunctionBundle.handleCardClick}
       />
     </div>
   );
 };
 
 MainPage.propTypes = {
-  handleCardClick: PropTypes.func.isRequired,
-  updateData: PropTypes.func.isRequired,
   cardData: PropTypes.array.isRequired,
   favoritesCount: PropTypes.number.isRequired,
-  toggleFavorites: PropTypes.func.isRequired,
-  selectedCategory: PropTypes.string.isRequired
+  selectedCategory: PropTypes.string.isRequired,
+  appFunctionBundle: PropTypes.object.isRequired
 };
 
 export default MainPage;

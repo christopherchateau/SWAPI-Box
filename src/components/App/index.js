@@ -67,6 +67,11 @@ class App extends Component {
 
   render() {
     const { episodeData, favorites } = this.state;
+    const appFunctionBundle = { 
+      toggleFavorites: this.toggleFavorites,
+      updateData: this.updateData,
+      handleCardClick: this.handleCardClick
+    }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
@@ -74,15 +79,12 @@ class App extends Component {
           exact
           path="/"
           render={() => {
-            const counter = 0;
             return (
               <MainPage
                 selectedCategory={"initial"}
-                toggleFavorites={this.toggleFavorites}
-                favoritesCount={counter}
+                appFunctionBundle={appFunctionBundle}
+                favoritesCount={0}
                 cardData={[]}
-                updateData={this.updateData}
-                handleCardClick={this.handleCardClick}
               />
             );
           }}
@@ -93,11 +95,9 @@ class App extends Component {
             return (
               <MainPage
                 selectedCategory={"people"}
-                toggleFavorites={this.toggleFavorites}
+                appFunctionBundle={appFunctionBundle}
                 favoritesCount={favorites.people.length}
                 cardData={this.state.people}
-                updateData={this.updateData}
-                handleCardClick={this.handleCardClick}
               />
             );
           }}
@@ -108,11 +108,9 @@ class App extends Component {
             return (
               <MainPage
                 selectedCategory={"planets"}
-                toggleFavorites={this.toggleFavorites}
+                appFunctionBundle={appFunctionBundle}
                 favoritesCount={favorites.planets.length}
                 cardData={this.state.planets}
-                updateData={this.updateData}
-                handleCardClick={this.handleCardClick}
               />
             );
           }}
@@ -123,11 +121,9 @@ class App extends Component {
             return (
               <MainPage
                 selectedCategory={"vehicles"}
-                toggleFavorites={this.toggleFavorites}
+                appFunctionBundle={appFunctionBundle}
                 favoritesCount={favorites.vehicles.length}
                 cardData={this.state.vehicles}
-                updateData={this.updateData}
-                handleCardClick={this.handleCardClick}
               />
             );
           }}

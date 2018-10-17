@@ -6,11 +6,6 @@ import yoda from "../../images/yoda.png";
 import "./CardContainer.css";
 
 class CardContainer extends PureComponent {
-  // constructor() {
-  //   super();
-  //   this.state = {};
-  // }
-
   render() {
     const { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;

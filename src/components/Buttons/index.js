@@ -4,7 +4,7 @@ import "./Buttons.css";
 import * as API from "../../helper/helper";
 import { NavLink } from "react-router-dom";
 
-const Buttons = ({ updateData, selectedCategory }) => {
+const Buttons = ({ updateData }) => {
   return (
     <div className="Buttons">
       <NavLink

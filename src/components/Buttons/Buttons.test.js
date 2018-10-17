@@ -21,9 +21,9 @@ describe("Buttons", () => {
       const planets = wrapper.find(".planets");
       const people = wrapper.find(".people");
       const vehicles = wrapper.find(".vehicles");
-      expect(planets.hasClass("activated")).toBe(true);
-      expect(people.hasClass("activated")).toBe(false);
-      expect(vehicles.hasClass("activated")).toBe(false);
+      expect(planets.hasClass("active")).toBe(true);
+      expect(people.hasClass("active")).toBe(false);
+      expect(vehicles.hasClass("active")).toBe(false);
     });
 
     it.skip("Should add selected className to people when selected", () => {

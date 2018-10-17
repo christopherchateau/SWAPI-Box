@@ -7,6 +7,14 @@ configure({ adapter: new Adapter() });
 describe("SWAPI", () => {
   describe("getData", () => {
     let url;
+    
+    it("Should return an error when fetch does not work", () => {
+      window.fetch = jest
+        .fn()
+        .mockImplementation(() => Promise.reject(Error("failed")));
+      expect(API.getData(url)).resolves.toBe("failed");
+    });
+
     beforeEach(() => {
       url = "https://swapi.co/api/films/1";
       window.fetch = jest.fn().mockImplementation(() =>
@@ -27,12 +35,7 @@ describe("SWAPI", () => {
       expect(API.getData(url)).resolves.toEqual(expected);
     });
 
-    it.skip("Should return an error when fetch does not work", () => {
-      window.fetch = jest
-        .fn()
-        .mockImplementation(() => Promise.reject(Error("failed")));
-      expect(API.getData(url)).resolves.toBe("failed");
-    });
+    
 
     it("Should add fetch results to localStorage", async () => {
       localStorage.clear();

@@ -66,7 +66,7 @@ class App extends Component {
   };
 
   render() {
-    const { episodeData, selected, favorites } = this.state;
+    const { episodeData, favorites } = this.state;
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
@@ -90,12 +90,11 @@ class App extends Component {
         <Route
           path="/people"
           render={() => {
-            const counter = favorites.people ? favorites.people.length : 0;
             return (
               <MainPage
                 selectedCategory={"people"}
                 toggleFavorites={this.toggleFavorites}
-                favoritesCount={counter}
+                favoritesCount={favorites.people.length}
                 cardData={this.state.people}
                 updateData={this.updateData}
                 handleCardClick={this.handleCardClick}
@@ -106,12 +105,11 @@ class App extends Component {
         <Route
           path="/planets"
           render={() => {
-            const counter = favorites.planets ? favorites.planets.length : 0;
             return (
               <MainPage
                 selectedCategory={"planets"}
                 toggleFavorites={this.toggleFavorites}
-                favoritesCount={counter}
+                favoritesCount={favorites.planets.length}
                 cardData={this.state.planets}
                 updateData={this.updateData}
                 handleCardClick={this.handleCardClick}
@@ -122,12 +120,11 @@ class App extends Component {
         <Route
           path="/vehicles"
           render={() => {
-            const counter = favorites.vehicles ? favorites.vehicles.length : 0;
             return (
               <MainPage
                 selectedCategory={"vehicles"}
                 toggleFavorites={this.toggleFavorites}
-                favoritesCount={counter}
+                favoritesCount={favorites.vehicles.length}
                 cardData={this.state.vehicles}
                 updateData={this.updateData}
                 handleCardClick={this.handleCardClick}

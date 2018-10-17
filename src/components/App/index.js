@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as API from "../../helper/helper";
 import MainPage from "../MainPage";
 import SideScroll from "../SideScroll";
+import { Route } from "react-router-dom";
 import "./App.css";
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] },
+      favorites: { people: [], planets: [], vehicles: [] }
     };
   }
 
@@ -65,18 +66,67 @@ class App extends Component {
   };
 
   render() {
-    const { episodeData, selected, favorites } = this.state;
-    const counter = favorites[selected] ? favorites[selected].length : 0;
+    const { episodeData, favorites } = this.state;
+    const appFunctionBundle = { 
+      toggleFavorites: this.toggleFavorites,
+      updateData: this.updateData,
+      handleCardClick: this.handleCardClick
+    }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <MainPage
-          selectedCategory={selected}
-          toggleFavorites={this.toggleFavorites}
-          favoritesCount={counter}
-          cardData={this.state[selected] || []}
-          updateData={this.updateData}
-          handleCardClick={this.handleCardClick}
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return (
+              <MainPage
+                selectedCategory={"initial"}
+                appFunctionBundle={appFunctionBundle}
+                favoritesCount={0}
+                cardData={[]}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/people"
+          render={() => {
+            return (
+              <MainPage
+                selectedCategory={"people"}
+                appFunctionBundle={appFunctionBundle}
+                favoritesCount={favorites.people.length}
+                cardData={this.state.people}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/planets"
+          render={() => {
+            return (
+              <MainPage
+                selectedCategory={"planets"}
+                appFunctionBundle={appFunctionBundle}
+                favoritesCount={favorites.planets.length}
+                cardData={this.state.planets}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/vehicles"
+          render={() => {
+            return (
+              <MainPage
+                selectedCategory={"vehicles"}
+                appFunctionBundle={appFunctionBundle}
+                favoritesCount={favorites.vehicles.length}
+                cardData={this.state.vehicles}
+              />
+            );
+          }}
         />
       </div>
     );

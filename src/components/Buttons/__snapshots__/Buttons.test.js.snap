@@ -21,24 +21,33 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <button
-          className="people "
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="people"
           onClick={[Function]}
+          to="/people"
         >
           people
-        </button>,
-        <button
-          className="planets selected"
+        </NavLink>,
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="planets"
           onClick={[Function]}
+          to="/planets"
         >
           planets
-        </button>,
-        <button
-          className="vehicles "
+        </NavLink>,
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="vehicles"
           onClick={[Function]}
+          to="/vehicles"
         >
           vehicles
-        </button>,
+        </NavLink>,
       ],
       "className": "Buttons",
     },
@@ -47,41 +56,50 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
+          "activeClassName": "active",
+          "aria-current": "page",
           "children": "people",
-          "className": "people ",
+          "className": "people",
           "onClick": [Function],
+          "to": "/people",
         },
         "ref": null,
         "rendered": "people",
-        "type": "button",
+        "type": [Function],
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
+          "activeClassName": "active",
+          "aria-current": "page",
           "children": "planets",
-          "className": "planets selected",
+          "className": "planets",
           "onClick": [Function],
+          "to": "/planets",
         },
         "ref": null,
         "rendered": "planets",
-        "type": "button",
+        "type": [Function],
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
+          "activeClassName": "active",
+          "aria-current": "page",
           "children": "vehicles",
-          "className": "vehicles ",
+          "className": "vehicles",
           "onClick": [Function],
+          "to": "/vehicles",
         },
         "ref": null,
         "rendered": "vehicles",
-        "type": "button",
+        "type": [Function],
       },
     ],
     "type": "div",
@@ -93,24 +111,33 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <button
-            className="people "
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="people"
             onClick={[Function]}
+            to="/people"
           >
             people
-          </button>,
-          <button
-            className="planets selected"
+          </NavLink>,
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="planets"
             onClick={[Function]}
+            to="/planets"
           >
             planets
-          </button>,
-          <button
-            className="vehicles "
+          </NavLink>,
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="vehicles"
             onClick={[Function]}
+            to="/vehicles"
           >
             vehicles
-          </button>,
+          </NavLink>,
         ],
         "className": "Buttons",
       },
@@ -119,41 +146,50 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
+            "activeClassName": "active",
+            "aria-current": "page",
             "children": "people",
-            "className": "people ",
+            "className": "people",
             "onClick": [Function],
+            "to": "/people",
           },
           "ref": null,
           "rendered": "people",
-          "type": "button",
+          "type": [Function],
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
+            "activeClassName": "active",
+            "aria-current": "page",
             "children": "planets",
-            "className": "planets selected",
+            "className": "planets",
             "onClick": [Function],
+            "to": "/planets",
           },
           "ref": null,
           "rendered": "planets",
-          "type": "button",
+          "type": [Function],
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
+            "activeClassName": "active",
+            "aria-current": "page",
             "children": "vehicles",
-            "className": "vehicles ",
+            "className": "vehicles",
             "onClick": [Function],
+            "to": "/vehicles",
           },
           "ref": null,
           "rendered": "vehicles",
-          "type": "button",
+          "type": [Function],
         },
       ],
       "type": "div",

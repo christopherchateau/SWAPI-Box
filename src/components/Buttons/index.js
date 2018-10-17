@@ -11,7 +11,7 @@ const Buttons = ({ updateData }) => {
         to="/people"
         className="people"
         onClick={() =>
-          API.getPeople().then(people => updateData("people", people))
+          API.people().then(people => updateData("people", people))
         }
       >
         people
@@ -20,7 +20,7 @@ const Buttons = ({ updateData }) => {
         to="/planets"
         className="planets"
         onClick={() =>
-          API.getPlanets().then(planets => updateData("planets", planets))
+          API.planets().then(planets => updateData("planets", planets))
         }
       >
         planets
@@ -29,7 +29,7 @@ const Buttons = ({ updateData }) => {
         to="/vehicles"
         className="vehicles"
         onClick={() =>
-          API.getVehicles().then(vehicles => updateData("vehicles", vehicles))
+          API.vehicles().then(vehicles => updateData("vehicles", vehicles))
         }
       >
         vehicles

@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import * as API from "../../helper/helper";
 import MainPage from "../MainPage";
 import SideScroll from "../SideScroll";
-import { Route } from "react-router-dom";
-import "./App.css";
+import { Route } from "react-router-dom"; import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -31,10 +30,12 @@ class App extends Component {
     this.updateData(selected, favorites[selected]);
   };
 
-  getEpisodeData() {
-    API.getRandomEpisode().then(episodeData => this.setState({ episodeData }));
-    setTimeout(() => {
-      this.getEpisodeData();
+  async getEpisodeData() {
+   const episodeData = await API.randomEpisode()
+    console.log(episodeData);
+   this.setState({ episodeData });
+   setTimeout(() => {
+     this.getEpisodeData();
     }, 60000);
   }
 
@@ -67,7 +68,7 @@ class App extends Component {
 
   render() {
     const { episodeData, favorites } = this.state;
-    const appFunctionBundle = { 
+    const appFunctionBundle = {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick

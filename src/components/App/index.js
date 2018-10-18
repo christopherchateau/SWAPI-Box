@@ -67,69 +67,28 @@ class App extends Component {
   };
 
   render() {
-    const { episodeData, favorites } = this.state;
+    const { episodeData, favorites, selected } = this.state;
     const appFunctionBundle = {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
     }
+    const selectedData = this.state[selected];
+    const favoritesCount = favorites[selected].length
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <Route
-          exact
-          path="/"
-          render={() => {
+        <Route path="/(planets|people|vehicles|)"
+          render={({match}) => {
             return (
-              <MainPage
-                selectedCategory={"initial"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={0}
-                cardData={[]}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/people"
-          render={() => {
-            return (
-              <MainPage
-                selectedCategory={"people"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={favorites.people.length}
-                cardData={this.state.people}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/planets"
-          render={() => {
-            return (
-              <MainPage
-                selectedCategory={"planets"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={favorites.planets.length}
-                cardData={this.state.planets}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/vehicles"
-          render={() => {
-            return (
-              <MainPage
-                selectedCategory={"vehicles"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={favorites.vehicles.length}
-                cardData={this.state.vehicles}
-              />
-            );
-          }}
-        />
-      </div>
+            <MainPage
+            pathUsed={match.url.slice(1)}
+            {...appFunctionBundle}
+            selectedCategory={selected}
+            cardData={selectedData || []}
+            favoritesCount={favoritesCount}
+            />)}}/>
+    </div>
     );
   }
 }

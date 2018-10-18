@@ -15,17 +15,27 @@ class MainPage extends Component {
   }
 
   async componentDidMount() {
-    let cardData = [...this.state.cardData];
-    if (cardData.length === 0) {
-      cardData = await API['planets']();
+    const {pathUsed} = this.props
+    if (pathUsed.length) {
+      const cardData = await API[pathUsed]();
+      this.setState({cardData});
     }
-    this.setState({cardData});
+  }
+
+  async componentDidUpdate() {
+    const { pathUsed, selectedCategory } = this.props;
+    if (pathUsed !== selectedCategory) {
+      const cardData = await API[pathUsed]();
+      this.setState({cardData})
+    }
   }
 
   render() {
     const {
       favoritesCount,
-      appFunctionBundle,
+      toggleFavorites,
+      updateData,
+      handleCardClick,
       selectedCategory
     } = this.props;
     const { cardData } = this.state;
@@ -34,17 +44,17 @@ class MainPage extends Component {
         <h1 className="mainTitle">$ SWAPi-Box $</h1>
         <Favorite
           selectedCategory={selectedCategory}
-          toggleFavorites={appFunctionBundle.toggleFavorites}
+          toggleFavorites={toggleFavorites}
           favoritesCount={favoritesCount}
         />
         <Buttons
           selectedCategory={selectedCategory}
-          updateData={appFunctionBundle.updateData}
+          updateData={updateData}
         />
         <CardContainer
           selectedCategory={selectedCategory}
           cardData={cardData}
-          handleCardClick={appFunctionBundle.handleCardClick}
+          handleCardClick={handleCardClick}
         />
       </div>
     );

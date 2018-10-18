@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: "initial",
+      selected: "planets",
       episodeData: {},
       vehicles: [],
       people: [],
@@ -32,7 +32,7 @@ class App extends Component {
 
   async getEpisodeData() {
    const episodeData = await API.randomEpisode()
-    console.log(episodeData);
+   //console.log(episodeData);
    this.setState({ episodeData });
    setTimeout(() => {
      this.getEpisodeData();

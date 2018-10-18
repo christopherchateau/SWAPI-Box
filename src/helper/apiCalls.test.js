@@ -101,6 +101,7 @@ describe('apiCalls', () => {
       const expected = 'endpoint data here';
       const result = await apiCalls.getEndpoint('url.com');
       expect(result).toBe(expected);
+
     });
   });
 });

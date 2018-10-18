@@ -17,7 +17,7 @@ class MainPage extends Component {
   async componentDidMount() {
     let cardData = [...this.state.cardData];
     if (cardData.length === 0) {
-      cardData = await API[this.props.selectedCategory]();
+      cardData = await API['planets']();
     }
     this.setState({cardData});
   }

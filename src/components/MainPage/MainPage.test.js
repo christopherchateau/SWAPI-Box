@@ -6,9 +6,7 @@ describe("MainPage", () => {
   let wrapper = (
     <MainPage
       cardData={[]}
-      updateData={jest.fn()}
-      handleCardClick={jest.fn()}
-      toggleFavorites={jest.fn()}
+      appFunctionBundle={{}}
       favoritesCount={0}
       selectedCategory={"planets"}
     />

@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: "planets",
+      selected: window.location.pathname.split('/')[1],
       episodeData: {},
       vehicles: [],
       people: [],
@@ -73,21 +73,40 @@ class App extends Component {
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
     }
-    const selectedData = this.state[selected];
-    const favoritesCount = favorites[selected].length
+    let selectedData = []
+    let favoritesCount = 0
+    if (selected.length) {
+      selectedData = this.state[selected];
+      favoritesCount = favorites[selected].length
+    }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <Route path="/(planets|people|vehicles|)"
+        <Route exact path="/(planets|people|vehicles|)"
           render={({match}) => {
+            const pathUsed = match.url.split('/')[1]
             return (
             <MainPage
-            pathUsed={match.url.slice(1)}
+            pathUsed={pathUsed}
             {...appFunctionBundle}
             selectedCategory={selected}
             cardData={selectedData || []}
             favoritesCount={favoritesCount}
             />)}}/>
+        <Route path="/(planets|people|vehicles)/favorites"
+          render={({match}) => {
+            const pathUsed = match.url.split('/')[1]
+            selectedData = favorites[pathUsed]
+            favoritesCount = favorites[pathUsed].length;
+            return (
+            <MainPage
+            pathUsed={pathUsed}
+            {...appFunctionBundle}
+            selectedCategory={selected}
+            cardData={selectedData}
+            favoritesCount={favoritesCount}
+            />)}}/>
+          />
     </div>
     );
   }

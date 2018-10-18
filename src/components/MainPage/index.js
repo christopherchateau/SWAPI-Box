@@ -19,18 +19,23 @@ class MainPage extends Component {
     const {pathUsed} = this.props
     if (pathUsed.length) {
       const cardData = await API[pathUsed]();
-      this.setState({cardData});
+      await this.setState({cardData});
     }
   }
 
   async componentDidUpdate() {
     const { pathUsed, selectedCategory } = this.props;
     const { category } = this.state;
+    const path = window.location.pathname.split('/')
     if (pathUsed !== category && pathUsed.length) {
       const cardData = await API[pathUsed]();
       this.setState({cardData, category: pathUsed})
-    } else if (!pathUsed.length) {
-      this.setState({ cardData: []});
+    }
+    else if (this.props.cardData !== this.state.cardData && path.includes('favorites')) {
+      this.setState({cardData: this.props.cardData});
+    }
+    else if (pathUsed !== category) {
+      this.setState({ cardData: [], category: ''});
     }
   }
 

@@ -19,16 +19,42 @@ describe("SWAPI", () => {
       expect(await API.randomEpisode()).toEqual(expectedResult);
     });
 
+    it.skip("should return people fetch in expected format", async () => {
+      let expectedResult = [
+        {
+          name: "Luke Skywalker",
+          species: "Human",
+          homeworld: "Tatooine",
+          language: "Galactic Basic",
+          population: 200000,
+          favorited: false
+        },
+        {
+          name: "C-3P0",
+          species: "Droid",
+          homeworld: "Tatooine",
+          language: "n/a",
+          population: 200000,
+          favorited: false
+        }
+      ];
+      expect(await API.people()).toEqual(expectedResult);
+    });
 
+    it("should return vehicle fetch in expected format", async () => {
+      const expectedResult = [
+        {
+          name: "Sand Crawler",
+          model: "Digger Crawler",
+          passengers: 30,
+          class: 'wheeled',
+          favorited: false
+        }
+      ];
+      expect(await API.vehicles()).toEqual(expectedResult);
+    });
 
-
-
-
-
-
-
-
-    it("Should return an error when fetch does not work", () => {
+    it.skip("Should return an error when fetch does not work", () => {
       window.fetch = jest
         .fn()
         .mockImplementation(() => Promise.reject(Error("failed")));

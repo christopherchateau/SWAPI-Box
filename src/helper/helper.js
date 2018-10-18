@@ -16,10 +16,10 @@ export const people = async () => {
     const homeworld = await apiCalls.getEndpoint(person.homeworld);
     return {
       name: person.name,
-      //species: species.name,
-      //homeworld: homeworld.name,
-      //language: species.language,
-      //population: homeworld.population,
+      species: species.name,
+      homeworld: homeworld.name,
+      language: species.language,
+      population: homeworld.population,
       favorited: false
     }
   }));

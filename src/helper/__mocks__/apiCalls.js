@@ -6,7 +6,7 @@ export const getRandomEpisode = jest
     release_date: "1977"
   }))
   .mockImplementationOnce(() => {
-    throw Error("failed to fetch episode");
+    throw new Error("failed to fetch episode");
   });
 
 export const getPeople = jest
@@ -14,15 +14,15 @@ export const getPeople = jest
   .mockImplementationOnce(() => [
     {
       name: "Luke Skywalker",
-      species: "Human",
-      homeworld: "Tatooine",
+      species: { name: "Human" },
+      homeworld: { name: "Tatooine" },
       language: "Galactic Basic",
       population: 200000
     },
     {
       name: "C-3P0",
-      species: "Droid",
-      homeworld: "Tatooine",
+      species: { name: "Droid" },
+      homeworld: { name: "Tatooine" },
       language: "n/a",
       population: 200000
     }
@@ -31,9 +31,13 @@ export const getPeople = jest
     throw Error("failed to fetch people");
   });
 
-export const getEndpoint = jest.fn().mockImplementationOnce(() => ({
-  species: { name: "endpoint" }
+export const getEndpoint = jest.fn().mockImplementation(() => ({
+  name: 'endpoint name',
+  language: 'endpoint language',
+  population: 'endpoint population'
 }));
+
+
 // .mockImplementationOnce(() => {
 //   throw Error("failed to fetch endpoint");
 // });
@@ -45,10 +49,24 @@ export const getVehicles = jest
       name: "Sand Crawler",
       model: "Digger Crawler",
       passengers: 30,
-      vehicle_class: 'wheeled',
+      vehicle_class: "wheeled",
       favorited: false
     }
   ])
   .mockImplementationOnce(() => {
     throw Error("failed to fetch vehicle");
+  });
+
+export const getPlanets = jest
+  .fn()
+  .mockImplementationOnce(() => [
+    {
+      terrain: "grasslands, mountains",
+      population: 2000000000,
+      climate: "temperate",
+      residents: ["Leia Organa", "Bail Prestor Organa", "Raymus Antilles"]
+    }
+  ])
+  .mockImplementationOnce(() => {
+    throw new Error("failed to fetch planets");
   });

@@ -10,7 +10,8 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardData: props.cardData
+      cardData: props.cardData,
+      category: props.pathUsed
     }
   }
 
@@ -24,9 +25,12 @@ class MainPage extends Component {
 
   async componentDidUpdate() {
     const { pathUsed, selectedCategory } = this.props;
-    if (pathUsed !== selectedCategory) {
+    const { category } = this.state;
+    if (pathUsed !== category && pathUsed.length) {
       const cardData = await API[pathUsed]();
-      this.setState({cardData})
+      this.setState({cardData, category: pathUsed})
+    } else if (!pathUsed.length) {
+      this.setState({ cardData: []});
     }
   }
 
@@ -36,14 +40,15 @@ class MainPage extends Component {
       toggleFavorites,
       updateData,
       handleCardClick,
-      selectedCategory
+      selectedCategory,
+      pathUsed
     } = this.props;
     const { cardData } = this.state;
     return (
       <div className="MainPage">
         <h1 className="mainTitle">$ SWAPi-Box $</h1>
         <Favorite
-          selectedCategory={selectedCategory}
+          selectedCategory={pathUsed}
           toggleFavorites={toggleFavorites}
           favoritesCount={favoritesCount}
         />

@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: "planets",
+      selected: window.location.pathname.split('/')[1],
       episodeData: {},
       vehicles: [],
       people: [],
@@ -67,69 +67,47 @@ class App extends Component {
   };
 
   render() {
-    const { episodeData, favorites } = this.state;
+    const { episodeData, favorites, selected } = this.state;
     const appFunctionBundle = {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
     }
+    let selectedData = []
+    let favoritesCount = 0
+    if (selected.length) {
+      selectedData = this.state[selected];
+      favoritesCount = favorites[selected].length
+    }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <Route
-          exact
-          path="/"
-          render={() => {
+        <Route exact path="/(planets|people|vehicles|)"
+          render={({match}) => {
+            const pathUsed = match.url.split('/')[1]
             return (
-              <MainPage
-                selectedCategory={"initial"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={0}
-                cardData={[]}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/people"
-          render={() => {
+            <MainPage
+            pathUsed={pathUsed}
+            {...appFunctionBundle}
+            selectedCategory={selected}
+            cardData={selectedData || []}
+            favoritesCount={favoritesCount}
+            />)}}/>
+        <Route path="/(planets|people|vehicles)/favorites"
+          render={({match}) => {
+            const pathUsed = match.url.split('/')[1]
+            selectedData = favorites[pathUsed]
+            favoritesCount = favorites[pathUsed].length;
             return (
-              <MainPage
-                selectedCategory={"people"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={favorites.people.length}
-                cardData={this.state.people}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/planets"
-          render={() => {
-            return (
-              <MainPage
-                selectedCategory={"planets"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={favorites.planets.length}
-                cardData={this.state.planets}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/vehicles"
-          render={() => {
-            return (
-              <MainPage
-                selectedCategory={"vehicles"}
-                appFunctionBundle={appFunctionBundle}
-                favoritesCount={favorites.vehicles.length}
-                cardData={this.state.vehicles}
-              />
-            );
-          }}
-        />
-      </div>
+            <MainPage
+            pathUsed={pathUsed}
+            {...appFunctionBundle}
+            selectedCategory={selected}
+            cardData={selectedData}
+            favoritesCount={favoritesCount}
+            />)}}/>
+          />
+    </div>
     );
   }
 }

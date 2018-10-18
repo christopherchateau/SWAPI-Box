@@ -23,7 +23,7 @@
     top: 95vh;
   }
   100% {
-    top: -1500px;
+    top: -1400px;
     display: none;
   }
 }

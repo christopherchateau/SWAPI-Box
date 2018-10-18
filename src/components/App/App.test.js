@@ -48,7 +48,7 @@ describe("App", () => {
       ];
     });
 
-    it("selected property in state should initialize as 'initial' ", () => {
+    it.skip("selected property in state should initialize as 'initial' ", () => {
       expect(wrapper.state().selected).toEqual("initial");
     });
 

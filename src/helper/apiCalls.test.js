@@ -1,105 +1,112 @@
-import * as apiCalls from './apiCalls';
+import * as apiCalls from "./apiCalls";
 
-describe('apiCalls', () => {
-  describe('getRandomEpisode', () => {
+describe("apiCalls", () => {
+  describe("getRandomEpisode", () => {
     beforeEach(() => {
-      window.fetch = jest.fn().mockImplementation(() => (Promise.resolve({
-        json: () => 'episode data here'
-      })));
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => "episode data here"
+        })
+      );
       Math.random = () => 0;
     });
 
-    it('Should call fetch with a random episode\'s endpoint', () => {
-      const expected = 'https://swapi.co/api/films/1';
+    it("Should call fetch with a random episode's endpoint", () => {
+      const expected = "https://swapi.co/api/films/1";
       apiCalls.getRandomEpisode();
       expect(window.fetch).toHaveBeenCalledWith(expected);
     });
 
-    it('Should return the json\'d response from fetch', async () => {
-      const expected = 'episode data here';
+    it("Should return the json'd response from fetch", async () => {
+      const expected = "episode data here";
       const result = await apiCalls.getRandomEpisode();
       expect(result).toBe(expected);
     });
   });
 
-  describe('getPeople', () => {
+  describe("getPeople", () => {
     beforeEach(() => {
-      window.fetch = jest.fn().mockImplementation(() => (Promise.resolve({
-        json: () => ({ results: 'people data here' })
-      })));
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => ({ results: "people data here" })
+        })
+      );
     });
 
-    it('Should call fetch for all people', () => {
-      const expected = 'https://swapi.co/api/people';
+    it("Should call fetch for all people", () => {
+      const expected = "https://swapi.co/api/people";
       apiCalls.getPeople();
       expect(window.fetch).toHaveBeenCalledWith(expected);
-
     });
 
-    it('Should return results from the json\'d response from fetch', async () => {
-      const expected = 'people data here';
+    it("Should return results from the json'd response from fetch", async () => {
+      const expected = "people data here";
       const result = await apiCalls.getPeople();
       expect(result).toBe(expected);
     });
   });
 
-  describe('getPlanets', () => {
+  describe("getPlanets", () => {
     beforeEach(() => {
-      window.fetch = jest.fn().mockImplementation(() => (Promise.resolve({
-        json: () => ({ results: 'planet data here' })
-      })));
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => ({ results: "planet data here" })
+        })
+      );
     });
 
-    it('Should call fetch for all planets', () => {
-      const expected = 'https://swapi.co/api/planets';
+    it("Should call fetch for all planets", () => {
+      const expected = "https://swapi.co/api/planets";
       apiCalls.getPlanets();
       expect(window.fetch).toHaveBeenCalledWith(expected);
     });
 
-    it('Should return results from the json\'d response from fetch', async () => {
-      const expected = 'planet data here';
+    it("Should return results from the json'd response from fetch", async () => {
+      const expected = "planet data here";
       const result = await apiCalls.getPlanets();
       expect(result).toBe(expected);
     });
-
   });
 
-  describe('getVehicles', () => {
+  describe("getVehicles", () => {
     beforeEach(() => {
-      window.fetch = jest.fn().mockImplementation(() => (Promise.resolve({
-        json: () => ({ results: 'vehicle data here' })
-      })));
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => ({ results: "vehicle data here" })
+        })
+      );
     });
 
-    it('Should call fetch for all vehicles', () => {
-      const expected = 'https://swapi.co/api/vehicles';
+    it("Should call fetch for all vehicles", () => {
+      const expected = "https://swapi.co/api/vehicles";
       apiCalls.getVehicles();
       expect(window.fetch).toHaveBeenCalledWith(expected);
-
     });
 
-    it('Should return results from the json\'d response from fetch', async () => {
-      const expected = 'vehicle data here';
+    it("Should return results from the json'd response from fetch", async () => {
+      const expected = "vehicle data here";
       const result = await apiCalls.getVehicles();
       expect(result).toBe(expected);
     });
   });
 
-  describe('getEndpoint', () => {
+  describe("getEndpoint", () => {
     beforeEach(() => {
-      window.fetch = jest.fn().mockImplementation(() => (Promise.resolve({
-        json: () => 'endpoint data here'
-      })));
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => "endpoint data here"
+        })
+      );
     });
-    it('Should call fetch with any url given', () => {
-      const expected = 'https://swapi.co/api/people/1';
+    it("Should call fetch with any url given", () => {
+      const expected = "https://swapi.co/api/people/1";
       apiCalls.getEndpoint(expected);
       expect(window.fetch).toHaveBeenCalledWith(expected);
     });
 
-    it('Should return json\'d response from fetch', async () => {
-      const expected = 'endpoint data here';
-      const result = await apiCalls.getEndpoint('url.com');
+    it("Should return json'd response from fetch", async () => {
+      const expected = "endpoint data here";
+      const result = await apiCalls.getEndpoint("url.com");
       expect(result).toBe(expected);
     });
   });

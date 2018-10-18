@@ -7,9 +7,8 @@ configure({ adapter: new Adapter() });
 jest.mock("./apiCalls");
 
 describe("SWAPI", () => {
-  describe("getData", () => {
-    let url;
 
+  describe("random episode", () => {
     it("should return episode fetch in expected format", async () => {
       const expectedResult = {
         opening_crawl: "star wars blah blah blah",
@@ -18,7 +17,9 @@ describe("SWAPI", () => {
       };
       expect(await API.randomEpisode()).toEqual(expectedResult);
     });
+  });
 
+  describe("people", () => {
     it("should return people fetch in expected format", async () => {
       let expectedResult = [
         {
@@ -26,7 +27,7 @@ describe("SWAPI", () => {
           species: "endpoint name",
           homeworld: "endpoint name",
           language: "endpoint language",
-          population: 'endpoint population',
+          population: "endpoint population",
           favorited: false
         },
         {
@@ -40,7 +41,9 @@ describe("SWAPI", () => {
       ];
       expect(await API.people()).toEqual(expectedResult);
     });
+  });
 
+  describe("vehicles", () => {
     it("should return vehicle fetch in expected format", async () => {
       const expectedResult = [
         {
@@ -54,40 +57,28 @@ describe("SWAPI", () => {
       expect(await API.vehicles()).toEqual(expectedResult);
     });
   });
+
+  describe("planets", () => {
+    it("should return planets fetch in expected format", async () => {
+      const expectedResult = [
+        {
+          name: "Alderaan",
+          terrain: "grasslands, mountains",
+          population: 2000000000,
+          climate: "temperate",
+          residents: [" endpoint name", " endpoint name", " endpoint name"],
+          favorited: false
+        },
+        {
+          name: "Yavin IV",
+          terrain: "jungle, rainforests",
+          population: 1000,
+          climate: "temperate, tropical",
+          residents: [],
+          favorited: false
+        }
+      ];
+      expect(await API.planets()).toEqual(expectedResult);
+    });
+  });
 });
-
-// let expected = {
-//   results: [
-//     {
-//       name: "Luke Skywalker",
-//       species: "Human",
-//       homeworld: "Tatooine",
-//       language: "Galactic Basic",
-//       population: 200000
-//     },
-//     {
-//       name: "C-3P0",
-//       species: "Droid",
-//       homeworld: "Tatooine",
-//       language: "n/a",
-//       population: 200000
-//     }
-//   ]
-// };
-
-// results: [
-//   {
-//     name: "Alderaan",
-//     terrain: "grasslands, mountains",
-//     population: 2000000000,
-//     climate: "temperate",
-//     residents: ["Leia Organa", "Bail Prestor Organa", "Raymus Antilles"]
-//   },
-//   {
-//     name: "Yavin IV",
-//     terrain: "jungle, rainforests",
-//     population: 1000,
-//     climate: "temperate, tropical",
-//     residents: []
-//   }
-// ]

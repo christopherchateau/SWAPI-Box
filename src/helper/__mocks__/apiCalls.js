@@ -60,13 +60,21 @@ export const getVehicles = jest
 export const getPlanets = jest
   .fn()
   .mockImplementationOnce(() => [
-    {
-      terrain: "grasslands, mountains",
-      population: 2000000000,
-      climate: "temperate",
-      residents: ["Leia Organa", "Bail Prestor Organa", "Raymus Antilles"]
-    }
-  ])
+        {
+          name: "Alderaan",
+          terrain: "grasslands, mountains",
+          population: 2000000000,
+          climate: "temperate",
+          residents: ["Leia Organa", "Bail Prestor Organa", "Raymus Antilles"],
+        },
+        {
+          name: "Yavin IV",
+          terrain: "jungle, rainforests",
+          population: 1000,
+          climate: "temperate, tropical",
+          residents: []
+        }
+      ])
   .mockImplementationOnce(() => {
     throw new Error("failed to fetch planets");
   });

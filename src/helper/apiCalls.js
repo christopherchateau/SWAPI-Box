@@ -1,4 +1,4 @@
-export const url = "https://swapi.co/api/";
+export const url = 'https://swapi.co/api/';
 
 export const getRandomEpisode = () => {
   const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
@@ -26,5 +26,5 @@ export const getVehicles = () => {
 }
 
 export const getEndpoint = (url) => {
-  return fetch(url) .then(response => response.json());
+  return fetch(url).then(response => response.json());
 }

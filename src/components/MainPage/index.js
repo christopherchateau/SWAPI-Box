@@ -6,6 +6,7 @@ import CardContainer from "../CardContainer";
 import Buttons from "../Buttons";
 import "./MainPage.css";
 
+
 class MainPage extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class MainPage extends Component {
       category: props.pathUsed
     };
   }
-
+  
   async componentDidMount() {
     const { pathUsed } = this.props;
     if (pathUsed.length) {
@@ -73,7 +74,7 @@ MainPage.propTypes = {
   cardData: PropTypes.array.isRequired,
   favoritesCount: PropTypes.number.isRequired,
   selectedCategory: PropTypes.string.isRequired,
-  appFunctionBundle: PropTypes.object.isRequired
+  bundledAppFunctions: PropTypes.object.isRequired
 };
 
 export default MainPage;

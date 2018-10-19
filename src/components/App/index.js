@@ -68,7 +68,7 @@ class App extends Component {
 
   render() {
     const { episodeData, favorites, selected } = this.state;
-    const bundledAppFunctions = {
+    const appFunctionBundle = {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
@@ -76,10 +76,10 @@ class App extends Component {
     let selectedData = [];
     let favoritesCount = 0;
 
-    selected
-      ? (selectedData = this.state[selected])
-      : (favoritesCount = favorites[selected].length);
-
+    if (selected) {
+      selectedData = this.state[selected];
+      favoritesCount = favorites[selected].length;
+    }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
@@ -91,7 +91,7 @@ class App extends Component {
             return (
               <MainPage
                 pathUsed={pathUsed}
-                {...bundledAppFunctions}
+                {...appFunctionBundle}
                 selectedCategory={selected}
                 cardData={selectedData || []}
                 favoritesCount={favoritesCount}
@@ -108,7 +108,7 @@ class App extends Component {
             return (
               <MainPage
                 pathUsed={pathUsed}
-                {...bundledAppFunctions}
+                {...appFunctionBundle}
                 selectedCategory={selected}
                 cardData={selectedData}
                 favoritesCount={favoritesCount}

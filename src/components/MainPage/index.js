@@ -6,6 +6,7 @@ import CardContainer from "../CardContainer";
 import Buttons from "../Buttons";
 import "./MainPage.css";
 
+let didUpdateCounter = 0;
 
 class MainPage extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class MainPage extends Component {
   }
 
   async componentDidUpdate() {
+    didUpdateCounter++;
     const { pathUsed, selectedCategory } = this.props;
     const { category } = this.state;
     const path = window.location.pathname.split("/");
@@ -39,6 +41,7 @@ class MainPage extends Component {
     } else if (pathUsed !== category) {
       this.setState({ cardData: [], category: "" });
     }
+    //console.log('path:', path, "category:", category, 'pathUsed:', pathUsed, 'counter:', didUpdateCounter, 'cardData:', this.state.cardData)
   }
 
   render() {

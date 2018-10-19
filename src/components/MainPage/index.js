@@ -12,30 +12,31 @@ class MainPage extends Component {
     this.state = {
       cardData: props.cardData,
       category: props.pathUsed
-    }
+    };
   }
 
   async componentDidMount() {
-    const {pathUsed} = this.props
+    const { pathUsed } = this.props;
     if (pathUsed.length) {
       const cardData = await API[pathUsed]();
-      await this.setState({cardData});
+      await this.setState({ cardData });
     }
   }
 
   async componentDidUpdate() {
     const { pathUsed, selectedCategory } = this.props;
     const { category } = this.state;
-    const path = window.location.pathname.split('/')
+    const path = window.location.pathname.split("/");
     if (pathUsed !== category && pathUsed.length) {
       const cardData = await API[pathUsed]();
-      this.setState({cardData, category: pathUsed})
-    }
-    else if (this.props.cardData !== this.state.cardData && path.includes('favorites')) {
-      this.setState({cardData: this.props.cardData});
-    }
-    else if (pathUsed !== category) {
-      this.setState({ cardData: [], category: ''});
+      this.setState({ cardData, category: pathUsed });
+    } else if (
+      this.props.cardData !== this.state.cardData &&
+      path.includes("favorites")
+    ) {
+      this.setState({ cardData: this.props.cardData });
+    } else if (pathUsed !== category) {
+      this.setState({ cardData: [], category: "" });
     }
   }
 
@@ -57,10 +58,7 @@ class MainPage extends Component {
           toggleFavorites={toggleFavorites}
           favoritesCount={favoritesCount}
         />
-        <Buttons
-          selectedCategory={selectedCategory}
-          updateData={updateData}
-        />
+        <Buttons selectedCategory={selectedCategory} updateData={updateData} />
         <CardContainer
           selectedCategory={selectedCategory}
           cardData={cardData}

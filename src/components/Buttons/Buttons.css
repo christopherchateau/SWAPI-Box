@@ -42,8 +42,7 @@
   .Buttons {
     flex-direction: column;
     justify-content: initial;
-    margin: 0;
-    margin-bottom: 20px;
+    margin: 8px 0; 
   }
 
 .people,

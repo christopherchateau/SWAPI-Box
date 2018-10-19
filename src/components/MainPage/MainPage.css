@@ -5,7 +5,7 @@
 
 .MainPage {
   display: grid;
-  grid-template-rows: 140px 80px 80px 1fr
+  grid-template-rows: 15vh 10vh 10vh 65vh;
 }
 
 .mainTitle {
@@ -23,7 +23,23 @@
   justify-content: space-around;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 1000px) {
+  .MainPage {
+    grid-template-rows: 100px 80px 120px 50vh;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .MainPage {
+    grid-template-rows: 100px 64px 250px 50vh;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .MainPage {
+    grid-template-rows: 100px 114px 250px 50vh;
+  }
+
   .mainTitle {
     font-size: 50px;
   }

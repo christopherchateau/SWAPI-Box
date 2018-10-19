@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import * as API from "../../helper/helper";
 import MainPage from "../MainPage";
 import SideScroll from "../SideScroll";
-import { Route } from "react-router-dom"; import "./App.css";
+import { Route } from "react-router-dom";
+import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: window.location.pathname.split('/')[1],
+      selected: window.location.pathname.split("/")[1],
       episodeData: {},
       vehicles: [],
       people: [],
@@ -31,11 +32,10 @@ class App extends Component {
   };
 
   async getEpisodeData() {
-   const episodeData = await API.randomEpisode()
-   //console.log(episodeData);
-   this.setState({ episodeData });
-   setTimeout(() => {
-     this.getEpisodeData();
+    const episodeData = await API.randomEpisode();
+    this.setState({ episodeData });
+    setTimeout(() => {
+      this.getEpisodeData();
     }, 60000);
   }
 
@@ -72,42 +72,51 @@ class App extends Component {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
-    }
-    let selectedData = []
-    let favoritesCount = 0
+    };
+    let selectedData = [];
+    let favoritesCount = 0;
     if (selected.length) {
       selectedData = this.state[selected];
-      favoritesCount = favorites[selected].length
+      favoritesCount = favorites[selected].length;
     }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <Route exact path="/(planets|people|vehicles|)"
-          render={({match}) => {
-            const pathUsed = match.url.split('/')[1]
+        <Route
+          exact
+          path="/(planets|people|vehicles|)"
+          render={({ match }) => {
+            const pathUsed = match.url.split("/")[1];
             return (
-            <MainPage
-            pathUsed={pathUsed}
-            {...appFunctionBundle}
-            selectedCategory={selected}
-            cardData={selectedData || []}
-            favoritesCount={favoritesCount}
-            />)}}/>
-        <Route path="/(planets|people|vehicles)/favorites"
-          render={({match}) => {
-            const pathUsed = match.url.split('/')[1]
-            selectedData = favorites[pathUsed]
+              <MainPage
+                pathUsed={pathUsed}
+                {...appFunctionBundle}
+                selectedCategory={selected}
+                cardData={selectedData || []}
+                favoritesCount={favoritesCount}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/(planets|people|vehicles)/favorites"
+          render={({ match }) => {
+            const pathUsed = match.url.split("/")[1];
+            selectedData = favorites[pathUsed];
             favoritesCount = favorites[pathUsed].length;
             return (
-            <MainPage
-            pathUsed={pathUsed}
-            {...appFunctionBundle}
-            selectedCategory={selected}
-            cardData={selectedData}
-            favoritesCount={favoritesCount}
-            />)}}/>
-          />
-    </div>
+              <MainPage
+                pathUsed={pathUsed}
+                {...appFunctionBundle}
+                selectedCategory={selected}
+                cardData={selectedData}
+                favoritesCount={favoritesCount}
+              />
+            );
+          }}
+        />
+        />
+      </div>
     );
   }
 }

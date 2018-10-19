@@ -6,12 +6,15 @@ import "./Favorite.css";
 class Favorite extends Component {
   render() {
     const { toggleFavorites, favoritesCount, selectedCategory } = this.props;
-    const isFavorites = window.location.pathname.split('/').includes('favorites')
+    const isFavorites = window.location.pathname
+      .split("/")
+      .includes("favorites");
     return (
       <div className="Favorites">
-        <NavLink to={`${selectedCategory}/favorites`}
-          onClick={toggleFavorites}
+        <NavLink
+          to={`${selectedCategory}/favorites`}
           className="favoritesBtn"
+          onClick={toggleFavorites}
           disabled={isFavorites}
         >
           <span className="favoritesIcon">#</span> Favorite{" "}

@@ -5,12 +5,14 @@
 
 .MainPage {
   display: grid;
+  grid-template-rows: 140px 80px 80px 1fr
 }
 
 .mainTitle {
   color: #fdde09;
   font-family: starWars;
   font-size: 55px;
+  height: 20px;
   margin: 15px 10px 0 10px;
   text-align: center;
 }

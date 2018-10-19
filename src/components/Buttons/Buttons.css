@@ -1,5 +1,6 @@
 .Buttons {
   display: flex;
+  height: 0px;
   justify-content: space-evenly;
 }
 

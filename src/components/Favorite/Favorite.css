@@ -53,8 +53,15 @@
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 520px) {
   .favoritesBtn {
-    height: 110px;
+    font-size: 20px;
+    padding: 8px 0 10px 0;
+  }
+}
+
+@media screen and (max-width: 352px) {
+  .favoritesBtn {
+    font-size: 18px;
   }
 }

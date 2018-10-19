@@ -37,7 +37,7 @@
 
 @media screen and (max-width: 590px) {
   .MainPage {
-    grid-template-rows: 100px 114px 250px 50vh;
+    grid-template-rows: 100px 66px 250px 50vh;
   }
 
   .mainTitle {
@@ -45,8 +45,24 @@
   }
 }
 
+@media screen and (max-width: 520px) {
+  .MainPage {
+    grid-template-rows: 100px 66px 250px 50vh;
+  }
+}
+
 @media screen and (max-width: 475px) {
   .mainTitle {
     font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .MainPage {
+    grid-template-rows: 80px 60px 250px 50vh;
+  }
+
+  .mainTitle {
+    font-size: 32px;
   }
 }

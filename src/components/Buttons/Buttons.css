@@ -42,12 +42,12 @@
   .Buttons {
     flex-direction: column;
     justify-content: initial;
-    margin: 8px 0; 
+    margin: 8px 0;
   }
 
-.people,
-.vehicles,
-.planets {
+  .people,
+  .vehicles,
+  .planets {
     width: 80%;
     margin: 8px 10%;
   }

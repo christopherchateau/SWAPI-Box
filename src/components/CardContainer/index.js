@@ -10,12 +10,12 @@ class CardContainer extends PureComponent {
     const { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;
 
-    if (selectedCategory === "initial") {
-      displayText = "$ select a category, you must $";
-      characterPic = yoda;
-    } else {
+    if (selectedCategory) {
       displayText = "These are not the cards you are looking for!";
       characterPic = obiWan;
+    } else {
+      displayText = "$ select a category, you must $";
+      characterPic = yoda;
     }
     const cards = cardData.map((card, index) => {
       return (

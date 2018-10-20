@@ -1,4 +1,4 @@
-import * as apiCalls from './apiCalls';
+import * as apiCalls from "./apiCalls";
 
 export const randomEpisode = async () => {
   const episode = await apiCalls.getRandomEpisode();
@@ -10,42 +10,61 @@ export const randomEpisode = async () => {
 };
 
 export const people = async () => {
+  if (checkLocalStorage("people")) {
+    return checkLocalStorage("people");
+  }
   const people = await apiCalls.getPeople();
-  return Promise.all(people.map(async person => {
-    const species = await apiCalls.getEndpoint(person.species);
-    const homeworld = await apiCalls.getEndpoint(person.homeworld);
-    return {
-      name: person.name,
-      species: species.name,
-      homeworld: homeworld.name,
-      language: species.language,
-      population: homeworld.population,
-      favorited: false
-    }
-  }));
+  const cleanedPeople = await Promise.all(
+    people.map(async person => {
+      const species = await apiCalls.getEndpoint(person.species);
+      const homeworld = await apiCalls.getEndpoint(person.homeworld);
+      return {
+        name: person.name,
+        species: species.name,
+        homeworld: homeworld.name,
+        language: species.language,
+        population: homeworld.population,
+        favorited: false
+      };
+    })
+  );
+  localStorage.setItem("people", JSON.stringify(cleanedPeople));
+  return cleanedPeople
 };
 
 export const planets = async () => {
+  if (checkLocalStorage("planets")) {
+    return checkLocalStorage("planets");
+  }
   const planets = await apiCalls.getPlanets();
-  return Promise.all(planets.map(async planet => {
-    let residents = await Promise.all(planet.residents.map(async resident => {
-      const residentData = await apiCalls.getEndpoint(resident);
-      return " " + residentData.name;
-    }));
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      population: planet.population,
-      climate: planet.climate,
-      residents: residents,
-      favorited: false
-    };
-  }));
-}
+  const cleanedPlanets = await Promise.all(
+    planets.map(async planet => {
+      let residents = await Promise.all(
+        planet.residents.map(async resident => {
+          const residentData = await apiCalls.getEndpoint(resident);
+          return " " + residentData.name;
+        })
+      );
+      return {
+        name: planet.name,
+        terrain: planet.terrain,
+        population: planet.population,
+        climate: planet.climate,
+        residents: residents,
+        favorited: false
+      };
+    })
+  );
+  localStorage.setItem("planets", JSON.stringify(cleanedPlanets));
+  return cleanedPlanets;
+};
 
 export const vehicles = async () => {
+  if (checkLocalStorage("vehicles")) {
+    return checkLocalStorage("vehicles");
+  }
   const vehicles = await apiCalls.getVehicles();
-  return vehicles.map(vehicle => {
+  const cleanedVehicles = vehicles.map(vehicle => {
     return {
       name: vehicle.name,
       model: vehicle.model,
@@ -54,4 +73,14 @@ export const vehicles = async () => {
       favorited: false
     };
   });
+  localStorage.setItem("vehicles", JSON.stringify(cleanedVehicles));
+  return cleanedVehicles
+};
+
+function checkLocalStorage(category) {
+  if (localStorage.getItem(category)) {
+    return JSON.parse(localStorage.getItem(category));
+  } else {
+    return false;
+  }
 }

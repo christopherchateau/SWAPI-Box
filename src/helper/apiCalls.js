@@ -1,4 +1,4 @@
-export const url = 'https://swapi.co/api/';
+export const url = "https://swapi.co/api/";
 
 export const getRandomEpisode = () => {
   const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
@@ -7,24 +7,29 @@ export const getRandomEpisode = () => {
   );
 };
 
-export const getPeople = () => {
-  return fetch(url + "people")
-    .then(response => response.json())
-    .then(people => people.results);
+export const getPeople = async () => {
+  const response = await fetch(url + "people");
+  const people = await response.json();
+  // localStorage.setItem("people", JSON.stringify(people.results));
+  return people.results;
 };
 
-export const getPlanets = () => {
-  return fetch(url + "planets")
-    .then(response => response.json())
-    .then(planets => planets.results);
+export const getPlanets = async () => {
+  const response = await fetch(url + "planets");
+  const planets = await response.json();
+  // localStorage.setItem("planets", JSON.stringify(planets.results));
+  return planets.results;
 };
 
-export const getVehicles = () => {
-  return fetch(url + "vehicles")
-    .then(response => response.json())
-    .then(vehicles => vehicles.results);
+export const getVehicles = async () => {
+  const response = await fetch(url + "vehicles");
+  const vehicles = await response.json();
+  // localStorage.setItem("vehicles", JSON.stringify(vehicles.results));
+  return vehicles.results;
 };
 
-export const getEndpoint = url => {
-  return fetch(url).then(response => response.json());
+export const getEndpoint = async url => {
+  const response = await fetch(url);
+  return await response.json();
 };
+

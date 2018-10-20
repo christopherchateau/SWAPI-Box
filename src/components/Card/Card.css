@@ -23,6 +23,10 @@ ul {
   padding-bottom: 10px;
 }
 
+.category {
+  font-weight: bolder;
+}
+
 .favoriteIcon {
   background-color: gainsboro;
   border: 4px solid black;

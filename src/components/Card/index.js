@@ -28,7 +28,7 @@ class Card extends Component {
     const listItems = Object.keys(cardData).map((value, index) => {
       if (value === "name" || value === "favorited") return;
       if (cardData[value].length) {
-        return <li key={name + index}>{`${value}: ${cardData[value]}`}</li>;
+        return <li key={name + index}><span className="category">{value}</span>{`: ${cardData[value]}`}</li>;
       }
     });
     return (

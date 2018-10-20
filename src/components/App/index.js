@@ -42,19 +42,18 @@ class App extends Component {
   updateData = (key, value) => {
     const { favorites } = this.state;
     const names = favorites[key].map(card => card.name);
-    console.log(names)
     const filteredCards = value.filter(card => {
       return !names.includes(card.name);
     });
     value = [...favorites[key], ...filteredCards];
     this.setState({ [key]: value, selected: key });
   };
-
+  
   handleCardClick = (card, favorited) => {
     let { selected, favorites } = this.state;
     const updatedFavorites = favorites;
     let updateArray;
-
+    
     if (!favorited) {
       updateArray = [card, ...favorites[selected]];
     } else {

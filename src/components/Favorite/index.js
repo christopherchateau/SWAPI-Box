@@ -6,24 +6,23 @@ import "./Favorite.css";
 class Favorite extends Component {
 
   handleClick = e => {
-    if (window.location.pathname === "/" ||
-      window.location.pathname.split("/").includes("favorites")) {
-      e.preventDefault();
-    }
+    // if (window.location.pathname === "/" ||
+    //   window.location.pathname.split("/").includes("favorites")) {
+    //   e.preventDefault();
+    // }
   };
 
   render() {
-    const { favoritesCount, selectedCategory } = this.props;
+    const { favoritesCount, selectedCategory, toggleFavorites } = this.props;
     return (
       <div className="Favorites">
         <NavLink
-          to={`${selectedCategory}/favorites`}
+          to={`/favorites`}
           className="favoritesBtn"
-          onClick={this.handleClick}
+          onClick={toggleFavorites}
         >
-          <span className="favoritesIcon">#</span> Favorite{" "}
-          {selectedCategory !== "initial" ? selectedCategory : ""}:{" "}
-          {favoritesCount}
+          <span className="favoritesIcon">#</span> Favorites: {favoritesCount} 
+          {/* {selectedCategory !== "initial" ? selectedCategory : ""}:{" "} */}
         </NavLink>
       </div>
     );

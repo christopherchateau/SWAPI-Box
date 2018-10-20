@@ -9,10 +9,14 @@ class CardContainer extends PureComponent {
   render() {
     const { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;
-
+    
     if (selectedCategory) {
       displayText = "These are not the cards you are looking for!";
       characterPic = obiWan;
+    // } 
+    // else if (selectedCategory !== 'favorites' && cardData === []) {
+    //   displayText = "$ loading $";
+
     } else {
       displayText = "$ select a category, you must $";
       characterPic = yoda;

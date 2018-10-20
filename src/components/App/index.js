@@ -14,23 +14,33 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] }
+      favorites: []
     };
   }
 
   componentDidMount() {
+    const { selected } = this.state;
     this.getEpisodeData();
-    if (localStorage.getItem("favorites")) {
-      const favorites = JSON.parse(localStorage.getItem("favorites"));
-      this.setState({ favorites });
+    if (selected.length) {
+      this.loadCards(selected);
     }
   }
 
+  loadCards = async category => {
+    let cardData;
+    if (category === "favorites") {
+      cardData = JSON.parse(localStorage.getItem("favorites"));
+    } else {
+      cardData = await API[category]();
+    }
+    await this.setState({ cardData });
+  };
+
   toggleFavorites = () => {
     let { selected, favorites } = this.state;
-    console.log('asdf')
+    console.log("asdf");
     if (this.state.selected) {
-      this.updateData(selected, favorites[selected]);
+      this.updateData(selected, favorites);
     }
   };
 
@@ -44,27 +54,27 @@ class App extends Component {
 
   updateData = (key, value) => {
     const { favorites } = this.state;
-    const names = favorites[key].map(card => card.name);
+    const names = favorites.map(card => card.name);
     const filteredCards = value.filter(card => {
       return !names.includes(card.name);
     });
-    value = [...favorites[key], ...filteredCards];
+    value = [...favorites, ...filteredCards];
     this.setState({ [key]: value, selected: key });
   };
 
   handleCardClick = (card, favorited) => {
     let { selected, favorites } = this.state;
-    const updatedFavorites = favorites;
+    let updatedFavorites = favorites;
     let updateArray;
 
     if (!favorited) {
-      updateArray = [card, ...favorites[selected]];
+      updateArray = [card, ...favorites];
     } else {
-      updateArray = favorites[selected].filter(favorite => {
+      updateArray = favorites.filter(favorite => {
         return favorite.name !== card.name;
       });
     }
-    updatedFavorites[selected] = updateArray;
+    updatedFavorites = updateArray;
     this.setState({ favorites: updatedFavorites });
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
@@ -81,14 +91,14 @@ class App extends Component {
 
     if (selected) {
       selectedData = this.state[selected];
-      favoritesCount = favorites[selected].length;
+      favoritesCount = favorites.length;
     }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
         <Route
           exact
-          path="/(planets|people|vehicles|)"
+          path="/(planets|people|vehicles|favorites|)"
           render={({ match }) => {
             const pathUsed = match.url.split("/")[1];
             return (
@@ -102,7 +112,7 @@ class App extends Component {
             );
           }}
         />
-        <Route
+        {/* <Route
           path="/(planets|people|vehicles)/favorites"
           render={({ match }) => {
             const pathUsed = match.url.split("/")[1];
@@ -118,7 +128,7 @@ class App extends Component {
               />
             );
           }}
-        />
+        /> */}
       </div>
     );
   }

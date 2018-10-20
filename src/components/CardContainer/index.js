@@ -10,12 +10,11 @@ class CardContainer extends PureComponent {
     let { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;
 
+    console.log(selectedCategory, cardData);
+
     if (selectedCategory) {
       displayText = "These are not the cards you are looking for!";
       characterPic = obiWan;
-      // }
-      // else if (selectedCategory !== 'favorites' && cardData === []) {
-      //   displayText = "$ loading $";
     } else {
       displayText = "$ select a category, you must $";
       characterPic = yoda;
@@ -25,7 +24,7 @@ class CardContainer extends PureComponent {
         return card.type === selectedCategory;
       });
     }
-    console.log(selectedCategory, cardData)
+    console.log(selectedCategory, cardData);
     const cards = cardData.map((card, index) => {
       return (
         <Card

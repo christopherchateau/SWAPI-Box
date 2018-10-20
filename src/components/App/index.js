@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   loadCards = async category => {
-    let cardData, favorites;
+    let cardData, favorites = [];
     if (localStorage.getItem("favorites")) {
       favorites = JSON.parse(localStorage.getItem("favorites"));
     } else {
@@ -84,11 +84,8 @@ class App extends Component {
       handleCardClick: this.handleCardClick
     };
     let selectedData = [];
-    let favoritesCount = 0;
-
     if (selected) {
       selectedData = this.state[selected];
-      favoritesCount = favorites.length;
     }
     return (
       <div className="App">
@@ -104,28 +101,11 @@ class App extends Component {
                 {...bundledAppFunctions}
                 selectedCategory={selected}
                 cardData={selectedData || []}
-                favoritesCount={favoritesCount}
+                favoritesCount={favorites.length}
               />
             );
           }}
         />
-        {/* <Route
-          path="/(planets|people|vehicles)/favorites"
-          render={({ match }) => {
-            const pathUsed = match.url.split("/")[1];
-            selectedData = favorites[pathUsed];
-            favoritesCount = favorites[pathUsed].length;
-            return (
-              <MainPage
-                pathUsed={pathUsed}
-                {...bundledAppFunctions}
-                selectedCategory={selected}
-                cardData={selectedData}
-                favoritesCount={favoritesCount}
-              />
-            );
-          }}
-        /> */}
       </div>
     );
   }

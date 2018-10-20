@@ -24,7 +24,8 @@ export const people = async () => {
         homeworld: homeworld.name,
         language: species.language,
         population: homeworld.population,
-        favorited: false
+        favorited: false,
+        type: 'people'
       };
     })
   );
@@ -51,7 +52,8 @@ export const planets = async () => {
         population: planet.population,
         climate: planet.climate,
         residents: residents,
-        favorited: false
+        favorited: false,
+        type: 'planets'
       };
     })
   );
@@ -70,7 +72,8 @@ export const vehicles = async () => {
       model: vehicle.model,
       class: vehicle.vehicle_class,
       passengers: vehicle.passengers,
-      favorited: false
+      favorited: false,
+      type: 'vehicles'
     };
   });
   localStorage.setItem("vehicles", JSON.stringify(cleanedVehicles));

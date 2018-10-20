@@ -7,20 +7,25 @@ import "./CardContainer.css";
 
 class CardContainer extends PureComponent {
   render() {
-    const { cardData, handleCardClick, selectedCategory } = this.props;
+    let { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;
-    
+
     if (selectedCategory) {
       displayText = "These are not the cards you are looking for!";
       characterPic = obiWan;
-    // } 
-    // else if (selectedCategory !== 'favorites' && cardData === []) {
-    //   displayText = "$ loading $";
-
+      // }
+      // else if (selectedCategory !== 'favorites' && cardData === []) {
+      //   displayText = "$ loading $";
     } else {
       displayText = "$ select a category, you must $";
       characterPic = yoda;
     }
+    if (selectedCategory !== "favorites") {
+      cardData = cardData.filter(card => {
+        return card.type === selectedCategory;
+      });
+    }
+    console.log(selectedCategory, cardData)
     const cards = cardData.map((card, index) => {
       return (
         <Card

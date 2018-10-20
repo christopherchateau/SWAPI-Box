@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as API from "../../helper/helper";
 import MainPage from "../MainPage";
 import SideScroll from "../SideScroll";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import "./App.css";
 
 class App extends Component {
@@ -27,18 +27,19 @@ class App extends Component {
   }
 
   loadCards = async category => {
-    let cardData, favorites = [];
+    let cardData,
+      favorites = [];
     if (localStorage.getItem("favorites")) {
       favorites = JSON.parse(localStorage.getItem("favorites"));
-    } else {
-      cardData = await API[category]();
+      await this.setState({ favorites });
     }
-    await this.setState({ [category]: cardData, favorites });
+    cardData = await API[category]();
+    await this.setState({ [category]: cardData });
   };
 
   toggleFavorites = () => {
     let { favorites } = this.state;
-    this.updateData('favorites', favorites);
+    this.updateData("favorites", favorites);
   };
 
   async getEpisodeData() {
@@ -60,7 +61,7 @@ class App extends Component {
   };
 
   handleCardClick = (card, favorited) => {
-    let { selected, favorites } = this.state;
+    let { favorites } = this.state;
     let updatedFavorites = favorites;
     let updateArray;
 
@@ -111,4 +112,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

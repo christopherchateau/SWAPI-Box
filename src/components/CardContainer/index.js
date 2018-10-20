@@ -9,8 +9,7 @@ class CardContainer extends PureComponent {
   render() {
     let { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;
-
-    console.log(selectedCategory, cardData);
+    console.log(cardData)
 
     if (selectedCategory) {
       displayText = "These are not the cards you are looking for!";
@@ -24,7 +23,6 @@ class CardContainer extends PureComponent {
         return card.type === selectedCategory;
       });
     }
-    console.log(selectedCategory, cardData);
     const cards = cardData.map((card, index) => {
       return (
         <Card

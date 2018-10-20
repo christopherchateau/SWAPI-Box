@@ -16,8 +16,6 @@ class Favorite extends Component {
   handleClick = e => {
     if (this.state.linkDisabled) {
       e.preventDefault();
-    } else {
-      this.props.toggleFavorites();
     }
   };
 

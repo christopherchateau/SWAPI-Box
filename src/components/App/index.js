@@ -28,7 +28,9 @@ class App extends Component {
 
   toggleFavorites = () => {
     let { selected, favorites } = this.state;
-    this.updateData(selected, favorites[selected]);
+    if (this.state.selected) {
+      this.updateData(selected, favorites[selected]);
+    }
   };
 
   async getEpisodeData() {
@@ -46,15 +48,15 @@ class App extends Component {
       return !names.includes(card.name);
     });
     value = [...favorites[key], ...filteredCards];
-    console.log(value)
+    console.log(value);
     this.setState({ [key]: value, selected: key });
   };
-  
+
   handleCardClick = (card, favorited) => {
     let { selected, favorites } = this.state;
     const updatedFavorites = favorites;
     let updateArray;
-    
+
     if (!favorited) {
       updateArray = [card, ...favorites[selected]];
     } else {

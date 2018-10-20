@@ -5,12 +5,14 @@
 
 .MainPage {
   display: grid;
+  grid-template-rows: 15vh 10vh 10vh 65vh;
 }
 
 .mainTitle {
   color: #fdde09;
   font-family: starWars;
   font-size: 55px;
+  height: 20px;
   margin: 15px 10px 0 10px;
   text-align: center;
 }
@@ -21,14 +23,46 @@
   justify-content: space-around;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 1000px) {
+  .MainPage {
+    grid-template-rows: 100px 80px 120px 50vh;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .MainPage {
+    grid-template-rows: 100px 64px 250px 50vh;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .MainPage {
+    grid-template-rows: 100px 66px 250px 50vh;
+  }
+
   .mainTitle {
     font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .MainPage {
+    grid-template-rows: 100px 66px 250px 50vh;
   }
 }
 
 @media screen and (max-width: 475px) {
   .mainTitle {
     font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .MainPage {
+    grid-template-rows: 80px 60px 250px 50vh;
+  }
+
+  .mainTitle {
+    font-size: 32px;
   }
 }

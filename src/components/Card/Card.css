@@ -43,3 +43,17 @@ ul {
   color: #fdde09;
   transition: all 0.4s ease-in-out;
 }
+
+@media screen and (max-width: 385px) {
+  .Card {
+    width: 250px;
+    height: 230px; 
+  }
+  .name,
+  ul {
+    font-size: 15px;
+  }
+  .favoriteIcon {
+    margin-top: 2px
+  }
+}

@@ -6,37 +6,42 @@ import CardContainer from "../CardContainer";
 import Buttons from "../Buttons";
 import "./MainPage.css";
 
+let didUpdateCounter = 0;
+
 class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cardData: props.cardData,
       category: props.pathUsed
-    }
+    };
   }
-
+  
   async componentDidMount() {
-    const {pathUsed} = this.props
+    const { pathUsed } = this.props;
     if (pathUsed.length) {
       const cardData = await API[pathUsed]();
-      await this.setState({cardData});
+      await this.setState({ cardData });
     }
   }
 
   async componentDidUpdate() {
+    didUpdateCounter++;
     const { pathUsed, selectedCategory } = this.props;
     const { category } = this.state;
-    const path = window.location.pathname.split('/')
+    const path = window.location.pathname.split("/");
     if (pathUsed !== category && pathUsed.length) {
       const cardData = await API[pathUsed]();
-      this.setState({cardData, category: pathUsed})
+      this.setState({ cardData, category: pathUsed });
+    } else if (
+      this.props.cardData !== this.state.cardData &&
+      path.includes("favorites")
+    ) {
+      this.setState({ cardData: this.props.cardData });
+    } else if (pathUsed !== category) {
+      this.setState({ cardData: [], category: "" });
     }
-    else if (this.props.cardData !== this.state.cardData && path.includes('favorites')) {
-      this.setState({cardData: this.props.cardData});
-    }
-    else if (pathUsed !== category) {
-      this.setState({ cardData: [], category: ''});
-    }
+    //console.log('path:', path, "category:", category, 'pathUsed:', pathUsed, 'counter:', didUpdateCounter, 'cardData:', this.state.cardData)
   }
 
   render() {
@@ -57,10 +62,7 @@ class MainPage extends Component {
           toggleFavorites={toggleFavorites}
           favoritesCount={favoritesCount}
         />
-        <Buttons
-          selectedCategory={selectedCategory}
-          updateData={updateData}
-        />
+        <Buttons selectedCategory={selectedCategory} updateData={updateData} />
         <CardContainer
           selectedCategory={selectedCategory}
           cardData={cardData}
@@ -75,7 +77,7 @@ MainPage.propTypes = {
   cardData: PropTypes.array.isRequired,
   favoritesCount: PropTypes.number.isRequired,
   selectedCategory: PropTypes.string.isRequired,
-  appFunctionBundle: PropTypes.object.isRequired
+  bundledAppFunctions: PropTypes.object.isRequired
 };
 
 export default MainPage;

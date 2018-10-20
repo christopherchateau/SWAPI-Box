@@ -1,5 +1,6 @@
 .Buttons {
   display: flex;
+  height: 0px;
   justify-content: space-evenly;
 }
 
@@ -41,13 +42,12 @@
   .Buttons {
     flex-direction: column;
     justify-content: initial;
-    margin: 0;
-    margin-bottom: 20px;
+    margin: 8px 0;
   }
 
-.people,
-.vehicles,
-.planets {
+  .people,
+  .vehicles,
+  .planets {
     width: 80%;
     margin: 8px 10%;
   }

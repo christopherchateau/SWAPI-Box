@@ -42,6 +42,7 @@ class App extends Component {
   updateData = (key, value) => {
     const { favorites } = this.state;
     const names = favorites[key].map(card => card.name);
+    console.log(names)
     const filteredCards = value.filter(card => {
       return !names.includes(card.name);
     });
@@ -68,7 +69,7 @@ class App extends Component {
 
   render() {
     const { episodeData, favorites, selected } = this.state;
-    const appFunctionBundle = {
+    const bundledAppFunctions = {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
@@ -91,7 +92,7 @@ class App extends Component {
             return (
               <MainPage
                 pathUsed={pathUsed}
-                {...appFunctionBundle}
+                {...bundledAppFunctions}
                 selectedCategory={selected}
                 cardData={selectedData || []}
                 favoritesCount={favoritesCount}
@@ -108,7 +109,7 @@ class App extends Component {
             return (
               <MainPage
                 pathUsed={pathUsed}
-                {...appFunctionBundle}
+                {...bundledAppFunctions}
                 selectedCategory={selected}
                 cardData={selectedData}
                 favoritesCount={favoritesCount}

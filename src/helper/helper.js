@@ -29,7 +29,7 @@ export const people = async () => {
     })
   );
   localStorage.setItem("people", JSON.stringify(cleanedPeople));
-  return cleanedPeople
+  return cleanedPeople;
 };
 
 export const planets = async () => {
@@ -74,13 +74,9 @@ export const vehicles = async () => {
     };
   });
   localStorage.setItem("vehicles", JSON.stringify(cleanedVehicles));
-  return cleanedVehicles
+  return cleanedVehicles;
 };
 
 function checkLocalStorage(category) {
-  if (localStorage.getItem(category)) {
-    return JSON.parse(localStorage.getItem(category));
-  } else {
-    return false;
-  }
+  return JSON.parse(localStorage.getItem(category));
 }

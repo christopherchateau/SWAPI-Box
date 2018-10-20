@@ -6,7 +6,6 @@ import CardContainer from "../CardContainer";
 import Buttons from "../Buttons";
 import "./MainPage.css";
 
-let didUpdateCounter = 0;
 
 class MainPage extends Component {
   constructor(props) {
@@ -26,8 +25,7 @@ class MainPage extends Component {
   }
 
   async componentDidUpdate() {
-    didUpdateCounter++;
-    const { pathUsed, selectedCategory } = this.props;
+    const { pathUsed } = this.props;
     const { category } = this.state;
     const path = window.location.pathname.split("/");
     if (pathUsed !== category && pathUsed.length) {
@@ -41,7 +39,7 @@ class MainPage extends Component {
     } else if (pathUsed !== category) {
       this.setState({ cardData: [], category: "" });
     }
-    //console.log('path:', path, "category:", category, 'pathUsed:', pathUsed, 'counter:', didUpdateCounter, 'cardData:', this.state.cardData)
+    //console.log('path:', path, "category:", category, 'pathUsed:', pathUsed, 'cardData:', this.state.cardData)
   }
 
   render() {
@@ -74,10 +72,13 @@ class MainPage extends Component {
 }
 
 MainPage.propTypes = {
-  cardData: PropTypes.array.isRequired,
   favoritesCount: PropTypes.number.isRequired,
+  toggleFavorites: PropTypes.func.isRequired,
+  updateData: PropTypes.func.isRequired,
+  handleCardClick: PropTypes.func.isRequired,
   selectedCategory: PropTypes.string.isRequired,
-  bundledAppFunctions: PropTypes.object.isRequired
+  pathUsed: PropTypes.string.isRequired,
+
 };
 
 export default MainPage;

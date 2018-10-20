@@ -4,18 +4,31 @@ import { NavLink } from "react-router-dom";
 import "./Favorite.css";
 
 class Favorite extends Component {
+  constructor() {
+    super();
+    this.state = {
+      linkDisabled:
+        window.location.pathname === "/" ||
+        window.location.pathname.split("/").includes("favorites")
+    };
+  }
+
+  handleClick = e => {
+    if (this.state.linkDisabled) {
+      e.preventDefault();
+    } else {
+      this.props.toggleFavorites();
+    }
+  };
+
   render() {
-    const { toggleFavorites, favoritesCount, selectedCategory } = this.props;
-    const isFavorites = window.location.pathname
-      .split("/")
-      .includes("favorites");
+    const { favoritesCount, selectedCategory } = this.props;
     return (
       <div className="Favorites">
         <NavLink
           to={`${selectedCategory}/favorites`}
           className="favoritesBtn"
-          onClick={toggleFavorites}
-          disabled={isFavorites}
+          onClick={this.handleClick}
         >
           <span className="favoritesIcon">#</span> Favorite{" "}
           {selectedCategory !== "initial" ? selectedCategory : ""}:{" "}

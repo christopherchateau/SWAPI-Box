@@ -80,16 +80,6 @@ export const vehicles = async () => {
   return cleanedVehicles;
 };
 
-// export const favorites = () => {
-//   console.log('asdf')
-//   if (localStorage.getItem("favorites")) {
-//     return JSON.parse(localStorage.getItem("favorites"));
-//   }
-//   //return []; 
-// }
-
-
-
 function checkLocalStorage(category) {
   return JSON.parse(localStorage.getItem(category));
 }

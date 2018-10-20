@@ -55,13 +55,7 @@
 
 @media screen and (max-width: 520px) {
   .favoritesBtn {
-    font-size: 20px;
-    padding: 8px 0 10px 0;
-  }
-}
-
-@media screen and (max-width: 352px) {
-  .favoritesBtn {
-    font-size: 18px;
+    font-size: 22px;
+    padding: 4px 0 6px 0;
   }
 }

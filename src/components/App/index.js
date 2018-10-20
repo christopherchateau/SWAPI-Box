@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   loadCards = async category => {
-    const favorites = JSON.parse(localStorage.getItem("favorites"));
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     await this.setState({ favorites });
     if (category !== "favorites") {
       const cardData = await API[category]();

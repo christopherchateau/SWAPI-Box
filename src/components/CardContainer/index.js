@@ -9,7 +9,6 @@ class CardContainer extends PureComponent {
   render() {
     let { cardData, handleCardClick, selectedCategory } = this.props;
     let displayText, characterPic;
-    console.log(cardData)
 
     if (selectedCategory) {
       displayText = "These are not the cards you are looking for!";

@@ -27,14 +27,12 @@ class App extends Component {
   }
 
   loadCards = async category => {
-    let cardData,
-      favorites = [];
-    if (localStorage.getItem("favorites")) {
-      favorites = JSON.parse(localStorage.getItem("favorites"));
-      await this.setState({ favorites });
+    const favorites = JSON.parse(localStorage.getItem("favorites"));
+    await this.setState({ favorites });
+    if (category !== "favorites") {
+      const cardData = await API[category]();
+      this.updateData(category, cardData);
     }
-    cardData = await API[category]();
-    await this.setState({ [category]: cardData });
   };
 
   toggleFavorites = () => {

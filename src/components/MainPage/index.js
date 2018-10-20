@@ -15,7 +15,6 @@ class MainPage extends Component {
       selectedCategory,
       pathUsed,
       cardData,
-      showLoading
     } = this.props;
     return (
       <div className="MainPage">

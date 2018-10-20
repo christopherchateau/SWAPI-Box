@@ -28,6 +28,7 @@ class App extends Component {
 
   toggleFavorites = () => {
     let { selected, favorites } = this.state;
+    console.log('asdf')
     if (this.state.selected) {
       this.updateData(selected, favorites[selected]);
     }
@@ -48,7 +49,6 @@ class App extends Component {
       return !names.includes(card.name);
     });
     value = [...favorites[key], ...filteredCards];
-    console.log(value);
     this.setState({ [key]: value, selected: key });
   };
 

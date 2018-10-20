@@ -4,17 +4,10 @@ import { NavLink } from "react-router-dom";
 import "./Favorite.css";
 
 class Favorite extends Component {
-  constructor() {
-    super();
-    this.state = {
-      linkDisabled:
-        window.location.pathname === "/" ||
-        window.location.pathname.split("/").includes("favorites")
-    };
-  }
 
   handleClick = e => {
-    if (this.state.linkDisabled) {
+    if (window.location.pathname === "/" ||
+      window.location.pathname.split("/").includes("favorites")) {
       e.preventDefault();
     }
   };

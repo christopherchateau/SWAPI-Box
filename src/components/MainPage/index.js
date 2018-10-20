@@ -6,7 +6,6 @@ import CardContainer from "../CardContainer";
 import Buttons from "../Buttons";
 import "./MainPage.css";
 
-
 class MainPage extends Component {
   constructor(props) {
     super(props);

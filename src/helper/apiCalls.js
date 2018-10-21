@@ -2,9 +2,15 @@ export const url = 'https://swapi.co/api/';
 
 export const getRandomEpisode = () => {
   const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
+  if (localStorage.getItem(`episode${randomEpisodeNumber}`)) {
+    return JSON.parse(localStorage.getItem(`episode${randomEpisodeNumber}`));
+  }
   return fetch(url + `films/${randomEpisodeNumber}`).then(response =>
-    response.json()
-  );
+    response.json())
+    .then(episode => {
+      localStorage.setItem(`episode${randomEpisodeNumber}`, JSON.stringify(episode));
+      return episode;
+    });
 };
 
 export const getPeople = () => {

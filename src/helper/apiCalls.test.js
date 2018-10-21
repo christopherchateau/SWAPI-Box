@@ -3,6 +3,7 @@ import * as apiCalls from "./apiCalls";
 describe("apiCalls", () => {
   describe("getRandomEpisode", () => {
     beforeEach(() => {
+      localStorage.clear();
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({
           json: () => "episode data here"
@@ -22,10 +23,28 @@ describe("apiCalls", () => {
       const result = await apiCalls.getRandomEpisode();
       expect(result).toBe(expected);
     });
+
+    it("Should store results in localStorage", async () => {
+      const expected = "episode data here";
+      await apiCalls.getRandomEpisode()
+      const jsonEpisode = localStorage.getItem("episode1")
+      const episode = JSON.parse(jsonEpisode);
+      expect(episode).toBe(expected);
+    });
+
+    it("Should return data from localStorage when it has been stored", async () => {
+      const storedEpisode = "stored episode";
+      localStorage.setItem("episode1", JSON.stringify(storedEpisode));
+      const episode = await apiCalls.getRandomEpisode();
+
+      expect(episode).toBe(storedEpisode);
+    });
+
   });
 
   describe("getPeople", () => {
     beforeEach(() => {
+      localStorage.clear();
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({
           json: () => ({ results: "people data here" })
@@ -44,10 +63,25 @@ describe("apiCalls", () => {
       const result = await apiCalls.getPeople();
       expect(result).toBe(expected);
     });
+
+    it("Should store results in localStorage", async () => {
+      const expected = "people data here";
+      await apiCalls.getPeople();
+      const people = JSON.parse(localStorage.getItem("people"));
+      expect(people).toBe(expected);
+    });
+
+    it("Should return results from localStorage if they exist", async () => {
+      const expected = "local storage people"
+      localStorage.setItem("people", JSON.stringify(expected));
+      const result = await apiCalls.getPeople();
+      expect(result).toBe(expected);
+    });
   });
 
   describe("getPlanets", () => {
     beforeEach(() => {
+      localStorage.clear();
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({
           json: () => ({ results: "planet data here" })
@@ -66,10 +100,26 @@ describe("apiCalls", () => {
       const result = await apiCalls.getPlanets();
       expect(result).toBe(expected);
     });
+
+    it("Should store results in localStorage", async () => {
+      const expected = "planet data here";
+      await apiCalls.getPlanets();
+      const people = JSON.parse(localStorage.getItem("planets"));
+      expect(people).toBe(expected);
+    });
+
+    it("Should return results from localStorage if they exist", async () => {
+      const expected = "local storage planets"
+      localStorage.setItem("planets", JSON.stringify(expected));
+      const result = await apiCalls.getPeople();
+      expect(result).toBe(expected);
+    });
+
   });
 
   describe("getVehicles", () => {
     beforeEach(() => {
+      localStorage.clear();
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({
           json: () => ({ results: "vehicle data here" })
@@ -88,6 +138,21 @@ describe("apiCalls", () => {
       const result = await apiCalls.getVehicles();
       expect(result).toBe(expected);
     });
+
+    it("Should store results in localStorage", async () => {
+      const expected = "vehicle data here";
+      await apiCalls.getVehicles();
+      const people = JSON.parse(localStorage.getItem("vehicles"));
+      expect(people).toBe(expected);
+    });
+
+    it("Should return results from localStorage if they exist", async () => {
+      const expected = "local storage vehicles"
+      localStorage.setItem("vehicles", JSON.stringify(expected));
+      const result = await apiCalls.getPeople();
+      expect(result).toBe(expected);
+    });
+
   });
 
   describe("getEndpoint", () => {
@@ -109,5 +174,20 @@ describe("apiCalls", () => {
       const result = await apiCalls.getEndpoint("url.com");
       expect(result).toBe(expected);
     });
+
+    it("Should store results in localStorage", async () => {
+      const expected = "endpoint data here";
+      await apiCalls.getEndpoint("url.com");
+      const people = JSON.parse(localStorage.getItem("url.com"));
+      expect(people).toBe(expected);
+    });
+
+    it("Should return results from localStorage if they exist", async () => {
+      const expected = "local storage people"
+      localStorage.setItem("url.com", JSON.stringify(expected));
+      const result = await apiCalls.getEndpoint("url.com");
+      expect(result).toBe(expected);
+    });
+
   });
 });

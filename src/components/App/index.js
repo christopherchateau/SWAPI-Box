@@ -14,21 +14,30 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: { people: [], planets: [], vehicles: [] }
+      favorites: []
     };
   }
 
   componentDidMount() {
+    const { selected } = this.state;
     this.getEpisodeData();
-    if (localStorage.getItem("favorites")) {
-      const favorites = JSON.parse(localStorage.getItem("favorites"));
-      this.setState({ favorites });
+    if (selected.length) {
+      this.loadCards(selected);
     }
   }
 
+  loadCards = async category => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    await this.setState({ favorites });
+    if (category !== "favorites") {
+      const cardData = await API[category]();
+      this.updateData(category, cardData);
+    }
+  };
+
   toggleFavorites = () => {
-    let { selected, favorites } = this.state;
-    this.updateData(selected, favorites[selected]);
+    let { favorites } = this.state;
+    this.updateData("favorites", favorites);
   };
 
   async getEpisodeData() {
@@ -41,77 +50,55 @@ class App extends Component {
 
   updateData = (key, value) => {
     const { favorites } = this.state;
-    const names = favorites[key].map(card => card.name);
+    const names = favorites.map(card => card.name);
     const filteredCards = value.filter(card => {
       return !names.includes(card.name);
     });
-    value = [...favorites[key], ...filteredCards];
+    value = [...favorites, ...filteredCards];
     this.setState({ [key]: value, selected: key });
   };
 
   handleCardClick = (card, favorited) => {
-    let { selected, favorites } = this.state;
-    const updatedFavorites = favorites;
+    let { favorites } = this.state;
+    let updatedFavorites = favorites;
     let updateArray;
 
     if (!favorited) {
-      updateArray = [card, ...favorites[selected]];
+      updateArray = [card, ...favorites];
     } else {
-      updateArray = favorites[selected].filter(favorite => {
+      updateArray = favorites.filter(favorite => {
         return favorite.name !== card.name;
       });
     }
-    updatedFavorites[selected] = updateArray;
+    updatedFavorites = updateArray;
     this.setState({ favorites: updatedFavorites });
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
   render() {
     const { episodeData, favorites, selected } = this.state;
-    const appFunctionBundle = {
+    const bundledAppFunctions = {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
     };
     let selectedData = [];
-    let favoritesCount = 0;
-
     if (selected) {
       selectedData = this.state[selected];
-      favoritesCount = favorites[selected].length;
     }
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
         <Route
           exact
-          path="/(planets|people|vehicles|)"
+          path="/(planets|people|vehicles|favorites|)"
           render={({ match }) => {
-            const pathUsed = match.url.split("/")[1];
             return (
               <MainPage
-                pathUsed={pathUsed}
-                {...appFunctionBundle}
+                {...bundledAppFunctions}
                 selectedCategory={selected}
                 cardData={selectedData || []}
-                favoritesCount={favoritesCount}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/(planets|people|vehicles)/favorites"
-          render={({ match }) => {
-            const pathUsed = match.url.split("/")[1];
-            selectedData = favorites[pathUsed];
-            favoritesCount = favorites[pathUsed].length;
-            return (
-              <MainPage
-                pathUsed={pathUsed}
-                {...appFunctionBundle}
-                selectedCategory={selected}
-                cardData={selectedData}
-                favoritesCount={favoritesCount}
+                favoritesCount={favorites.length}
               />
             );
           }}

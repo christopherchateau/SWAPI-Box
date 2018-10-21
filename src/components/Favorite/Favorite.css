@@ -9,7 +9,7 @@
   font-size: 28px;
   margin: 0 25%;
   outline: 0;
-  padding-bottom: 6px;
+  padding-bottom: 2px;
   text-align: center;
   text-decoration: none;
   transition: all 0.4s ease-in-out;
@@ -48,20 +48,14 @@
 
 @media screen and (max-width: 850px) {
   .favoritesBtn {
-    margin: 7px 10%;
+    margin: 10px 10%;
     width: 80%;
   }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 420px) {
   .favoritesBtn {
-    font-size: 20px;
-    padding: 8px 0 10px 0;
-  }
-}
-
-@media screen and (max-width: 352px) {
-  .favoritesBtn {
-    font-size: 18px;
+    font-size: 24px;
+    padding: 6px 0;
   }
 }

@@ -40,7 +40,12 @@ ShallowWrapper {
         </h2>,
         <ul>
           <li>
-            species: Yoda's Species
+            <span
+              className="category"
+            >
+              species
+            </span>
+            : Yoda's Species
           </li>
         </ul>,
       ],
@@ -91,7 +96,12 @@ ShallowWrapper {
           "children": Array [
             undefined,
             <li>
-              species: Yoda's Species
+              <span
+                className="category"
+              >
+                species
+              </span>
+              : Yoda's Species
             </li>,
             undefined,
           ],
@@ -104,10 +114,31 @@ ShallowWrapper {
             "key": "Yoda1",
             "nodeType": "host",
             "props": Object {
-              "children": "species: Yoda's Species",
+              "children": Array [
+                <span
+                  className="category"
+                >
+                  species
+                </span>,
+                ": Yoda's Species",
+              ],
             },
             "ref": null,
-            "rendered": "species: Yoda's Species",
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "species",
+                  "className": "category",
+                },
+                "ref": null,
+                "rendered": "species",
+                "type": "span",
+              },
+              ": Yoda's Species",
+            ],
             "type": "li",
           },
           undefined,
@@ -137,7 +168,12 @@ ShallowWrapper {
           </h2>,
           <ul>
             <li>
-              species: Yoda's Species
+              <span
+                className="category"
+              >
+                species
+              </span>
+              : Yoda's Species
             </li>
           </ul>,
         ],
@@ -188,7 +224,12 @@ ShallowWrapper {
             "children": Array [
               undefined,
               <li>
-                species: Yoda's Species
+                <span
+                  className="category"
+                >
+                  species
+                </span>
+                : Yoda's Species
               </li>,
               undefined,
             ],
@@ -201,10 +242,31 @@ ShallowWrapper {
               "key": "Yoda1",
               "nodeType": "host",
               "props": Object {
-                "children": "species: Yoda's Species",
+                "children": Array [
+                  <span
+                    className="category"
+                  >
+                    species
+                  </span>,
+                  ": Yoda's Species",
+                ],
               },
               "ref": null,
-              "rendered": "species: Yoda's Species",
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "species",
+                    "className": "category",
+                  },
+                  "ref": null,
+                  "rendered": "species",
+                  "type": "span",
+                },
+                ": Yoda's Species",
+              ],
               "type": "li",
             },
             undefined,

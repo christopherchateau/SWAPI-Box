@@ -14,7 +14,7 @@
   .App {
     grid-template-columns: 1fr;
     grid-template-rows: 88vh 100vh;
-    height: 210vh;
+    height: 220vh;
   }
 }
 
@@ -22,6 +22,12 @@
   .App {
     grid-template-columns: 1fr;
     grid-template-rows: 88vh 100vh;
-    height: 225vh;
+    height: 235vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .App {
+    height: 245vh;
   }
 }

@@ -1,4 +1,4 @@
-export const url = 'https://swapi.co/api/';
+export const url = "https://swapi.co/api/";
 
 export const getRandomEpisode = async () => {
   const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;

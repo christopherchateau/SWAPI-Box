@@ -5,21 +5,15 @@ import "./Favorite.css";
 
 class Favorite extends Component {
   render() {
-    const { toggleFavorites, favoritesCount, selectedCategory } = this.props;
-    const isFavorites = window.location.pathname
-      .split("/")
-      .includes("favorites");
+    const { favoritesCount, toggleFavorites } = this.props;
     return (
       <div className="Favorites">
         <NavLink
-          to={`${selectedCategory}/favorites`}
+          to={`/favorites`}
           className="favoritesBtn"
           onClick={toggleFavorites}
-          disabled={isFavorites}
         >
-          <span className="favoritesIcon">#</span> Favorite{" "}
-          {selectedCategory !== "initial" ? selectedCategory : ""}:{" "}
-          {favoritesCount}
+          <span className="favoritesIcon">#</span> Favorites: {favoritesCount}
         </NavLink>
       </div>
     );
@@ -29,7 +23,6 @@ class Favorite extends Component {
 Favorite.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
   favoritesCount: PropTypes.number.isRequired,
-  selectedCategory: PropTypes.string.isRequired
 };
 
 export default Favorite;

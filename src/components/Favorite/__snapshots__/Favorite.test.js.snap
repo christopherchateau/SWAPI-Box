@@ -25,20 +25,15 @@ ShallowWrapper {
         activeClassName="active"
         aria-current="page"
         className="favoritesBtn"
-        disabled={false}
         onClick={[MockFunction]}
-        to="planets/favorites"
+        to="/favorites"
       >
         <span
           className="favoritesIcon"
         >
           #
         </span>
-         Favorite
-         
-        planets
-        :
-         
+         Favorites: 
         0
       </NavLink>,
       "className": "Favorites",
@@ -57,17 +52,12 @@ ShallowWrapper {
           >
             #
           </span>,
-          " Favorite",
-          " ",
-          "planets",
-          ":",
-          " ",
+          " Favorites: ",
           0,
         ],
         "className": "favoritesBtn",
-        "disabled": false,
         "onClick": [MockFunction],
-        "to": "planets/favorites",
+        "to": "/favorites",
       },
       "ref": null,
       "rendered": Array [
@@ -83,11 +73,7 @@ ShallowWrapper {
           "rendered": "#",
           "type": "span",
         },
-        " Favorite",
-        " ",
-        "planets",
-        ":",
-        " ",
+        " Favorites: ",
         0,
       ],
       "type": [Function],
@@ -104,20 +90,15 @@ ShallowWrapper {
           activeClassName="active"
           aria-current="page"
           className="favoritesBtn"
-          disabled={false}
           onClick={[MockFunction]}
-          to="planets/favorites"
+          to="/favorites"
         >
           <span
             className="favoritesIcon"
           >
             #
           </span>
-           Favorite
-           
-          planets
-          :
-           
+           Favorites: 
           0
         </NavLink>,
         "className": "Favorites",
@@ -136,17 +117,12 @@ ShallowWrapper {
             >
               #
             </span>,
-            " Favorite",
-            " ",
-            "planets",
-            ":",
-            " ",
+            " Favorites: ",
             0,
           ],
           "className": "favoritesBtn",
-          "disabled": false,
           "onClick": [MockFunction],
-          "to": "planets/favorites",
+          "to": "/favorites",
         },
         "ref": null,
         "rendered": Array [
@@ -162,11 +138,7 @@ ShallowWrapper {
             "rendered": "#",
             "type": "span",
           },
-          " Favorite",
-          " ",
-          "planets",
-          ":",
-          " ",
+          " Favorites: ",
           0,
         ],
         "type": [Function],

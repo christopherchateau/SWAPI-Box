@@ -10,7 +10,7 @@ const Buttons = ({ updateData }) => {
       <NavLink
         to="/people"
         className="people"
-        onClick={() =>
+        onClick={() => 
           API.people().then(people => updateData("people", people))
         }
       >

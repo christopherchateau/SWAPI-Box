@@ -1,75 +1,57 @@
 export const url = 'https://swapi.co/api/';
 
-export const getRandomEpisode = () => {
+export const getRandomEpisode = async () => {
   const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
   if (localStorage.getItem(`episode${randomEpisodeNumber}`)) {
     return JSON.parse(localStorage.getItem(`episode${randomEpisodeNumber}`));
   }
-  return fetch(url + `films/${randomEpisodeNumber}`).then(response =>
-    response.json())
-    .then(episode => {
-      localStorage.setItem(`episode${randomEpisodeNumber}`, JSON.stringify(episode));
-      return episode;
-    });
+  const response = await fetch(url + `films/${randomEpisodeNumber}`);
+  const episode = await response.json();
+  localStorage.setItem(`episode${randomEpisodeNumber}`, JSON.stringify(episode));
+  return episode;
 };
 
-export const getPeople = () => {
+export const getPeople = async () => {
   if (localStorage.getItem("people")) {
     const people = localStorage.getItem("people");
     return JSON.parse(people);
   }
-  return fetch(url + "people")
-    .then(response => response.json())
-    .then(people => people.results)
-    .then(people => {
-      const stringifyPeople = JSON.stringify(people);
-      localStorage.setItem("people", stringifyPeople);
-      return people;
-    });
+  const response = await fetch(url + "people");
+  const people = await response.json();
+  localStorage.setItem("people", JSON.stringify(people.results));
+  return people.results;
+
 };
 
-export const getPlanets = () => {
+export const getPlanets = async () => {
   if (localStorage.getItem("planets")) {
     const planets = localStorage.getItem("planets");
     return JSON.parse(planets);
   }
-
-  return fetch(url + "planets")
-    .then(response => response.json())
-    .then(planets => planets.results)
-    .then(planets => {
-      const stringifyPlanets = JSON.stringify(planets);
-      localStorage.setItem("planets", stringifyPlanets);
-      return planets;
-    });
+  const response = await fetch(url + "planets");
+  const planets = await response.json();
+  localStorage.setItem("planets", JSON.stringify(planets.results));
+  return planets.results;
 };
 
-export const getVehicles = () => {
+export const getVehicles = async () => {
   if (localStorage.getItem("vehicles")) {
     const vehicles = localStorage.getItem("vehicles");
     return JSON.parse(vehicles);
   }
-
-  return fetch(url + "vehicles")
-    .then(response => response.json())
-    .then(vehicles => vehicles.results)
-    .then(vehicles => {
-      const stringifyVehicles = JSON.stringify(vehicles);
-      localStorage.setItem("vehicles", stringifyVehicles);
-      return vehicles;
-    });
+  const response = await fetch(url + "vehicles");
+  const vehicles = await response.json();
+  localStorage.setItem("vehicles", JSON.stringify(vehicles.results));
+  return vehicles.results;
 };
 
-export const getEndpoint = url => {
+export const getEndpoint = async url => {
   if (localStorage.getItem(url)) {
     const endpoint = localStorage.getItem(url);
     return JSON.parse(endpoint);
   }
-
- return fetch(url).then(response => response.json())
-    .then(endpoint => {
-      const stringifyData = JSON.stringify(endpoint);
-      localStorage.setItem(url, stringifyData);
-      return endpoint;
-    });
+  const response = await fetch(url);
+  const endpoint = await response.json();
+  localStorage.setItem(url, JSON.stringify(endpoint));
+  return endpoint;
 };

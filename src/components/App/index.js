@@ -86,23 +86,31 @@ class App extends Component {
     if (selected) {
       selectedData = this.state[selected];
     }
+    const renderMain = (match) => {
+      const path = match.url.slice(1);
+      return (<MainPage
+        {...bundledAppFunctions}
+        selectedCategory={path}
+        cardData={this.state[path] || []}
+        favoritesCount={favorites.length}
+      />)
+    }
+
     return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <Route
-          exact
-          path="/(planets|people|vehicles|favorites|)"
-          render={({ match }) => {
-            return (
-              <MainPage
-                {...bundledAppFunctions}
-                selectedCategory={selected}
-                cardData={selectedData || []}
-                favoritesCount={favorites.length}
-              />
-            );
-          }}
-        />
+        <Route exact path="/" render={() => renderMain()}/>
+        <Route exact path="/planets" render={() => (
+          <MainPage
+            {...bundledAppFunctions}
+            selectedCategory={selected}
+            cardData={selectedData || []}
+            favoritesCount={favorites.length}
+          />
+          )}/>
+        <Route exact path="/people" render={({match}) => renderMain(match)}/>
+        <Route exact path="/vehicles" render={({match}) => renderMain(match)}/>
+        <Route exact path="/favorites" render={({match}) => renderMain(match)}/>
       </div>
     );
   }

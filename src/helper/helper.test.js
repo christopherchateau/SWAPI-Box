@@ -3,11 +3,9 @@ import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 configure({ adapter: new Adapter() });
-
 jest.mock("./apiCalls");
 
 describe("SWAPI", () => {
-
   describe("random episode", () => {
     it("should return episode fetch in expected format", async () => {
       const expectedResult = {

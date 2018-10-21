@@ -114,7 +114,6 @@ describe("apiCalls", () => {
       const result = await apiCalls.getPlanets();
       expect(result).toBe(expected);
     });
-
   });
 
   describe("getVehicles", () => {
@@ -152,7 +151,6 @@ describe("apiCalls", () => {
       const result = await apiCalls.getVehicles();
       expect(result).toBe(expected);
     });
-
   });
 
   describe("getEndpoint", () => {
@@ -164,6 +162,7 @@ describe("apiCalls", () => {
         })
       );
     });
+
     it("Should call fetch with any url given", () => {
       const expected = "https://swapi.co/api/people/1";
       apiCalls.getEndpoint(expected);
@@ -189,6 +188,5 @@ describe("apiCalls", () => {
       const result = await apiCalls.getEndpoint("url.com");
       expect(result).toBe(expected);
     });
-
   });
 });

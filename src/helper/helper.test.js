@@ -28,7 +28,8 @@ describe("SWAPI", () => {
           homeworld: "endpoint name",
           language: "endpoint language",
           population: "endpoint population",
-          favorited: false
+          favorited: false,
+          type: "people"
         },
         {
           name: "C-3P0",
@@ -36,7 +37,8 @@ describe("SWAPI", () => {
           homeworld: "endpoint name",
           language: "endpoint language",
           population: "endpoint population",
-          favorited: false
+          favorited: false,
+          type: "people"
         }
       ];
       expect(await API.people()).toEqual(expectedResult);
@@ -51,7 +53,8 @@ describe("SWAPI", () => {
           model: "Digger Crawler",
           passengers: 30,
           class: "wheeled",
-          favorited: false
+          favorited: false,
+          type: "vehicles"
         }
       ];
       expect(await API.vehicles()).toEqual(expectedResult);
@@ -67,7 +70,8 @@ describe("SWAPI", () => {
           population: 2000000000,
           climate: "temperate",
           residents: [" endpoint name", " endpoint name", " endpoint name"],
-          favorited: false
+          favorited: false,
+          type: "planets"
         },
         {
           name: "Yavin IV",
@@ -75,7 +79,8 @@ describe("SWAPI", () => {
           population: 1000,
           climate: "temperate, tropical",
           residents: [],
-          favorited: false
+          favorited: false,
+          type: "planets"
         }
       ];
       expect(await API.planets()).toEqual(expectedResult);

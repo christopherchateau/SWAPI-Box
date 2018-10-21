@@ -18,7 +18,7 @@ describe("CardContainer", () => {
     <CardContainer
       cardData={[]}
       handleCardClick={jest.fn()}
-      selectedCategory={"initial"}
+      selectedCategory={""}
     />
   );
     const message = wrapper.find(".emptyContainerMessage");
@@ -43,28 +43,32 @@ describe("CardContainer", () => {
         name: 'Luke Skywalker',
         species: 'Human',
         language: 'Galactic Basic',
-        population: 200000}]}
+        favorited: false,
+        population: 200000,
+        type: 'people'}]}
       handleCardClick={jest.fn()}
-      selectedCategory={"planets"}
+      selectedCategory={"people"}
     />
     );
     const message = wrapper.find(".emptyContainerMessage");
     expect(message.length).toBe(0);
   });
-
+  
   it("Should render cards when data is given", () => {
     const wrapper = shallow(
-    <CardContainer
+      <CardContainer
       cardData={[{
         name: 'Luke Skywalker',
         species: 'Human',
         language: 'Galactic Basic',
-        population: 200000}]}
-      handleCardClick={jest.fn()}
-      selectedCategory={"planets"}
-    />
-    );
-    const message = wrapper.find("Card");
+        favorited: false,
+        population: 200000,
+        type: "people"}]}
+        handleCardClick={jest.fn()}
+        selectedCategory={"people"}
+        />
+      );
+      const message = wrapper.find("Card");
     expect(message.length).toBe(1);
   });
 });

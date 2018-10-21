@@ -23,7 +23,6 @@ class Favorite extends Component {
 Favorite.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
   favoritesCount: PropTypes.number.isRequired,
-  selectedCategory: PropTypes.string.isRequired
 };
 
 export default Favorite;

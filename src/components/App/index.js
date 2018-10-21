@@ -93,10 +93,10 @@ class App extends Component {
           exact
           path="/(planets|people|vehicles|favorites|)"
           render={({ match }) => {
-            const pathUsed = match.url.split("/")[1];
+            //const pathUsed = match.url.split("/")[1];
             return (
               <MainPage
-                pathUsed={pathUsed}
+                //pathUsed={pathUsed}
                 {...bundledAppFunctions}
                 selectedCategory={selected}
                 cardData={selectedData || []}

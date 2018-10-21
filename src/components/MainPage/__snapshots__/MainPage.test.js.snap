@@ -5,6 +5,9 @@ exports[`MainPage Renders like snapshot 1`] = `
   appFunctionBundle={Object {}}
   cardData={Array []}
   favoritesCount={0}
+  handleCardClick={[MockFunction]}
   selectedCategory="planets"
+  toggleFavorites={[MockFunction]}
+  updateData={[MockFunction]}
 />
 `;

@@ -9,6 +9,9 @@ describe("MainPage", () => {
       appFunctionBundle={{}}
       favoritesCount={0}
       selectedCategory={"planets"}
+      toggleFavorites={jest.fn()}
+      updateData={jest.fn()}
+      handleCardClick={jest.fn()}
     />
   );
 

@@ -13,14 +13,13 @@ class MainPage extends Component {
       updateData,
       handleCardClick,
       selectedCategory,
-      pathUsed,
+      //pathUsed,
       cardData,
     } = this.props;
     return (
       <div className="MainPage">
         <h1 className="mainTitle">$ SWAPi-Box $</h1>
         <Favorite
-          selectedCategory={pathUsed}
           toggleFavorites={toggleFavorites}
           favoritesCount={favoritesCount}
         />
@@ -44,7 +43,7 @@ MainPage.propTypes = {
   updateData: PropTypes.func.isRequired,
   handleCardClick: PropTypes.func.isRequired,
   selectedCategory: PropTypes.string.isRequired,
-  pathUsed: PropTypes.string.isRequired
+  //pathUsed: PropTypes.string.isRequired
 };
 
 export default MainPage;

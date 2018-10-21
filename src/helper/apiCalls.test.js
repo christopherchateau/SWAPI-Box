@@ -104,14 +104,14 @@ describe("apiCalls", () => {
     it("Should store results in localStorage", async () => {
       const expected = "planet data here";
       await apiCalls.getPlanets();
-      const people = JSON.parse(localStorage.getItem("planets"));
-      expect(people).toBe(expected);
+      const planets = JSON.parse(localStorage.getItem("planets"));
+      expect(planets).toBe(expected);
     });
 
     it("Should return results from localStorage if they exist", async () => {
       const expected = "local storage planets"
       localStorage.setItem("planets", JSON.stringify(expected));
-      const result = await apiCalls.getPeople();
+      const result = await apiCalls.getPlanets();
       expect(result).toBe(expected);
     });
 
@@ -142,20 +142,21 @@ describe("apiCalls", () => {
     it("Should store results in localStorage", async () => {
       const expected = "vehicle data here";
       await apiCalls.getVehicles();
-      const people = JSON.parse(localStorage.getItem("vehicles"));
-      expect(people).toBe(expected);
+      const vehicles = JSON.parse(localStorage.getItem("vehicles"));
+      expect(vehicles).toBe(expected);
     });
 
     it("Should return results from localStorage if they exist", async () => {
       const expected = "local storage vehicles"
       localStorage.setItem("vehicles", JSON.stringify(expected));
-      const result = await apiCalls.getPeople();
+      const result = await apiCalls.getVehicles();
       expect(result).toBe(expected);
     });
 
   });
 
   describe("getEndpoint", () => {
+    localStorage.clear();
     beforeEach(() => {
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({

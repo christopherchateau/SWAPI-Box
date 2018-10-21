@@ -1,13 +1,205 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainPage Renders like snapshot 1`] = `
-<MainPage
-  appFunctionBundle={Object {}}
-  cardData={Array []}
-  favoritesCount={0}
-  handleCardClick={[MockFunction]}
-  selectedCategory="planets"
-  toggleFavorites={[MockFunction]}
-  updateData={[MockFunction]}
-/>
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <MainPage
+    appFunctionBundle={Object {}}
+    cardData={Array []}
+    favoritesCount={0}
+    handleCardClick={[MockFunction]}
+    selectedCategory="planets"
+    toggleFavorites={[MockFunction]}
+    updateData={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1
+          className="mainTitle"
+        >
+          $ SWAPi-Box $
+        </h1>,
+        <Favorite
+          favoritesCount={0}
+          toggleFavorites={[MockFunction]}
+        />,
+        <Buttons
+          selectedCategory="planets"
+          updateData={[MockFunction]}
+        />,
+        <CardContainer
+          cardData={Array []}
+          handleCardClick={[MockFunction]}
+          selectedCategory="planets"
+        />,
+      ],
+      "className": "MainPage",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "$ SWAPi-Box $",
+          "className": "mainTitle",
+        },
+        "ref": null,
+        "rendered": "$ SWAPi-Box $",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "favoritesCount": 0,
+          "toggleFavorites": [MockFunction],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "selectedCategory": "planets",
+          "updateData": [MockFunction],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "cardData": Array [],
+          "handleCardClick": [MockFunction],
+          "selectedCategory": "planets",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1
+            className="mainTitle"
+          >
+            $ SWAPi-Box $
+          </h1>,
+          <Favorite
+            favoritesCount={0}
+            toggleFavorites={[MockFunction]}
+          />,
+          <Buttons
+            selectedCategory="planets"
+            updateData={[MockFunction]}
+          />,
+          <CardContainer
+            cardData={Array []}
+            handleCardClick={[MockFunction]}
+            selectedCategory="planets"
+          />,
+        ],
+        "className": "MainPage",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "$ SWAPi-Box $",
+            "className": "mainTitle",
+          },
+          "ref": null,
+          "rendered": "$ SWAPi-Box $",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "favoritesCount": 0,
+            "toggleFavorites": [MockFunction],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "selectedCategory": "planets",
+            "updateData": [MockFunction],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "cardData": Array [],
+            "handleCardClick": [MockFunction],
+            "selectedCategory": "planets",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
 `;

@@ -3,7 +3,7 @@ import MainPage from "./index";
 import { shallow } from "enzyme";
 
 describe("MainPage", () => {
-  let wrapper = (
+  let wrapper = shallow(
     <MainPage
       cardData={[]}
       appFunctionBundle={{}}

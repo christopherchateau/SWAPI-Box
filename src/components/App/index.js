@@ -9,7 +9,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selected: window.location.pathname.split("/")[1],
       episodeData: {},
       vehicles: [],
       people: [],
@@ -19,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { selected } = this.state;
+    const selected = window.location.pathname.split("/")[1] ;
     this.getEpisodeData();
     if (selected.length) {
       this.loadCards(selected);
@@ -76,42 +75,28 @@ class App extends Component {
   };
 
   render() {
-    const { episodeData, favorites, selected } = this.state;
+    const { episodeData, favorites} = this.state;
     const bundledAppFunctions = {
       toggleFavorites: this.toggleFavorites,
       updateData: this.updateData,
       handleCardClick: this.handleCardClick
     };
-    let selectedData = [];
-    if (selected) {
-      selectedData = this.state[selected];
-    }
-    const renderMain = (match) => {
-      const path = match.url.slice(1);
-      return (<MainPage
-        {...bundledAppFunctions}
-        selectedCategory={path}
-        cardData={this.state[path] || []}
-        favoritesCount={favorites.length}
-      />)
-    }
 
-    return (
+   return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <Route exact path="/" render={() => renderMain()}/>
-        <Route exact path="/planets" render={() => (
-          <MainPage
-            {...bundledAppFunctions}
-            selectedCategory={selected}
-            cardData={selectedData || []}
-            favoritesCount={favorites.length}
-          />
-          )}/>
-        <Route exact path="/people" render={({match}) => renderMain(match)}/>
-        <Route exact path="/vehicles" render={({match}) => renderMain(match)}/>
-        <Route exact path="/favorites" render={({match}) => renderMain(match)}/>
-      </div>
+        <Route exact path="/(people|planets|vehicles|favorites|)" render={
+          ({match}) => {
+            const path = match.url.slice(1);
+            return (<MainPage
+              {...bundledAppFunctions}
+              selectedCategory={path}
+              cardData={this.state[path] || []}
+              favoritesCount={favorites.length}
+              />)
+          }
+        }/>
+     </div>
     );
   }
 }

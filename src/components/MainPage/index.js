@@ -13,7 +13,6 @@ class MainPage extends Component {
       updateData,
       handleCardClick,
       selectedCategory,
-      //pathUsed,
       cardData,
     } = this.props;
     return (
@@ -43,7 +42,6 @@ MainPage.propTypes = {
   updateData: PropTypes.func.isRequired,
   handleCardClick: PropTypes.func.isRequired,
   selectedCategory: PropTypes.string.isRequired,
-  //pathUsed: PropTypes.string.isRequired
 };
 
 export default MainPage;

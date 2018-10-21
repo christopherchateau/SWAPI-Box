@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as API from "../../helper/helper";
 import MainPage from "../MainPage";
 import SideScroll from "../SideScroll";
-import { Route, withRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.css";
 
 class App extends Component {
@@ -93,10 +93,8 @@ class App extends Component {
           exact
           path="/(planets|people|vehicles|favorites|)"
           render={({ match }) => {
-            //const pathUsed = match.url.split("/")[1];
             return (
               <MainPage
-                //pathUsed={pathUsed}
                 {...bundledAppFunctions}
                 selectedCategory={selected}
                 cardData={selectedData || []}

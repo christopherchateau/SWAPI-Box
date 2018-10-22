@@ -26,10 +26,10 @@ SWAPI Box is project designed to challenge our skills at manipulating data and c
 
 ## Mobile Screenshots
 
-<img src="https://github.com/bottd/SWAPI-Box/blob/master/src/images/swapi-desktop-1.png" width="400px" />
+<img src="https://github.com/bottd/SWAPI-Box/blob/master/src/images/swapi-mobile-1.png" width="500px" />
 
-<img src="https://github.com/bottd/SWAPI-Box/blob/master/src/images/swapi-desktop-1.png" width="400px" />
+<img src="https://github.com/bottd/SWAPI-Box/blob/master/src/images/swapi-mobile-2.png" width="500px" />
 
 ## Original Project Wireframe
 
-<img src="https://github.com/bottd/SWAPI-Box/blob/master/src/images/swapi-wireframe.png" width="600px" />
+<img src="https://github.com/bottd/SWAPI-Box/blob/master/src/images/swapi-wireframe.png" width="500px" />

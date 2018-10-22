@@ -1,12 +1,21 @@
 import * as apiCalls from "./apiCalls";
 
 export const randomEpisode = async () => {
-  const episode = await apiCalls.getRandomEpisode();
-  return {
+  const randomEpisodeNumber = Math.floor(Math.random() * 7) + 1;
+  if (checkLocalStorage(`episode${randomEpisodeNumber}`)) {
+    return checkLocalStorage(`episode${randomEpisodeNumber}`);
+  }
+  const episode = await apiCalls.getRandomEpisode(randomEpisodeNumber);
+  const cleanedEpisode = {
     opening_crawl: episode.opening_crawl,
     title: episode.title,
     release_date: episode.release_date
   };
+  localStorage.setItem(
+    `episode${randomEpisodeNumber}`,
+    JSON.stringify(episode)
+  );
+  return cleanedEpisode;
 };
 
 export const people = async () => {
@@ -25,7 +34,7 @@ export const people = async () => {
         language: species.language,
         population: homeworld.population,
         favorited: false,
-        type: 'people'
+        type: "people"
       };
     })
   );
@@ -53,7 +62,7 @@ export const planets = async () => {
         climate: planet.climate,
         residents: residents,
         favorited: false,
-        type: 'planets'
+        type: "planets"
       };
     })
   );
@@ -73,7 +82,7 @@ export const vehicles = async () => {
       class: vehicle.vehicle_class,
       passengers: vehicle.passengers,
       favorited: false,
-      type: 'vehicles'
+      type: "vehicles"
     };
   });
   localStorage.setItem("vehicles", JSON.stringify(cleanedVehicles));

@@ -31,7 +31,6 @@ class CardContainer extends PureComponent {
         />
       );
     });
-
     if (cards.length) {
       return <div className="CardContainer">{cards}</div>;
     } else {

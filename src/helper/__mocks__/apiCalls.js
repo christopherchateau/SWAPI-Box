@@ -1,28 +1,27 @@
-export const getRandomEpisode = jest
-  .fn()
-  .mockImplementationOnce(() => ({
-    opening_crawl: "star wars blah blah blah",
-    title: "Star Wars",
-    release_date: "1977"
-  }))
-  .mockImplementationOnce(() => {
-    throw new Error("failed to fetch episode");
-  });
+export const getRandomEpisode = jest.fn().mockImplementation(() => ({
+  opening_crawl: "star wars blah blah blah",
+  title: "Star Wars",
+  release_date: "1977"
+}));
 
-export const getPeople = jest.fn().mockImplementationOnce(() => [
+export const getPeople = jest.fn().mockImplementation(() => [
   {
     name: "Luke Skywalker",
     species: { name: "Human" },
     homeworld: { name: "Tatooine" },
     language: "Galactic Basic",
-    population: 200000
+    population: 200000,
+    favorited: false,
+    type: "people"
   },
   {
     name: "C-3P0",
     species: { name: "Droid" },
     homeworld: { name: "Tatooine" },
     language: "n/a",
-    population: 200000
+    population: 200000,
+    favorited: false,
+    type: "people"
   }
 ]);
 
@@ -32,7 +31,7 @@ export const getEndpoint = jest.fn().mockImplementation(() => ({
   population: "endpoint population"
 }));
 
-export const getVehicles = jest.fn().mockImplementationOnce(() => [
+export const getVehicles = jest.fn().mockImplementation(() => [
   {
     name: "Sand Crawler",
     model: "Digger Crawler",
@@ -42,7 +41,7 @@ export const getVehicles = jest.fn().mockImplementationOnce(() => [
   }
 ]);
 
-export const getPlanets = jest.fn().mockImplementationOnce(() => [
+export const getPlanets = jest.fn().mockImplementation(() => [
   {
     name: "Alderaan",
     terrain: "grasslands, mountains",

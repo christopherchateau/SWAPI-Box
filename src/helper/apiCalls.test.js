@@ -1,10 +1,8 @@
 import * as apiCalls from "./apiCalls";
 
 describe("apiCalls", () => {
+
   describe("getRandomEpisode", () => {
-    beforeEach(() => {
-      localStorage.clear();
-    });
 
     it("Should call fetch with a random episode's endpoint", () => {
       window.fetch = jest.fn().mockImplementation(() =>
@@ -25,6 +23,7 @@ describe("apiCalls", () => {
   });
 
   describe("getPeople", () => {
+
     beforeEach(() => {
       localStorage.clear();
       window.fetch = jest.fn().mockImplementation(() =>
@@ -48,6 +47,7 @@ describe("apiCalls", () => {
   });
 
   describe("getPlanets", () => {
+
     beforeEach(() => {
       localStorage.clear();
       window.fetch = jest.fn().mockImplementation(() =>
@@ -71,6 +71,7 @@ describe("apiCalls", () => {
   });
 
   describe("getVehicles", () => {
+
     beforeEach(() => {
       localStorage.clear();
       window.fetch = jest.fn().mockImplementation(() =>
@@ -94,7 +95,7 @@ describe("apiCalls", () => {
   });
 
   describe("getEndpoint", () => {
-    localStorage.clear();
+
     beforeEach(() => {
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({

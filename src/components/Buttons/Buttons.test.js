@@ -11,35 +11,34 @@ describe("Buttons", () => {
       expect(wrapper).toMatchSnapshot();
     });
     describe("onClick", () => {
-      let wrapper, updateData;
-      const API = {};
+      let wrapper;
+      let API = {};
 
       beforeEach(() => {
-        updateData = jest.fn();
         wrapper = shallow(
-          <Buttons updateData={updateData} selectedCategory={"planets"} />
+          <Buttons updateData={jest.fn()} selectedCategory={"planets"} />
         );
       });
-    });
-    it.skip("Should call getPeople when people button is clicked", () => {
-      API.getPeople = jest.fn();
-      const peopleBtn = wrapper.find(".people");
-      peopleBtn.simulate("click");
-      expect(API.getPeople).toHaveBeenCalled();
-    });
 
-    it.skip("Should call getPlanets when planets button is clicked", () => {
-      API.getPlanets = jest.fn();
-      const planetBtn = wrapper.find(".planets");
-      planetBtn.simulate("click");
-      expect(API.getPlanets).toHaveBeenCalled();
-    });
+      it.skip("Should call getPeople when people button is clicked", () => {
+        const peopleBtn = wrapper.find(".people");
+        peopleBtn.simulate("click");
+        expect(wrapper.instance().updateData('planets')).toHaveBeenCalled();
+      });
 
-    it.skip("Should call getVehicles when vehicles button is clicked", () => {
-      API.getVehicles = jest.fn();
-      const vehicleBtn = wrapper.find(".vehicles");
-      vehicleBtn.simulate("click");
-      expect(API.getVehicles).toHaveBeenCalled();
+      it.skip("Should call getPlanets when planets button is clicked", () => {
+        let planets = jest.fn();
+        const planetBtn = wrapper.find(".planets");
+        planetBtn.simulate("click");
+        expect(planets).toHaveBeenCalled();
+      });
+
+      it.skip("Should call getVehicles when vehicles button is clicked", () => {
+        API.getVehicles = jest.fn();
+        const vehicleBtn = wrapper.find(".vehicles");
+        vehicleBtn.simulate("click");
+        expect(API.getVehicles).toHaveBeenCalled();
+      });
     });
   });
 });

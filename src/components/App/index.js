@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const selected = window.location.pathname.split("/")[1] ;
+    const selected = window.location.pathname.split("/")[1];
     this.getEpisodeData();
     if (selected.length) {
       this.loadCards(selected);
@@ -32,11 +32,6 @@ class App extends Component {
       const cardData = await API[category]();
       this.updateData(category, cardData);
     }
-  };
-
-  toggleFavorites = () => {
-    let { favorites } = this.state;
-    this.updateData("favorites", favorites);
   };
 
   async getEpisodeData() {
@@ -54,7 +49,7 @@ class App extends Component {
       return !names.includes(card.name);
     });
     value = [...favorites, ...filteredCards];
-    this.setState({ [key]: value, selected: key });
+    this.setState({ [key]: value });
   };
 
   handleCardClick = (card, favorited) => {
@@ -75,28 +70,27 @@ class App extends Component {
   };
 
   render() {
-    const { episodeData, favorites} = this.state;
-    const bundledAppFunctions = {
-      toggleFavorites: this.toggleFavorites,
-      updateData: this.updateData,
-      handleCardClick: this.handleCardClick
-    };
-
-   return (
+    const { episodeData, favorites } = this.state;
+    return (
       <div className="App">
         <SideScroll className="hide" episodeData={episodeData} />
-        <Route exact path="/(people|planets|vehicles|favorites|)" render={
-          ({match}) => {
+        <Route
+          exact
+          path="/(people|planets|vehicles|favorites|)"
+          render={({ match }) => {
             const path = match.url.slice(1);
-            return (<MainPage
-              {...bundledAppFunctions}
-              selectedCategory={path}
-              cardData={this.state[path] || []}
-              favoritesCount={favorites.length}
-              />)
-          }
-        }/>
-     </div>
+            return (
+              <MainPage
+                updateData={this.updateData}
+                handleCardClick={this.handleCardClick}
+                selectedCategory={path}
+                cardData={this.state[path] || []}
+                favoritesCount={favorites.length}
+              />
+            );
+          }}
+        />
+      </div>
     );
   }
 }

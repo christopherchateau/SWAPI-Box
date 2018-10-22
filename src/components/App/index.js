@@ -57,13 +57,11 @@ class App extends Component {
     let updatedFavorites = favorites;
     let updateArray;
 
-    if (!favorited) {
-      updateArray = [card, ...favorites];
-    } else {
-      updateArray = favorites.filter(favorite => {
-        return favorite.name !== card.name;
-      });
-    }
+    !favorited
+      ? (updateArray = [card, ...favorites])
+      : (updateArray = favorites.filter(
+          favorite => favorite.name !== card.name
+        ));
     updatedFavorites = updateArray;
     this.setState({ favorites: updatedFavorites });
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));

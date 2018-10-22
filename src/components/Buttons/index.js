@@ -40,7 +40,6 @@ const Buttons = ({ updateData }) => {
 
 Buttons.propTypes = {
   updateData: PropTypes.func.isRequired,
-  selectedCategory: PropTypes.string.isRequired
 };
 
 export default Buttons;

@@ -1,6 +1,6 @@
 # SWAPI Box
 
-## Check out the site on [GitHub Pages](https://christopherchateau.github.io/headcount2.0/)!
+## Check out the site on [GitHub Pages](https://bottd.github.io/SWAPI-Box/)!
  
 
 Utilizing the StarWars API, SWAPI-box is a single page application that allows its users to explore the rich world of StarWars, as well as bookmark their favorite characters, planets, and vehicles.   
@@ -20,12 +20,16 @@ SWAPI Box is project designed to challenge our skills at manipulating data and c
 
 ## Desktop Screenshots
 
-<img src="" width="800px" />
+<img src="https://github.com/bottd/SWAPI-Box/blob/iteration-6/src/images/swapi-desktop-1.png" width="800px" />
 
-<img src="" width="800px" />
+<img src="https://github.com/bottd/SWAPI-Box/blob/iteration-6/src/images/swapi-desktop-2.png" width="800px" />
 
 ## Mobile Screenshots
 
-<img src="" width="400px" />
+<img src="https://github.com/bottd/SWAPI-Box/blob/iteration-6/src/images/swapi-desktop-1.png" width="400px" />
 
-<img src="" width="400px" />
+<img src="https://github.com/bottd/SWAPI-Box/blob/iteration-6/src/images/swapi-desktop-1.png" width="400px" />
+
+## Original Project Wireframe
+
+<img src="https://github.com/bottd/SWAPI-Box/blob/iteration-6/src/images/swapi-wireframe.png" width="600px" />

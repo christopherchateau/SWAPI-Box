@@ -48,10 +48,6 @@ describe("App", () => {
       ];
     });
 
-    it("selected property in state should initialize as empty string ", () => {
-      expect(wrapper.state().selected).toEqual("");
-    });
-
     it("updateData should add data to appropriate array in state", () => {
       wrapper.instance().updateData("people", mockPeople);
       expect(wrapper.state().people).toHaveLength(2);

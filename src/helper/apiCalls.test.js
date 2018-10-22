@@ -95,7 +95,7 @@ describe("apiCalls", () => {
   });
 
   describe("getEndpoint", () => {
-
+    
     beforeEach(() => {
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({

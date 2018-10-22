@@ -23,7 +23,7 @@ describe("Buttons", () => {
       it.skip("Should call getPeople when people button is clicked", () => {
         const peopleBtn = wrapper.find(".people");
         peopleBtn.simulate("click");
-        expect(wrapper.instance().updateData('planets')).toHaveBeenCalled();
+        expect(wrapper.instance().updateData("planets")).toHaveBeenCalled();
       });
 
       it.skip("Should call getPlanets when planets button is clicked", () => {

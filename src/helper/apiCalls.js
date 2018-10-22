@@ -1,6 +1,6 @@
 export const url = "https://swapi.co/api/";
 
-export const getRandomEpisode = async (randomEpisodeNumber) => {
+export const getRandomEpisode = async randomEpisodeNumber => {
   const response = await fetch(url + `films/${randomEpisodeNumber}`);
   const episode = await response.json();
   return episode;

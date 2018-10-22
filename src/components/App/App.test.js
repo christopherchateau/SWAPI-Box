@@ -59,4 +59,19 @@ describe("App", () => {
       expect(wrapper.state().favorites.length).toBe(0);
     });
   });
+
+  describe("handleCardClick", () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = shallow(<App />);
+    });
+
+    it("loadCards should retrieve favs from storage and set to state", () => {
+      const favorites = "These are my favorites";
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      wrapper.instance().loadCards();
+      expect(wrapper.state().favorites).toEqual(favorites);
+    });
+  });
 });

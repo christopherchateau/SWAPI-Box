@@ -48,7 +48,7 @@
   .people,
   .vehicles,
   .planets {
-    width: 80%;
     margin: 8px 10%;
+    width: 80%;
   }
 }

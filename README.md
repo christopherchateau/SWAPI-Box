@@ -1,5 +1,7 @@
 # SWAPI Box
 
+## Check out the site on [GitHub Pages](https://bottd.github.io/SWAPI-Box/)!
+
 Utilizing the StarWars API, SWAPI-box is a single page application that allows its users to explore the rich world of StarWars, as well as bookmark their favorite characters, planets, and vehicles.   
 This project utilizes ReactJS, Router, and has been fully tested with Enzyme/Jest.  
 
